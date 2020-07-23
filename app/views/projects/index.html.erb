@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>My projects</h1>
+
+  <div>
+    <% @projects.each do |project| %>
+      <div>
+      <h2>Title: <%= project.title %></h2>
+      <p>Description: <%= project.description %></p>
+      <p>Status: <%= project.status %></p>
+      <p>Adjustments: <%= project.adjustments %></p>
+      <p><%= link_to "Go to Project", project_path(project) %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
