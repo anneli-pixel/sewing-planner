@@ -5,3 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Project.destroy_all
+
+require 'open-uri'
+
+project1 = Project.new(
+  title: 'Blue Summer Top',
+  status: 'draft',
+  description: 'Use Korfu crop top pattern and make it a bit shorter?'
+  )
+project1.save
+
+project2 = Project.new(
+  title: 'Red High-Waist Jeans',
+  status: 'in progress',
+  description: 'Use dark grey pants pattern as basis.'
+  )
+project2.save
+
+project3 = Project.new(
+  title: 'Pineapple Summer Top',
+  status: 'completed',
+  description: 'Pink viscose from Barcelona plus green bias binding.',
+  adjustments: 'Increased bust circumference and made it a bit longer.'
+  )
+project3.save
