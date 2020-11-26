@@ -8,5 +8,12 @@ class Project < ApplicationRecord
   has_many :project_fabrics
   has_many :fabrics, through: :project_fabrics
 
+  def start_date
+    # self.start_date = self.created_at
+    # start_date = date when status is changed from 'Draft' to 'In progress'
+  end
 
+  def end_date
+    # end_date = date when status is changed to Completed
+  end
 end
