@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :fabrics
   has_many :project_fabrics, through: :fabrics
   has_many :projects
-  has_many :patterns, through: :projects
+  has_many :patterns
   has_many :shopping_items, through: :projects
   has_many :project_fabrics, through: :projects
 end
