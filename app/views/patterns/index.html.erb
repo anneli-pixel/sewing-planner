@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>All Patterns</h1>
+
+  <% @patterns.each do |pattern| %>
+    <div class="card">
+      <h3><%= pattern.title %></h3>
+      <div>
+        <%= pattern.fabric_type %>
+        <%= pattern.garment_category %>
+      </div>
+    </div>
+  <% end %>
+</div>

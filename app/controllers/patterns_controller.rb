@@ -1,5 +1,9 @@
 class PatternsController < ApplicationController
 
+  def index
+    @patterns = policy_scope(Pattern)
+  end
+
   def new
     @pattern = Pattern.new
     authorize @pattern
