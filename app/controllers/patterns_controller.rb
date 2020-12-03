@@ -35,7 +35,7 @@ class PatternsController < ApplicationController
   def update
     @pattern = Pattern.find(params[:id])
     @pattern.update(pattern_params)
-    redirect_to pattern_path(@pattern)
+    redirect_to pattern_path(@pattern), notice: "Pattern succesfully edited."
     authorize @pattern
   end
 

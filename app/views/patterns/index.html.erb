@@ -1,6 +1,6 @@
 <div class="container">
   <h1>All Patterns</h1>
-
+  <p><%= link_to "Add pattern", new_pattern_path, class: "btn btn-primary" %></p>
   <% @patterns.each do |pattern| %>
       <div class="card">
         <%= link_to pattern_path(pattern) do %>
