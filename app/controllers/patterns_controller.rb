@@ -27,6 +27,18 @@ class PatternsController < ApplicationController
     authorize @pattern
   end
 
+  def edit
+    @pattern = Pattern.find(params[:id])
+    authorize @pattern
+  end
+
+  def update
+    @pattern = Pattern.find(params[:id])
+    @pattern.update(pattern_params)
+    redirect_to pattern_path(@pattern)
+    authorize @pattern
+  end
+
   def pattern_params
     params.require(:pattern).permit(:title, :designer, :fabric_type, :pattern_url, :garment_category, :notes)
   end

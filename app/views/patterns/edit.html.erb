@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Edit Pattern</h1>
+  <%= simple_form_for(@pattern) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :designer %>
+    <%= f.input :fabric_type,
+                collection: Pattern::FABRIC_TYPES,
+                prompt: "Select..."
+                %>
+    <%= f.input :garment_category,
+                collection: Pattern::GARMENT_CATEGORIES,
+                prompt: "Select..."
+                %>
+    <%= f.input :pattern_url %>
+    <%= f.input :notes %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
