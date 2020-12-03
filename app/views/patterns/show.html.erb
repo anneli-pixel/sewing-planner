@@ -1,0 +1,11 @@
+<div class="container">
+  <h1><%= @pattern.title %></h1>
+  <p><%= link_to "Edit", edit_pattern_path(@pattern), class: "btn btn-primary" %></p>
+  <ul>
+    <li>Designer: <%= @pattern.designer %></li>
+    <li>Fabric Type: <%= @pattern.fabric_type %></li>
+    <li>Url: <%= @pattern.pattern_url %></li>
+    <li>Garment Category: <%= @pattern.garment_category %></li>
+    <li>Notes: <%= @pattern.notes %></li>
+  </ul>
+</div>

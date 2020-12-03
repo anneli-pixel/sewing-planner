@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_26_135559) do
+ActiveRecord::Schema.define(version: 2020_12_02_104536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,9 @@ ActiveRecord::Schema.define(version: 2020_11_26_135559) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "garment_category"
+    t.text "notes"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_patterns_on_user_id"
   end
 
   create_table "project_fabrics", force: :cascade do |t|
@@ -93,6 +96,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_135559) do
 
   add_foreign_key "fabrics", "users"
   add_foreign_key "measurements", "users"
+  add_foreign_key "patterns", "users"
   add_foreign_key "project_fabrics", "fabrics"
   add_foreign_key "project_fabrics", "projects"
   add_foreign_key "projects", "patterns"
