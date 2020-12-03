@@ -7,24 +7,30 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Project.destroy_all
-User.destroy_all
+#User.destroy_all
 Pattern.destroy_all
 
 require 'open-uri'
 
 # Create Users
-anne = User.new(
-  email: 'anne_lissner@gmx.net',
-  password: '123456'
-  )
-anne.save
+if !User.find_by(email: "anne_lissner@gmx.net")
+  puts "Not found"
+  anne = User.new(
+    email: "anne_lissner@gmx.net",
+    password: "123456"
+    )
+  anne.save
+else
+  anne = User.find_by(email: "anne_lissner@gmx.net")
+end
 
 # Create Patterns
 pattern1 = Pattern.new(
   title: "Korfu Crop Top",
   designer: "Self Drafted",
   fabric_type: "Woven",
-  garment_category: "Tops"
+  garment_category: "Tops",
+  user_id: anne.id
   )
 pattern1.save
 
@@ -32,7 +38,8 @@ pattern2 = Pattern.new(
   title: "Dark Grey Jeans",
   designer: "123 Patterns",
   fabric_type: "Knit",
-  garment_category: "Pants"
+  garment_category: "Pants",
+  user_id: anne.id
   )
 pattern2.save
 
