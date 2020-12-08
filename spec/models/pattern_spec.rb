@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Pattern, type: :model do
   #pending "add some examples to (or delete) #{__FILE__}"
   subject do
-    user = User.new(id: 1)
+    user = User.create(id: 1, email: "anne_lissner@gmx.net", password: "123456")
     Pattern.new(title: "Barbara Sweater",
                 designer: "123 Patterns",
                 fabric_type: "Knit",
@@ -45,6 +45,7 @@ RSpec.describe Pattern, type: :model do
     it do
       should validate_inclusion_of(:garment_category).in_array(Pattern::GARMENT_CATEGORIES).with_message(garment_category_message)
     end
+
 
     it { should validate_uniqueness_of(:title).scoped_to(:user_id) }
   end
