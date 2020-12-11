@@ -1,0 +1,9 @@
+.label-input-text {
+  border-radius: 8px;
+  background-color: $light-yellow;
+  border: none;
+
+  &:focus {
+    background-color: $light-yellow;
+  }
+}
