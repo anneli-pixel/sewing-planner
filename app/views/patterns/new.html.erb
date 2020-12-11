@@ -8,12 +8,20 @@
                 label_html: { class: "label-title"} %>
     <%= f.input :fabric_type,
                 collection: Pattern::FABRIC_TYPES,
-                prompt: "Select...",
-                label_html: { class: "label-title"}
+                as: :radio_buttons,
+                #wrapper: :vertical_collection_inline,
+                label_html: { class: "label-title"},
+                item_wrapper_class: "fabric-type-item",
+                input_html: { class: "fabric-type-selector" }
                 %>
     <%= f.input :garment_category,
                 collection: Pattern::GARMENT_CATEGORIES,
-                prompt: "Select...",
+                as: :radio_buttons,
+                collection_wrapper_tag: "div",
+                collection_wrapper_class: "category-wrapper",
+                item_wrapper_class: "category-item",
+                input_html: { class: "category-selector" },
+                #wrapper: :vertical_collection_inline,
                 label_html: { class: "label-title"}
                 %>
     <%= f.input :pattern_url,
@@ -23,3 +31,4 @@
     <%= f.submit "Save Pattern", class:"btn-basic btn-light-blue-solid" %>
   <% end %>
 </div>
+

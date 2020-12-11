@@ -1,0 +1,103 @@
+// Radio Button Styling for Fabric Types Collection:
+
+.fabric-type-item {
+  display: inline-block;
+}
+
+.fabric-type-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.fabric-type-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.75rem;
+  font-family: Maven Pro;
+  border-radius: 50rem;
+  padding: 0.2rem 0.8rem;
+  background-color: $white;
+  color: $light-blue;
+  border: solid;
+  border-color: $dark-blue;
+  border-width: 2px;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.fabric-type-selector:checked + label {
+  background-color: $dark-blue;
+  font-weight: bold;
+  color: $white;
+}
+
+// Radio Button Styling For Garment Category Collection:
+
+.category-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  flex: 0 0 auto;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  //height: 100%;
+  font-size: 10px;
+  text-align: center;
+  padding: 24px;
+  //border-radius: 4px;
+  //border-style: solid;
+  //border-width: 1px;
+  //border-color: $black;
+  //background-color: $white;
+  color: rgba(0, 0, 0, 0.0 );
+  font-size: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.category-selector:checked + label {
+  border: 2px solid $light-blue;
+  border-radius: 4px;
+  //color: rgba(220, 0, 0, 1.0 ) !important;
+}
+
+#pattern_garment_category_pants + label {
+  background-image: url(icons/020-jeans.png);
+}
+
+#pattern_garment_category_pullovercardigans + label {
+  background-image: url(icons/047-sweater.png);
+}
+
+#pattern_garment_category_tops + label {
+  background-image: url(icons/008-tshirt.png);
+}
+
+#pattern_garment_category_dresses + label {
+  background-image: url(icons/042-dress.png);
+}
+
+#pattern_garment_category_skirts + label {
+  background-image: url(icons/044-skirt.png);
+}
+
+#pattern_garment_category_underwear + label {
+  background-image: url(icons/032-underwear.png);
+}
+
+#pattern_garment_category_outerwear + label {
+  background-image: url(icons/011-jacket.png);
+}
