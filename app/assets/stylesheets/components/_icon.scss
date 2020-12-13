@@ -1,0 +1,145 @@
+// Radio Button Styling for Fabric Types Collection:
+
+.fabric-type-wrapper {
+  display: flex;
+  justify-content: flex-start
+}
+
+.fabric-type-item {
+  display: inline-block;
+  height: 40px;
+}
+
+.fabric-type-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.fabric-type-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+  font-family: Maven Pro;
+  border-radius: 50rem;
+  padding: 0.2rem 0.8rem;
+  background-color: $white;
+  color: $light-blue;
+  border: solid;
+  border-color: $light-blue;
+  border-width: 2px;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+
+  &:hover {
+    background-color: $light-blue;
+    border-color: $light-blue;
+    font-weight: bold;
+    color: $white;
+  }
+}
+
+@media(min-width: 768px) { // Everything larger than Phone
+
+}
+
+@media(max-width: 767px) { // Portrait + Landscape Phone
+}
+
+
+.fabric-type-selector:checked + label {
+  background-color: $dark-blue;
+  border-color: $dark-blue;
+  font-weight: bold;
+  color: $white;
+}
+
+// Radio Button Styling For Garment Category Collection:
+
+@media(min-width: 768px) { // Everything larger than Phone
+  .category-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 8px;
+  }
+
+  .category-selector + label {
+    height: 100%;
+    width: 100%;
+    background-size: 56%;
+  }
+}
+
+@media(max-width: 767px) { // Portrait + Landscape Phone
+  .category-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 8px;
+  }
+
+  .category-selector + label {
+    height: 100%;
+    width: 100%;
+    background-size: 68%;
+  }
+
+}
+
+
+.category-item {
+  height: 88px;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  cursor: pointer;
+  box-sizing: border-box;
+  //width: 100%;
+  //height: 100%;
+  font-size: 10px;
+  text-align: center;
+  padding: 16px;
+  border: 2px solid transparent;
+  color: rgba(0, 0, 0, 0.0 );
+  font-size: 0;
+
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.category-selector:checked + label {
+  border: 2px solid $light-blue;
+  border-radius: 8px;
+}
+
+#pattern_garment_category_pants + label {
+  background-image: url(icons/020-jeans.png);
+}
+
+#pattern_garment_category_pullovercardigans + label {
+  background-image: url(icons/047-sweater.png);
+}
+
+#pattern_garment_category_tops + label {
+  background-image: url(icons/008-tshirt.png);
+}
+
+#pattern_garment_category_dresses + label {
+  background-image: url(icons/042-dress.png);
+}
+
+#pattern_garment_category_skirts + label {
+  background-image: url(icons/044-skirt.png);
+}
+
+#pattern_garment_category_underwear + label {
+  background-image: url(icons/032-underwear.png);
+}
+
+#pattern_garment_category_outerwear + label {
+  background-image: url(icons/011-jacket.png);
+}

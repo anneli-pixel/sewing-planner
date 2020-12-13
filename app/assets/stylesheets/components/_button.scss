@@ -1,0 +1,60 @@
+.btn-basic {
+  border-radius: 50px;
+  padding: 8px 24px;
+  font-family: Maven Pro;
+  //font-weight: bold;
+  margin: 4px;
+  text-align: center;
+  box-sizing: border-box;
+  flex: 0 50%;
+  height: 100%;
+  line-height: 1;
+}
+
+.btn-light-blue-solid {
+  color: $white;
+  background-color: $light-blue;
+  border: 2px solid $light-blue;
+
+  &:hover {
+    background-color: $dark-blue;
+    border-color: $dark-blue;
+    //color: $dark-blue;
+    font-weight: bold;
+  }
+}
+
+.btn-light-blue-ghost {
+  color: $light-blue;
+  background-color: $white;
+  border-style: solid;
+  border-width: 2px;
+  border-color: $light-blue;
+
+  &:hover {
+    background-color: $dark-blue;
+    color: $white;
+    border-color: $dark-blue;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+@media(min-width: 768px) { // Everything larger than Phone
+  .flex-box-two-btns {
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+    height: 40px;
+  }
+}
+
+@media(max-width: 767px) { // Portrait + Landscape Phone
+  .flex-box-two-btns {
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+    height: 40px;
+    align-items: flex-end;
+  }
+}
