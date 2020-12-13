@@ -33,33 +33,38 @@
 
 // Radio Button Styling For Garment Category Collection:
 
-@media(min-width: 577px) {
+@media(min-width: 768px) { // Everything larger than Phone
   .category-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 8px;
+  }
 
-  //display: flex;
-  //justify-content: space-between;
-  //flex-wrap: wrap;
+  .category-selector + label {
+    height: 100%;
+    width: 100%;
+    background-size: 56%;
   }
 }
 
-@media(max-width: 576px) {
+@media(max-width: 767px) { // Portrait + Landscape Phone
   .category-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 8px;
-
-  //display: flex;
-  //justify-content: space-between;
-  //flex-wrap: wrap;
   }
+
+  .category-selector + label {
+    height: 100%;
+    width: 100%;
+    background-size: 68%;
+  }
+
 }
 
+
 .category-item {
-  //flex: 0 0 auto;
-  height: 82.5px;
+  height: 88px;
 }
 
 .category-selector {
@@ -70,15 +75,15 @@
 .category-selector + label {
   cursor: pointer;
   box-sizing: border-box;
-  width: 100%;
-  height: 100%;
+  //width: 100%;
+  //height: 100%;
   font-size: 10px;
   text-align: center;
   padding: 16px;
   border: 2px solid transparent;
   color: rgba(0, 0, 0, 0.0 );
   font-size: 0;
-  background-size: 68%;
+
   background-repeat: no-repeat;
   background-position: center;
 }
