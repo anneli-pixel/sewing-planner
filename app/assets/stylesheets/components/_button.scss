@@ -14,7 +14,7 @@
 .btn-light-blue-solid {
   color: $white;
   background-color: $light-blue;
-  border: 3px solid $light-blue;
+  border: 2px solid $light-blue;
 
   &:hover {
     background-color: $dark-blue;
@@ -28,7 +28,7 @@
   color: $light-blue;
   background-color: $white;
   border-style: solid;
-  border-width: 3px;
+  border-width: 2px;
   border-color: $light-blue;
 
   &:hover {

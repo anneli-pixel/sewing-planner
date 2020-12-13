@@ -14,7 +14,9 @@
                 #wrapper: :vertical_collection_inline,
                 label_html: { class: "label-title"},
                 item_wrapper_class: "fabric-type-item",
-                input_html: { class: "fabric-type-selector" }
+                input_html: { class: "fabric-type-selector" },
+                collection_wrapper_tag: "div",
+                collection_wrapper_class: "fabric-type-wrapper"
                 %>
     <%= f.input :garment_category,
                 collection: Pattern::GARMENT_CATEGORIES,

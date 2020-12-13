@@ -1,7 +1,13 @@
 // Radio Button Styling for Fabric Types Collection:
 
+.fabric-type-wrapper {
+  display: flex;
+  justify-content: flex-start
+}
+
 .fabric-type-item {
   display: inline-block;
+  height: 40px;
 }
 
 .fabric-type-selector {
@@ -12,21 +18,38 @@
 .fabric-type-selector + label {
   cursor: pointer;
   display: inline-block;
-  font-size: 0.75rem;
+  width: 120px;
+  text-align: center;
   font-family: Maven Pro;
   border-radius: 50rem;
   padding: 0.2rem 0.8rem;
   background-color: $white;
   color: $light-blue;
   border: solid;
-  border-color: $dark-blue;
+  border-color: $light-blue;
   border-width: 2px;
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
+
+  &:hover {
+    background-color: $light-blue;
+    border-color: $light-blue;
+    font-weight: bold;
+    color: $white;
+  }
 }
+
+@media(min-width: 768px) { // Everything larger than Phone
+
+}
+
+@media(max-width: 767px) { // Portrait + Landscape Phone
+}
+
 
 .fabric-type-selector:checked + label {
   background-color: $dark-blue;
+  border-color: $dark-blue;
   font-weight: bold;
   color: $white;
 }
