@@ -1,15 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light"> <!--  -->
-  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button> -->
-  <div class="container" id="navbarNavAltMarkup"> <!-- "collapse navbar-collapse" -->
-    <div class="navbar-nav">
-      <%= link_to "Home", "#", class: "nav-item nav-link disabled" %>
-      <%= link_to "Projects", projects_path, class: "nav-item nav-link" %>
-      <%= link_to "Patterns", patterns_path, class: "nav-item nav-link" %>
-      <%= link_to "Shopping List", "#", class: "nav-item nav-link disabled" %>
-      <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
-    </div>
-  </div>
-</nav>
+<div class="container">
+  <nav class="new-navbar">
+    <%= link_to "#", class: "new-nav-item disabled", id: "home" do %>
+      <%= image_tag('icons/house.png', class: "nav-item-img") %>
+    <% end %>
+    <%= link_to projects_path, class: "new-nav-item", id: "projects" do %>
+      <%= image_tag('icons/010-sewing-machine.png', class: "nav-item-img") %>
+    <% end %>
+    <%= link_to patterns_path, class: "new-nav-item", id: "patterns" do %>
+      <%= image_tag('icons/008-pattern.png', class: "nav-item-img") %>
+    <% end %>
+    <%= link_to "#", class: "new-nav-item disabled", id: "shopping-list" do %>
+      <%= image_tag('icons/list.png', class: "nav-item-img") %>
+    <% end %>
+    <%= link_to destroy_user_session_path, method: :delete, class: "new-nav-item", id: "log-out" do %>
+      <%= image_tag('icons/exit.png', class: "nav-item-img") %>
+    <% end %>
+  </nav>
+</div>
