@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   validates :title, presence: true
   validates :status, inclusion: { in: ["Draft", "In progress", "Completed"] }
-  validates :garment_category, inclusion: { in: ["Pants", "Tops", "Dresses", "Skirts", "Underwear", "Outerwear"] }
+  #validates :garment_category, inclusion: { in: ["Pants", "Tops", "Dresses", "Skirts", "Underwear", "Outerwear"] }
   belongs_to :user
   belongs_to :pattern
   has_many :shopping_items
