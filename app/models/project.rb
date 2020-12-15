@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   STATUSES = [ "Draft", "In progress", "Completed"]
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: { scope: :user_id }
   validates :size, presence: true
   validates :status, inclusion: { in: STATUSES, message: "must be #{Project::STATUSES[0..-2].join(", ")} or #{Project::STATUSES.last}." }
   #validates :garment_category, inclusion: { in: ["Pants", "Tops", "Dresses", "Skirts", "Underwear", "Outerwear"] }
