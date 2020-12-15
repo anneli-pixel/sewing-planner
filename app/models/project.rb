@@ -1,13 +1,13 @@
 class Project < ApplicationRecord
-  validates :title, presence: true
-  validates :status, inclusion: { in: ["Draft", "In progress", "Completed"] }
-  #validates :garment_category, inclusion: { in: ["Pants", "Tops", "Dresses", "Skirts", "Underwear", "Outerwear"] }
+  STATUSES = [ "Draft", "In progress", "Completed"]
+  validates :title, presence: true, uniqueness: { scope: :user_id }
+  validates :size, presence: true
+  validates :status, inclusion: { in: STATUSES, message: "must be #{Project::STATUSES[0..-2].join(", ")} or #{Project::STATUSES.last}." }
   belongs_to :user
   belongs_to :pattern
   has_many :shopping_items
   has_many :fabrics
-  has_many :project_fabrics
-  has_many :fabrics, through: :project_fabrics
+
 
   def start_date
     # self.start_date = self.created_at
