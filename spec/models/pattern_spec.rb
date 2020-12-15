@@ -17,7 +17,7 @@ RSpec.describe Pattern, type: :model do
   end
 
   describe "Associations" do
-    it { should belong_to(:user).without_validating_presence }
+    it { should belong_to(:user) }
     it { should have_many(:projects) }
   end
 
