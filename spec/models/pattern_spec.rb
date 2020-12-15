@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Pattern, type: :model do
-  #pending "add some examples to (or delete) #{__FILE__}"
   subject do
     user = User.create(id: 1, email: "anne_lissner@gmx.net", password: "123456")
     Pattern.new(title: "Barbara Sweater",
@@ -14,19 +13,11 @@ RSpec.describe Pattern, type: :model do
   end
 
   it "is valid with valid attributes" do
-    # user = User.new(id: 1)
-    # pattern = Pattern.new(title: "Barbara Sweater",
-    #                       designer: "123 Patterns",
-    #                       fabric_type: "Knit",
-    #                       pattern_url: "www.123patterns.com/barbara-sweater",
-    #                       garment_category: "Pullover/Cardigans",
-    #                       notes: "Sleeves rather tight, add 2 cm width.",
-    #                       user_id: user.id)
     expect(subject).to be_valid
   end
 
   describe "Associations" do
-    it { should belong_to(:user).without_validating_presence }
+    it { should belong_to(:user) }
     it { should have_many(:projects) }
   end
 
@@ -49,34 +40,4 @@ RSpec.describe Pattern, type: :model do
 
     it { should validate_uniqueness_of(:title).scoped_to(:user_id) }
   end
-
-  # context "valid title" do
-  #   it "is invalid without a title" do
-  #     subject.title = nil
-  #     expect(subject).to_not be_valid
-  #   end
-  #   it "has to be unique" do
-  #     pattern_2 = subject.clone
-  #     puts subject.title
-  #     puts pattern_2.title
-  #     expect(pattern_2).to_not be_valid
-  #   end
-  # end
-
-  # it "is invalid without a designer" do
-  #   pattern = Pattern.new(designer: nil)
-  #   expect(pattern).to_not be_valid
-  # end
-
-  # context "valid fabric type" do
-  #   it "is invalid without a fabric type" do
-  #     pattern = Pattern.new(fabric_type: nil)
-  #     expect(pattern).to_not be_valid
-  #   end
-
-  #   it "is valid when it is included in FABRIC_TYPES" do
-  #     pattern = Pattern.new(fabric_type: "Knit")
-  #     expect(Pattern::FABRIC_TYPES).to include(pattern.fabric_type)
-  #   end
-  # end
 end
