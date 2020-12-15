@@ -5,6 +5,7 @@ class Project < ApplicationRecord
   belongs_to :user
   belongs_to :pattern
   has_many :shopping_items
+  has_many :fabrics
   has_many :project_fabrics
   has_many :fabrics, through: :project_fabrics
 
