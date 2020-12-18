@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Fabric, type: :model do
   subject do
-    user = User.create(id: 1, email: "anne_lissner@gmx.net", password: "123456")
+    user = User.create(email: "test@example.com", password: "Fd392&sKx?")
     pattern = Pattern.create(title: "Inari Tee",
                           designer: "Named Patterns",
                           fabric_type: "Knit",
                           garment_category: "Tops",
                           user_id: user.id)
-    project = Project.create(id: 1,
-                             title: "Crop Top",
+    project = Project.create(title: "Crop Top",
+                             size: "M",
                              status: "Draft",
                              pattern_id: pattern.id,
                              user_id: user.id)

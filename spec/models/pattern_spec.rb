@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Pattern, type: :model do
   subject do
-    user = User.create(id: 1, email: "anne_lissner@gmx.net", password: "123456")
+    user = User.create(email: "test@example.com", password: "Fd392&sKx?")
     Pattern.new(title: "Barbara Sweater",
                 designer: "123 Patterns",
                 fabric_type: "Knit",
