@@ -2,13 +2,14 @@
   border-radius: 50px;
   padding: 8px 24px;
   font-family: Maven Pro;
+  font-size: 0.8rem;
   //font-weight: bold;
   margin: 4px;
   text-align: center;
   box-sizing: border-box;
   flex: 0 50%;
   height: 100%;
-  line-height: 1;
+  line-height: inherit;
 }
 
 .btn-light-blue-solid {

@@ -11,6 +11,7 @@
     <%= project_form.simple_fields_for :fabrics do |fabric_form| %>
       <%= fabric_form.input :title,
                             label: "Fabric ##{fabric_form.index + 1}",
+                            placeholder: "Add up to 3 different fabrics.",
                             label_html: { class: "label-title"},
                             input_html: { class: "label-input-text"} %>
     <% end %>
