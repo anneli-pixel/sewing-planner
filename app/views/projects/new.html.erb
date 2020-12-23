@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>New Project</h1>
+  <%= simple_form_for(setup_project(@project)) do |project_form| %>
+    <%= project_form.input :title,
+                           label_html: { class: "label-title"},
+                           input_html: { class: "label-input-text"}%>
+    <%= project_form.association :pattern, collection: current_user.patterns %>
+    <%= project_form.simple_fields_for :fabrics do |fabric_form| %>
+      <%= fabric_form.input :title,
+                            label: "Fabric #{fabric_form.index + 1}" %>
+    <% end %>
+    <%= project_form.input :description %>
+    <%= project_form.input :size %>
+    <%= project_form.input :status,
+                           collection: Project::STATUSES %>
+    <%= project_form.submit "Save Project" %>
+  <% end %>
+</div>
+

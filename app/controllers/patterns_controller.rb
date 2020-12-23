@@ -39,6 +39,8 @@ class PatternsController < ApplicationController
     authorize @pattern
   end
 
+  private
+
   def pattern_params
     params.require(:pattern).permit(:title, :designer, :fabric_type, :pattern_url, :garment_category, :notes)
   end
