@@ -4,16 +4,30 @@
     <%= project_form.input :title,
                            label_html: { class: "label-title"},
                            input_html: { class: "label-input-text"}%>
-    <%= project_form.association :pattern, collection: current_user.patterns %>
+    <%= project_form.association :pattern,
+                                 collection: current_user.patterns,
+                                 label_html: { class: "label-title"},
+                                 input_html: { class: "label-input-text"} %>
     <%= project_form.simple_fields_for :fabrics do |fabric_form| %>
       <%= fabric_form.input :title,
-                            label: "Fabric #{fabric_form.index + 1}" %>
+                            label: "Fabric #{fabric_form.index + 1}",
+                            label_html: { class: "label-title"},
+                            input_html: { class: "label-input-text"} %>
     <% end %>
-    <%= project_form.input :description %>
-    <%= project_form.input :size %>
+    <%= project_form.input :description,
+                           label_html: { class: "label-title"},
+                           input_html: { class: "label-input-text"} %>
+    <%= project_form.input :size,
+                           label_html: { class: "label-title"},
+                           input_html: { class: "label-input-text"}%>
     <%= project_form.input :status,
-                           collection: Project::STATUSES %>
-    <%= project_form.submit "Save Project" %>
+                           collection: Project::STATUSES,
+                           label_html: { class: "label-title"},
+                           input_html: { class: "label-input-text"} %>
+    <div class="flex-box-two-btns">
+      <%= link_to "Cancel", :back, class:"btn-basic btn-light-blue-ghost" %>
+      <%= project_form.submit "Save Project", class:"btn-basic btn-light-blue-solid" %>
+    </div>
   <% end %>
 </div>
 
