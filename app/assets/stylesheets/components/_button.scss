@@ -43,6 +43,10 @@
   }
 }
 
+.yellow-background {
+  background-color: $light-yellow;
+}
+
 @media(min-width: 768px) { // Everything larger than Phone
   .flex-box-two-btns {
     margin-top: 8px;
@@ -61,3 +65,34 @@
     align-items: flex-end;
   }
 }
+
+
+
+@media(min-width: 768px) { // Everything larger than Phone
+  .flex-box-three-btns {
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+    height: 40px;
+
+    a {
+      padding: 8px 2px;
+    }
+  }
+}
+
+@media(max-width: 767px) { // Portrait + Landscape Phone
+  .flex-box-three-btns {
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+    height: 40px;
+    align-items: flex-end;
+
+    a {
+      padding: 8px 2px;
+    }
+  }
+}
+
+

@@ -1,3 +1,5 @@
+// Pattern Index:
+
 @media(max-width: 991px) { // Tablet
   .pattern-cards {
     display: grid;
@@ -108,5 +110,28 @@
   }
 }
 
-.div {
+// Pattern Show Page:
+
+.show-pattern-card {
+    pointer-events: none;
+    padding: 0rem;
+    margin-bottom: 0.8rem;
+
 }
+
+.wrapper-pattern-show-page {
+  padding: 1.2rem;
+  background-color: $light-yellow;
+  border-radius: 8px;
+
+  a {
+    text-decoration: none;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+
+}
+
