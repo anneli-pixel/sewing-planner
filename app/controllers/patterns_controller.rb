@@ -1,7 +1,7 @@
 class PatternsController < ApplicationController
 
   def index
-    @patterns = policy_scope(Pattern)
+    @patterns = policy_scope(Pattern).order(garment_category: :asc, title: :asc)
   end
 
   def new

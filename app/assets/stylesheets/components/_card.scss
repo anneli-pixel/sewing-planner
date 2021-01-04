@@ -1,5 +1,111 @@
-.card h3, div {
-  //text-align: center
+@media(max-width: 991px) { // Tablet
+  .pattern-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+  }
+}
+
+@media(max-width: 767px) { // Portrait + Landscape Phone
+  .pattern-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+  }
+}
+
+@media(min-width: 992px) { // Everything larger than Tablet
+  .pattern-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+  }
+}
+
+.pattern-cards {
+  padding-top: 1rem;
+
+  a {
+    text-decoration: none;
+    color: $gray;
+  }
+}
+
+.pattern-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $light-yellow;
+  border-radius: 8px;
+  padding: 1.2rem;
+  height: 100%;
+
+  &:hover {
+    background-color: $dark-yellow;
+  }
+
+  h3 {
+    font-family: Maven Pro;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.8rem
+  }
+
+  p {
+    font-family: Open Sans;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem
+  }
+
+  .fabric-type-label {
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 0.8rem;
+    border-radius: 50rem;
+    padding: 0.2rem 0.8rem;
+    width: 114px;
+    background-color: $dark-blue;
+    color: $white;
+  }
+
+  .garment-category-icon {
+    background-position: center;
+    background-size: contain;
+    //background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: right center;
+    color: rgba(0, 0, 0, 0.0 );
+    //margin-right: 1rem;
+    padding: 1.5rem;
+  }
+
+  #pants {
+    background-image: url(icons/020-jeans.png);
+  }
+
+  #pullovercardigans {
+    background-image: url(icons/047-sweater.png);
+  }
+
+  #tops {
+    background-image: url(icons/008-tshirt.png);
+  }
+
+  #dresses {
+    background-image: url(icons/042-dress.png);
+  }
+
+  #skirts {
+    background-image: url(icons/044-skirt.png);
+  }
+
+  #underwear {
+    background-image: url(icons/032-underwear.png);
+  }
+
+  #outerwear {
+    background-image: url(icons/011-jacket.png);
+  }
 }
 
 .div {
