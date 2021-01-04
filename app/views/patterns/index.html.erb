@@ -1,15 +1,19 @@
 <div class="container">
   <h1>All Patterns</h1>
   <p><%= link_to "Add pattern", new_pattern_path, class: "btn btn-primary" %></p>
-  <% @patterns.each do |pattern| %>
-      <div class="card">
-        <%= link_to pattern_path(pattern) do %>
-          <h3><%= pattern.title %></h3>
-        <% end %>
-        <div>
-          Fabric Type: <%= pattern.fabric_type %> |
-          Garment Category: <%= pattern.garment_category %>
+
+  <div class="pattern-cards">
+    <% @patterns.each do |pattern| %>
+        <div class="pattern_card">
+          <%= link_to pattern_path(pattern) do %>
+            <h3><%= pattern.title %></h3>
+          <% end %>
+          <div>
+            Fabric Type: <%= pattern.fabric_type %> |
+            Garment Category: <%= pattern.garment_category %>
+          </div>
         </div>
-      </div>
-  <% end %>
+    <% end %>
+  </div>
+
 </div>

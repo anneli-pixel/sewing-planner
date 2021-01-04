@@ -1,3 +1,28 @@
+@media(max-width: 991px) { // Tablet
+  .pattern-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+  }
+}
+
+@media(max-width: 767px) { // Portrait + Landscape Phone
+  .pattern-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+  }
+}
+
+@media(min-width: 992px) { // Everything larger than Tablet
+  .pattern-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+  }
+}
+
+
 .card h3, div {
   //text-align: center
 }
