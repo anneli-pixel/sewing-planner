@@ -1,20 +1,31 @@
 <div class="container">
-  <h1>My projects</h1>
+  <h1>Your Projects</h1>
+  <p> <%= link_to "Add new project", new_project_path, class: "btn-basic btn-light-blue-solid" %> </p>
 
-  <div>
-    <p> <%= link_to "Add new project", new_project_path %> </p>
-  </div>
-
-  <div>
+  <div class="pattern-cards">
     <% @projects.each do |project| %>
-      <div>
-      <h2>Title: <%= project.title %></h2>
-      <p>Pattern: <%= project.pattern.title %></p>
-      <p>Garment Category: <%= project.garment_category %> </p>
-      <!-- <p> <%#= project.fabrics.fabric_type %> </p> -->
-      <p>Status: <%= project.status %></p>
-      <p><%= link_to "Go to Project", project_path(project) %></p>
-      </div>
+      <%= link_to project_path(project) do %>
+        <div class="pattern-card">
+          <div>
+            <h3><%= project.title %></h3>
+            <p><%= project.pattern.title %></p>
+            <p><%= project.pattern.designer %></p>
+            <div class="fabric-type-label"><%= project.pattern.fabric_type %></div>
+          </div>
+
+          <div>
+            <div class="garment-category-icon" id="<%= project.pattern.garment_category.downcase.gsub("/","") %>">
+              <%= project.pattern.garment_category %>
+            </div>
+              <div class="project-status-icon" id="<%= project.status.downcase.delete(" ") %>">
+                <%= project.status %>
+              </div>
+          </div>
+          <!-- <p>Garment Category: <%= project.garment_category %> </p>
+          <p> <%#= project.fabrics.fabric_type %> </p>
+          <p>Status: <%= project.status %></p> -->
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

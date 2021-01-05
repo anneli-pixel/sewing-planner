@@ -143,9 +143,27 @@
   background-image: url(icons/011-jacket.png);
 }
 
+.project-status-icon {
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: rgba(0, 0, 0, 0.0 );
+  margin-top: 0.8rem;
+  height: 2rem;
+  margin-right: 0.2rem;
+}
 
+#draft {
+  background-image: url(icons/circle-red.png);
+}
 
+#inprogress {
+  background-image: url(icons/circle-yellow.png);
+}
 
+#completed {
+  background-image: url(icons/circle-green.png);
+}
 
 
 
