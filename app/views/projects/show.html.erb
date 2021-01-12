@@ -4,6 +4,10 @@
     Image
   </div> -->
 
+  <div class="project-status-icon" id="<%= @project.status.downcase.delete(" ") %>">
+    <%= @project.status %>
+  </div>
+
 
   <div> <!-- A Flexbox for Pattern + Size + Fabrics -->
     <div class="wrapper-pattern-show-page">
@@ -25,29 +29,35 @@
     <div> <!-- A Flexbox for Size + Fabrics -->
       <div>
         <h3>Size</h3>
-        <div class="light-yellow-text-field">
-          <%= @project.size %>
-        </div>
+          <% unless @project.size.nil? %>
+            <div class="light-yellow-text-field">
+              <%= @project.size %>
+            </div>
+          <% end %>
       </div>
 
       <div>
         <h3>Fabrics</h3>
-          <div>
-            <% @project.fabrics.each do |fabric| %>
-              <div class="light-yellow-text-field">
-                <%= fabric.title %>
-              </div>
-            <% end %>
-          </div>
+          <% unless @project.fabrics.empty? %>
+            <div>
+              <% @project.fabrics.each do |fabric| %>
+                <div class="light-yellow-text-field">
+                  <%= fabric.title %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
       </div>
     </div>
   </div>
 
   <div> <!-- A Flexbox for the Description -->
     <h3>Description</h3>
-    <div class="light-yellow-text-field">
-      <%= @project.description %>
-    </div>
+    <% unless @project.description.empty? %>
+      <div class="light-yellow-text-field">
+        <%= @project.description %>
+      </div>
+    <% end %>
   </div>
 
   <hr>
