@@ -1,13 +1,13 @@
 <div class="container">
   <h1> <%= @project.title %> </h1>
-<!--   <div>
-    Image
-  </div> -->
 
-  <div class="project-status-icon" id="<%= @project.status.downcase.delete(" ") %>">
-    <%= @project.status %>
+  <div class="relative-parent-to-status-icon"> <!-- A div for image and status icon -->
+    <div>
+      <%= image_tag "project_placeholder.jpg", class: "project_photo" %>
+    </div>
+
+    <%= image_tag "#{@project.status_icon_image_path}", class: "project-status-icon-project-show-page" %>
   </div>
-
 
   <div> <!-- A Flexbox for Pattern + Size + Fabrics -->
     <div class="wrapper-pattern-show-page">
