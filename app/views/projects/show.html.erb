@@ -9,7 +9,7 @@
     <%= image_tag "#{@project.status_icon_image_path}", class: "project-status-icon-project-show-page" %>
   </div>
 
-  <div> <!-- A Flexbox for Pattern + Size + Fabrics -->
+  <div id="flex-pattern-size-fabric"> <!-- A Flexbox for Pattern + Size + Fabrics -->
     <div class="wrapper-pattern-show-page">
         <div class="pattern-card show-pattern-card">
           <div>
@@ -26,7 +26,7 @@
         <p> <%= @project.pattern.notes %> </p>
     </div>
 
-    <div> <!-- A Flexbox for Size + Fabrics -->
+    <div id="flex-size-fabrics"> <!-- A Flexbox for Size + Fabrics -->
       <div>
         <h3>Size</h3>
           <% unless @project.size.nil? %>
@@ -60,7 +60,7 @@
     <% end %>
   </div>
 
-  <hr>
+  <hr class="blue-line-3px">
 
   <div class="flex-box-two-btns"> <!-- A Flexbox for the Buttons -->
     <%= link_to "Back", projects_path, class:"btn-basic btn-light-blue-ghost" %>
