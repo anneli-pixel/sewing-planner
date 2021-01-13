@@ -19,4 +19,14 @@ class Project < ApplicationRecord
   def end_date
     # end_date = date when status is changed to Completed
   end
+
+  def status_icon_image_path
+    if self.status = "Draft"
+      "icons/circle-red.png"
+    elsif self.status = "In progress"
+      "icons/circle-yellow.png"
+    elsif self.status = "Completed"
+      "icons/circle-green.png"
+    end
+  end
 end
