@@ -1,0 +1,33 @@
+#flex-pattern-size-fabric {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+
+  .wrapper-pattern-show-page {
+    flex-grow: 1;
+    margin-right: 1.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  #flex-size-fabrics {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+}
+
+@media(max-width: 767px) {
+  #flex-pattern-size-fabric {
+    flex-direction: column;
+
+    .wrapper-pattern-show-page {
+      margin-right: 0rem;
+    }
+  }
+
+}
+
+.blue-line-3px {
+  border: 2px solid $light-blue;
+  border-radius: 8px;
+}

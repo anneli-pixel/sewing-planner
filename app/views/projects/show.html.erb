@@ -1,6 +1,70 @@
-This is the project page
-<h1> <%= @project.title %> </h1>
-<p> <%= @project.pattern.designer %> </p>
-<p> <%= @project.garment_category %> </p>
-<p> <%= @project.pattern.title %> </p>
-<p> <%= @project.start_date %> - <%= @project.end_date %> </p>
+<div class="container">
+  <h1> <%= @project.title %> </h1>
+
+  <div class="relative-parent-to-status-icon"> <!-- A div for image and status icon -->
+    <div>
+      <%= image_tag "project_placeholder.jpg", class: "project_photo" %>
+    </div>
+
+    <%= image_tag "#{@project.status_icon_image_path}", class: "project-status-icon-project-show-page" %>
+  </div>
+
+  <div id="flex-pattern-size-fabric"> <!-- A Flexbox for Pattern + Size + Fabrics -->
+    <div class="wrapper-pattern-show-page">
+        <div class="pattern-card show-pattern-card">
+          <div>
+            <h3><%= @project.pattern.title %></h3>
+            <p><%= @project.pattern.designer %></p>
+            <div class="fabric-type-label"><%= @project.pattern.fabric_type %></div>
+          </div>
+          <div class="garment-category-icon" id="<%= @project.pattern.garment_category.downcase.gsub("/","") %>" >
+            <%= @project.pattern.garment_category %>
+          </div>
+        </div>
+
+        <p> <%= @project.pattern.pattern_url %></p>
+        <p> <%= @project.pattern.notes %> </p>
+    </div>
+
+    <div id="flex-size-fabrics"> <!-- A Flexbox for Size + Fabrics -->
+      <div>
+        <h3>Size</h3>
+          <% unless @project.size.nil? %>
+            <div class="light-yellow-text-field">
+              <%= @project.size %>
+            </div>
+          <% end %>
+      </div>
+
+      <div>
+        <h3>Fabrics</h3>
+          <% unless @project.fabrics.empty? %>
+            <div>
+              <% @project.fabrics.each do |fabric| %>
+                <div class="light-yellow-text-field">
+                  <%= fabric.title %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div> <!-- A Flexbox for the Description -->
+    <h3>Description</h3>
+    <% unless @project.description.empty? %>
+      <div class="light-yellow-text-field">
+        <%= @project.description %>
+      </div>
+    <% end %>
+  </div>
+
+  <hr class="blue-line-3px">
+
+  <div class="flex-box-two-btns"> <!-- A Flexbox for the Buttons -->
+    <%= link_to "Back", projects_path, class:"btn-basic btn-light-blue-ghost" %>
+    <%= link_to "Edit", "#", class:"btn-basic btn-light-blue-solid" %>
+  </div>
+
+</div>
