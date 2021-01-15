@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @project.pattern_id = params[:pattern_id]
     @fabric = Fabric.new(project_id: @project.id)
     authorize @project
     authorize @fabric
