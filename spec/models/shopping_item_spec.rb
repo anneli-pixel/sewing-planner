@@ -8,4 +8,7 @@ RSpec.describe ShoppingItem, type: :model do
     it { should belong_to(:project).optional}
   end
 
+  describe "Validations" do
+    it { should validate_presence_of(:name) }
+  end
 end
