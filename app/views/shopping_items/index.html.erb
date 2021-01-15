@@ -1,2 +1,23 @@
-<h1>ShoppingItems#index</h1>
-<p>Find me in app/views/shopping_items/index.html.erb</p>
+<div class="container">
+  <h1>Shopping List</h1>
+  <p>
+    <%= link_to "Add Item", new_shopping_item_path, class: "btn-basic btn-light-blue-solid" %>
+  </p>
+
+  <div class="shopping-list-items">
+    <% @shopping_items.each do |item| %>
+      <div class="shopping-item-card light-yellow-text-field" >
+        <%= image_tag "#{item.bought_status_image_path}", class: "item-bought #{item.bought}" %>
+        <div class="item-name">
+          <%= item.name %>
+        </div>
+
+        <% unless item.project.nil? %>
+          <div class="item-project-title">
+            <%= item.project.title %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
