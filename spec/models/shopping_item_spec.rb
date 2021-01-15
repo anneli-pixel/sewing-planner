@@ -9,8 +9,8 @@ RSpec.describe ShoppingItem, type: :model do
                             user_id: user.id
                             )
       shopping_item = ShoppingItem.new(name: "10 Buttons",
-                                       user_id: user.id,
-                                       project_id: project.id)
+                                       user: user,
+                                       project: project)
     end
 
   describe "Associations" do
@@ -22,15 +22,4 @@ RSpec.describe ShoppingItem, type: :model do
     it { should validate_presence_of(:name) }
   end
 
-  describe "Valid attributes" do
-
-    it "is valid without a project" do
-      subject.project_id = nil
-      expect(subject).to be_valid
-    end
-
-    it "is valid with a project" do
-      expect(subject).to be_valid
-    end
-  end
 end
