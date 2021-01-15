@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :projects
 
   resources :patterns, only: [:new, :create, :show, :index, :edit, :update]
+
+  resources :shopping_items, only: [:new, :index]
 end
