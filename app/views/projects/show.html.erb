@@ -65,6 +65,16 @@
   <div> <!-- A flexbox for the Shopping List -->
     <h3>Shopping List</h3>
     <%= link_to "Add Item", new_shopping_item_path(project_id: @project.id), class: "btn-basic btn-light-blue-solid" %>
+    <div class="shopping-list-items">
+      <% @project.shopping_items.each do |item| %>
+        <div class="shopping-item-card light-yellow-text-field" >
+          <%= image_tag "#{item.bought_status_image_path}", class: "item-bought #{item.bought}" %>
+          <div class="item-name">
+            <%= item.name %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <hr class="blue-line-3px">
