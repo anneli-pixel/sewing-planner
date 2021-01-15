@@ -9,6 +9,7 @@ RSpec.describe ShoppingItem, type: :model do
                             user_id: user.id
                             )
       shopping_item = ShoppingItem.new(name: "10 Buttons",
+                                       bought: false,
                                        user: user,
                                        project: project)
     end
@@ -20,6 +21,11 @@ RSpec.describe ShoppingItem, type: :model do
 
   describe "Validations" do
     it { should validate_presence_of(:name) }
+  end
+
+  it "can be bought" do
+    subject.buy
+    expect(subject.bought).to eq(true)
   end
 
 end
