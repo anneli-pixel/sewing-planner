@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   resources :patterns, only: [:new, :create, :show, :index, :edit, :update]
 
-  resources :shopping_items, only: [:new, :index]
+  resources :shopping_items, only: [:new, :create, :index]
 end
