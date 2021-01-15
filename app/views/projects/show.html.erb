@@ -62,6 +62,13 @@
 
   <hr class="blue-line-3px">
 
+  <div> <!-- A flexbox for the Shopping List -->
+    <h3>Shopping List</h3>
+    <%= link_to "Add Item", new_shopping_item_path(project_id: @project.id), class: "btn-basic btn-light-blue-solid" %>
+  </div>
+
+  <hr class="blue-line-3px">
+
   <div class="flex-box-two-btns"> <!-- A Flexbox for the Buttons -->
     <%= link_to "Back", projects_path, class:"btn-basic btn-light-blue-ghost" %>
     <%= link_to "Edit", "#", class:"btn-basic btn-light-blue-solid" %>

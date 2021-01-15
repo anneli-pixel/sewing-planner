@@ -1,6 +1,7 @@
 class ShoppingItemsController < ApplicationController
   def new
     @shopping_item = ShoppingItem.new
+    @shopping_item.project_id = params[:project_id]
     authorize @shopping_item
   end
 
@@ -16,7 +17,7 @@ class ShoppingItemsController < ApplicationController
     end
 
     if @shopping_item.save
-      redirect_to shopping_items_index_path, notice: "Shopping item successfully created."
+      redirect_to shopping_items_path, notice: "Shopping item successfully created."
     else
       render :new
     end
