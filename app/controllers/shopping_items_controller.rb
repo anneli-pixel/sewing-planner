@@ -8,7 +8,13 @@ class ShoppingItemsController < ApplicationController
     @shopping_item = ShoppingItem.new(shopping_item_params)
     authorize @shopping_item
     @shopping_item.user = current_user
-    shopping_item_params[:project_id].empty? ? @shopping_item.project_id = nil : @shopping_item.project_id = shopping_item_params[:project_id]
+
+    if shopping_item_params[:project_id].empty?
+      @shopping_item.project_id = nil
+    else
+      @shopping_item.project_id = shopping_item_params[:project_id]
+    end
+
     if @shopping_item.save
       redirect_to shopping_items_index_path, notice: "Shopping item successfully created."
     else
