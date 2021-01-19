@@ -24,7 +24,14 @@ class ShoppingItemsController < ApplicationController
   end
 
   def index
-    @shopping_items = policy_scope(ShoppingItem)
+    @shopping_items = policy_scope(ShoppingItem).order(bought: :asc, name: :asc)
+  end
+
+  def toggle_bought
+    @shopping_item = ShoppingItem.find(params[:id])
+    authorize @shopping_item
+    @shopping_item.toggle(:bought).save
+    redirect_to shopping_items_path notice: "Something happened."
   end
 
   def shopping_item_params

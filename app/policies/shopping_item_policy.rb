@@ -8,4 +8,8 @@ class ShoppingItemPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def toggle_bought?
+    record.user = user
+  end
 end
