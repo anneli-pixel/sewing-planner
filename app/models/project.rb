@@ -22,13 +22,10 @@ class Project < ApplicationRecord
 
   def status_icon_image_path
     if self.status == "Draft"
-      puts "XXXXX #{self.status}"
       "icons/circle-red.png"
     elsif self.status == "In progress"
-      puts "XXXXX #{self.status}"
       "icons/circle-yellow.png"
     elsif self.status == "Completed"
-      puts "XXXXX #{self.status}"
       "icons/circle-green.png"
     end
   end
