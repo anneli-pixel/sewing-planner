@@ -64,7 +64,7 @@
 
   <div> <!-- A flexbox for the Shopping List -->
     <h3>Shopping List</h3>
-    <%= link_to "Add Item", new_shopping_item_path(project_id: @project.id), class: "btn-basic btn-light-blue-solid" %>
+    <%= link_to "Add Item", new_shopping_item_path(project_id: @project.id), class: "btn-basic btn-light-blue-solid", id: "add-item-btn" %>
     <div class="shopping-list-items">
       <% @project.shopping_items.each do |item| %>
         <%= render 'shared/shopping_item', item: item %>

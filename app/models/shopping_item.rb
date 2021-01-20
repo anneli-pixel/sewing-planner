@@ -10,4 +10,8 @@ class ShoppingItem < ApplicationRecord
   def bought_status_image_path
     self.bought ? "icons/001-check.png" : "icons/002-circle-outline.png"
   end
+
+  def anchor
+    "#item-#{self.id}"
+  end
 end
