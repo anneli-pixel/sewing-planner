@@ -31,7 +31,7 @@ class ShoppingItemsController < ApplicationController
     @shopping_item = ShoppingItem.find(params[:id])
     authorize @shopping_item
     @shopping_item.toggle(:bought).save
-    redirect_to shopping_items_path notice: "Something happened."
+    redirect_to request.referer + "#item-#{@shopping_item.id}"
   end
 
   def shopping_item_params
