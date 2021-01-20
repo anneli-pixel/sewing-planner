@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
 
   def index
-    # @projects = Project.all
     @projects = policy_scope(Project)
   end
 
@@ -37,6 +36,5 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title, :description, :status, :size, :pattern_id, fabrics_attributes: [:title])
-    #params.require(:project).permit(:title, :description, :status, :size, :pattern_id)
   end
 end
