@@ -22,6 +22,7 @@ class ShoppingItemsController < ApplicationController
       redirect_to shopping_items_path + @shopping_item.anchor
     elsif @shopping_item.save
       redirect_to session[:referrer] + @shopping_item.anchor
+      session.delete(:referrer)
     else
       render :new
     end
