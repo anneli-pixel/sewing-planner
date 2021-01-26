@@ -1,0 +1,19 @@
+<div class="shopping-item-card light-yellow-text-field" id="<%= "item-#{item.id}" %>" >
+  <%= link_to image_tag("#{item.bought_status_image_path}",
+    class: "item-bought #{item.bought}"),
+    toggle_bought_shopping_item_path(item),
+    method: :patch,
+    class: "buy-item-link",
+    id: item.id,
+    remote: true
+  %>
+  <div class="item-name">
+    <%= item.name %>
+  </div>
+
+  <% unless item.project.nil? || params[:controller] == "projects" %>
+    <div class="item-project-title">
+      <%= item.project.title %>
+    </div>
+  <% end %>
+</div>

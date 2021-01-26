@@ -9,7 +9,7 @@
     <%= link_to patterns_path, class: "new-nav-item", id: "patterns" do %>
       <%= image_tag('icons/008-pattern.png', class: "nav-item-img") %>
     <% end %>
-    <%= link_to "#", class: "new-nav-item disabled", id: "shopping-list" do %>
+    <%= link_to shopping_items_path, class: "new-nav-item", id: "shopping_items" do %>
       <%= image_tag('icons/list.png', class: "nav-item-img") %>
     <% end %>
     <%= link_to destroy_user_session_path, method: :delete, class: "new-nav-item", id: "log-out" do %>

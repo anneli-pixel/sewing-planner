@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
 
   def index
-    # @projects = Project.all
     @projects = policy_scope(Project)
   end
 
@@ -12,6 +11,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @project.pattern_id = params[:pattern_id]
     @fabric = Fabric.new(project_id: @project.id)
     authorize @project
     authorize @fabric
@@ -36,6 +36,5 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title, :description, :status, :size, :pattern_id, fabrics_attributes: [:title])
-    #params.require(:project).permit(:title, :description, :status, :size, :pattern_id)
   end
 end

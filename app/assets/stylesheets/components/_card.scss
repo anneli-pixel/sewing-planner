@@ -131,3 +131,32 @@
 
 }
 
+// Shopping Item Index
+
+.shopping-item-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+}
+
+.buy-item-link {
+  height: 100%;
+}
+
+.item-bought {
+  height: 100%;
+  margin-right: 0.8rem;
+}
+
+.item-name {
+  flex-grow: 2;
+}
+
+.item-project-title {
+  font-size: 0.8rem;
+  font-family: Maven Pro;
+}
+
+

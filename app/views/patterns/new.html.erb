@@ -11,7 +11,6 @@
     <%= f.input :fabric_type,
                 collection: Pattern::FABRIC_TYPES,
                 as: :radio_buttons,
-                #wrapper: :vertical_collection_inline,
                 label_html: { class: "label-title"},
                 item_wrapper_class: "fabric-type-item",
                 input_html: { class: "fabric-type-selector" },
@@ -25,7 +24,6 @@
                 collection_wrapper_class: "category-wrapper",
                 item_wrapper_class: "category-item",
                 input_html: { class: "category-selector" },
-                #wrapper: :vertical_collection_inline,
                 label_html: { class: "label-title"}
                 %>
     <%= f.input :pattern_url,

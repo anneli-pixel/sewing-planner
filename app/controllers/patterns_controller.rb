@@ -10,7 +10,6 @@ class PatternsController < ApplicationController
   end
 
   def create
-    puts params
     @pattern = Pattern.new(pattern_params)
     authorize @pattern
     @pattern.user = current_user
@@ -18,7 +17,6 @@ class PatternsController < ApplicationController
       redirect_to pattern_path(@pattern), notice: "Pattern successfully created."
     else
       render :new
-      puts "Not saved"
     end
   end
 
