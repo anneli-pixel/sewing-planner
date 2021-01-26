@@ -21,7 +21,11 @@ class ShoppingItemsController < ApplicationController
     if @shopping_item.save && @shopping_item.project_id.nil?
       redirect_to shopping_items_path + @shopping_item.anchor
     elsif @shopping_item.save
-      redirect_to session[:referrer] + @shopping_item.anchor
+      if session[:referrer].nil?
+        redirect_to shopping_items_path
+      else
+        redirect_to session[:referrer] + @shopping_item.anchor
+      end
       session.delete(:referrer)
     else
       render :new

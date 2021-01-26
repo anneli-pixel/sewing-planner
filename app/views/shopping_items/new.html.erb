@@ -10,6 +10,12 @@
                 label_html: { class: "label-title"},
                 input_html: { class: "label-input-text"}  %>
     <div class="flex-box-two-btns">
+      <%#=
+      link_to_unless(session[:referrer].nil?, "Cancel", { host: session[:referrer], anchor: "add-item-btn" }, class:"btn-basic btn-light-blue-ghost") do |name|
+            link_to name, shopping_items_path, class:"btn-basic btn-light-blue-ghost"
+        end
+      %>
+
       <%= link_to "Cancel", session[:referrer] + "#add-item-btn", class:"btn-basic btn-light-blue-ghost" %>
       <%= f.submit "Save", class:"btn-basic btn-light-blue-solid" %>
     </div>
