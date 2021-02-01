@@ -1,23 +1,19 @@
-<div class="container">
-  <h1>New Shopping Item</h1>
+<h1>New Shopping Item</h1>
 
-  <%= simple_form_for(@shopping_item) do |f| %>
-    <%= f.association :project,
-                      collection: current_user.projects,
-                      label_html: { class: "label-title"},
-                      input_html: { class: "label-input-text"} %>
-    <%= f.input :name,
-                label_html: { class: "label-title"},
-                input_html: { class: "label-input-text"}  %>
-    <div class="flex-box-two-btns">
-      <%#=
-      link_to_unless(session[:referrer].nil?, "Cancel", { host: session[:referrer], anchor: "add-item-btn" }, class:"btn-basic btn-light-blue-ghost") do |name|
-            link_to name, shopping_items_path, class:"btn-basic btn-light-blue-ghost"
-        end
-      %>
-
+<%= simple_form_for(@shopping_item) do |f| %>
+  <%= f.association :project,
+                    collection: current_user.projects,
+                    label_html: { class: "label-title"},
+                    input_html: { class: "label-input-text"} %>
+  <%= f.input :name,
+              label_html: { class: "label-title"},
+              input_html: { class: "label-input-text"}  %>
+  <div class="flex-box-two-btns">
+    <% if session[:referrer] %>
       <%= link_to "Cancel", session[:referrer] + "#add-item-btn", class:"btn-basic btn-light-blue-ghost" %>
-      <%= f.submit "Save", class:"btn-basic btn-light-blue-solid" %>
-    </div>
-  <% end %>
-</div>
+    <% else %>
+      <%= link_to "Cancel", shopping_items_path, class:"btn-basic btn-light-blue-ghost" %>
+    <% end %>
+    <%= f.submit "Save", class:"btn-basic btn-light-blue-solid" %>
+  </div>
+<% end %>

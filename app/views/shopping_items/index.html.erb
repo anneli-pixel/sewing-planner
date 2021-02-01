@@ -1,12 +1,10 @@
-<div class="container">
-  <h1>Shopping List</h1>
-  <p>
-    <%= link_to "Add Item", new_shopping_item_path, class: "btn-basic btn-light-blue-solid", id: "#add-item-btn" %>
-  </p>
+<h1>Shopping List</h1>
+<p>
+  <%= link_to "Add Item", new_shopping_item_path, class: "btn-basic btn-light-blue-solid", id: "#add-item-btn" %>
+</p>
 
-  <div class="shopping-list-items">
-    <% @shopping_items.each do |item| %>
-      <%= render 'shared/shopping_item', item: item %>
-    <% end %>
-  </div>
+<div class="shopping-list-items">
+  <% @shopping_items.each do |item| %>
+    <%= render 'shared/shopping_item', item: item %>
+  <% end %>
 </div>
