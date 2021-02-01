@@ -1,5 +1,5 @@
 const makeNavbarItemActiveOnClick = () => {
-  const navItems = document.querySelectorAll(".new-navbar .new-nav-item");
+  const navItems = document.querySelectorAll(".custom-navbar .nav-item");
   const url = window.location.href;
 
   navItems.forEach((category) => {
