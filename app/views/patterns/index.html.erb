@@ -1,23 +1,19 @@
-<div class="container">
-  <h1>Your Patterns</h1>
-  <p><%= link_to "Add pattern", new_pattern_path, class: "btn-basic btn-light-blue-solid" %></p>
+<h1>Your Patterns</h1>
+<p><%= link_to "Add pattern", new_pattern_path, class: "btn-basic btn-light-blue-solid" %></p>
 
-  <div class="pattern-cards">
-    <% @patterns.each do |pattern| %>
-        <%= link_to pattern_path(pattern) do %>
-          <div class="pattern-card">
-            <div>
-              <h3><%= pattern.title %></h3>
-              <p><%= pattern.designer %></p>
-              <div class="fabric-type-label"><%= pattern.fabric_type %></div>
-            </div>
-            <div class="garment-category-icon" id="<%= pattern.garment_category.downcase.gsub("/","") %>">
-              <%= pattern.garment_category %>
-            </div>
-          </div>
-        <% end %>
-      <%= render "shared/pattern_show", pattern: pattern %>
+<div class="pattern-cards">
+  <% @patterns.each do |pattern| %>
+    <%= link_to pattern_path(pattern) do %>
+      <div class="pattern-card">
+        <div>
+          <h3><%= pattern.title %></h3>
+          <p><%= pattern.designer %></p>
+          <div class="fabric-type-label"><%= pattern.fabric_type %></div>
+        </div>
+        <div class="garment-category-icon" id="<%= pattern.garment_category.downcase.gsub("/","") %>">
+          <%= pattern.garment_category %>
+        </div>
+      </div>
     <% end %>
-  </div>
-
+  <% end %>
 </div>
