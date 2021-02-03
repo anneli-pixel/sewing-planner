@@ -37,13 +37,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $light-yellow;
-  border-radius: 8px;
-  padding: 1.2rem;
-
-  &:hover {
-    background-color: $dark-yellow;
-  }
 
   h3 {
     font-family: Maven Pro;
@@ -106,6 +99,15 @@
   }
 }
 
+.opened {
+  padding-bottom: 1.2rem;
+}
+
+.project-card {
+  background-color: $light-yellow;
+  padding: 1.2rem;
+}
+
 // Pattern Show Page:
 
 .show-pattern-card {
@@ -116,9 +118,9 @@
 }
 
 .wrapper-pattern-show-page {
-  padding: 1.2rem;
   background-color: $light-yellow;
   border-radius: 8px;
+  padding: 1.2rem;
 
   a {
     text-decoration: none;
@@ -128,7 +130,10 @@
     font-size: 0.8rem;
   }
 
-
+  &:hover {
+    background-color: $dark-yellow;
+    cursor: pointer;
+  }
 }
 
 // Shopping Item Index

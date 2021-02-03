@@ -1,0 +1,7 @@
+var patternCard = document.getElementById("<%= @pattern.id %>");
+  if (patternCard.classList.contains("opened")) {
+    patternCard.nextElementSibling.remove();
+  } else {
+    patternCard.insertAdjacentHTML('afterend', "<%= j render(@pattern) %>");
+  };
+  patternCard.classList.toggle("opened");

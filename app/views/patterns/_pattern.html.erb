@@ -1,0 +1,10 @@
+<div class="pattern-details">
+  <p> <%= @pattern.pattern_url %></p>
+  <p> <%= @pattern.notes %> </p>
+
+  <div class="flex-box-three-btns">
+    <%= link_to "Close", patterns_path, class:"btn-basic btn-light-blue-ghost yellow-background" %>
+    <%= link_to "Edit", edit_pattern_path(@pattern), class: "btn-basic btn-light-blue-solid" %>
+    <%= link_to "Start Project", new_project_path(pattern_id: @pattern.id), class: "btn-basic btn-light-blue-solid" %>
+  </div>
+</div>

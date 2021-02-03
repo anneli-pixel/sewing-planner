@@ -23,6 +23,11 @@ class PatternsController < ApplicationController
   def show
     @pattern = Pattern.find(params[:id])
     authorize @pattern
+
+    respond_to do |format|
+       format.js
+     end
+
   end
 
   def edit
