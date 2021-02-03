@@ -3,10 +3,13 @@
 
 <div class="pattern-cards">
   <% @patterns.each do |pattern| %>
-    <%= link_to pattern_path(pattern) do %>
-      <div class="pattern-card">
+    <div class="wrapper-pattern-show-page">
+
+      <div class="pattern-card" id="<%= pattern.id %>">
         <div>
+        <%= link_to pattern_path(pattern), remote: true do %>
           <h3><%= pattern.title %></h3>
+        <% end %>
           <p><%= pattern.designer %></p>
           <div class="fabric-type-label"><%= pattern.fabric_type %></div>
         </div>
@@ -14,6 +17,7 @@
           <%= pattern.garment_category %>
         </div>
       </div>
-    <% end %>
+
+    </div>
   <% end %>
 </div>

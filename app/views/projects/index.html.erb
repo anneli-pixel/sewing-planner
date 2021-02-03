@@ -4,7 +4,7 @@
 <div class="pattern-cards">
   <% @projects.each do |project| %>
     <%= link_to project_path(project) do %>
-      <div class="pattern-card">
+      <div class="pattern-card project-card" id="<%= project.id %>">
         <div>
           <h3><%= project.title %></h3>
           <p><%= project.pattern.title %></p>

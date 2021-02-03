@@ -25,6 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import { makeNavbarItemActiveOnClick } from '../components/navbar';
+import { makePatternCardClickable } from '../components/make_pattern_card_clickable';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -33,4 +34,5 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   makeNavbarItemActiveOnClick();
+  makePatternCardClickable();
 });
