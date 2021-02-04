@@ -61,42 +61,6 @@
     background-color: $dark-blue;
     color: $white;
   }
-
-  .garment-category-icon {
-    background-position: center right;
-    background-size: contain;
-    background-repeat: no-repeat;
-    color: rgba(0, 0, 0, 0.0 );
-    padding: 1.5rem;
-  }
-
-  #pants {
-    background-image: url(icons/020-jeans.png);
-  }
-
-  #pullovercardigans {
-    background-image: url(icons/047-sweater.png);
-  }
-
-  #tops {
-    background-image: url(icons/008-tshirt.png);
-  }
-
-  #dresses {
-    background-image: url(icons/042-dress.png);
-  }
-
-  #skirts {
-    background-image: url(icons/044-skirt.png);
-  }
-
-  #underwear {
-    background-image: url(icons/032-underwear.png);
-  }
-
-  #outerwear {
-    background-image: url(icons/011-jacket.png);
-  }
 }
 
 .opened {

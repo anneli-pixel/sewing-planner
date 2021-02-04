@@ -67,21 +67,19 @@
   .category-selector + label {
     height: 100%;
     width: 100%;
-    background-size: 56%;
   }
 }
 
 @media(max-width: 767px) { // Portrait + Landscape Phone
   .category-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 8px;
   }
 
   .category-selector + label {
     height: 100%;
     width: 100%;
-    background-size: 68%;
   }
 
 }
@@ -98,49 +96,14 @@
 
 .category-selector + label {
   cursor: pointer;
-  box-sizing: border-box;
-  font-size: 10px;
   text-align: center;
-  padding: 16px;
+  padding: 0.2rem;
   border: 2px solid transparent;
-  color: rgba(0, 0, 0, 0.0 );
-  font-size: 0;
-
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .category-selector:checked + label {
   border: 2px solid $light-blue;
   border-radius: 8px;
-}
-
-#pattern_garment_category_pants + label {
-  background-image: url(icons/020-jeans.png);
-}
-
-#pattern_garment_category_pullovercardigans + label {
-  background-image: url(icons/047-sweater.png);
-}
-
-#pattern_garment_category_tops + label {
-  background-image: url(icons/008-tshirt.png);
-}
-
-#pattern_garment_category_dresses + label {
-  background-image: url(icons/042-dress.png);
-}
-
-#pattern_garment_category_skirts + label {
-  background-image: url(icons/044-skirt.png);
-}
-
-#pattern_garment_category_underwear + label {
-  background-image: url(icons/032-underwear.png);
-}
-
-#pattern_garment_category_outerwear + label {
-  background-image: url(icons/011-jacket.png);
 }
 
 // Generic:
@@ -174,6 +137,11 @@
   height: 16%;
   top: 92%;
   left: 4%;
+}
+
+// Pattern Index
+.garment-category-icon {
+  height: 4.8rem;
 }
 
 

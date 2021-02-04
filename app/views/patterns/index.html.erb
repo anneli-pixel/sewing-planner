@@ -13,9 +13,7 @@
           <p><%= pattern.designer %></p>
           <div class="fabric-type-label"><%= pattern.fabric_type %></div>
         </div>
-        <div class="garment-category-icon" id="<%= pattern.garment_category.downcase.gsub("/","") %>">
-          <%= pattern.garment_category %>
-        </div>
+        <%= image_tag "#{pattern.garment_category_image_path}", class: "garment-category-icon" %>
       </div>
 
     </div>
