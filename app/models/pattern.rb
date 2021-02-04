@@ -7,4 +7,12 @@ class Pattern < ApplicationRecord
   validates :designer, presence: true
   validates :fabric_type, presence: true, inclusion: { in: FABRIC_TYPES, message: "must be #{FABRIC_TYPES[0..-2].join(", ")} or #{FABRIC_TYPES.last}."  }
   validates :garment_category, inclusion: { in: GARMENT_CATEGORIES, message: "must be #{GARMENT_CATEGORIES[0..-2].join(", ")} or #{GARMENT_CATEGORIES.last}." }
+
+  def garment_category_image_path
+    GARMENT_CATEGORIES.each do |category|
+      if self.garment_category == category
+        return "icons/#{category.downcase.gsub("/","_")}.png"
+      end
+    end
+  end
 end
