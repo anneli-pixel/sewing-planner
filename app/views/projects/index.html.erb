@@ -14,9 +14,7 @@
 
         <div>
           <%= image_tag "#{project.pattern.garment_category_image_path}", class: "garment-category-icon" %>
-          <div class="project-status-icon" id="<%= project.status.downcase.delete(" ") %>">
-            <%= project.status %>
-          </div>
+          <%= image_tag "#{project.status_icon_image_path}", class: "project-status-icon" %>
         </div>
       </div>
     <% end %>
