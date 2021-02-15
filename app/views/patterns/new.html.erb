@@ -16,13 +16,14 @@
               collection_wrapper_class: "fabric-type-wrapper"
               %>
   <%= f.input :garment_category,
-              collection: Pattern::GARMENT_CATEGORIES,
+              collection: PatternHelper.garment_categories,
               as: :radio_buttons,
               collection_wrapper_tag: "div",
               collection_wrapper_class: "category-wrapper",
               item_wrapper_class: "category-item",
               input_html: { class: "category-selector" },
-              :label_method => lambda { |category| image_tag "icons/#{category.downcase.gsub("/","_")}.png", class: "garment-category-icon" },
+              label_method: :image,
+              #:label_method => lambda { |category| image_tag "icons/#{category.downcase.gsub("/","_")}.png", class: "garment-category-icon" },
               label_html: { class: "label-title"}
               %>
   <%= f.input :pattern_url,
