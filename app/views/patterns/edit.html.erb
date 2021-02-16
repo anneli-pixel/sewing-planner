@@ -1,4 +1,4 @@
-<h1>New Pattern</h1>
+<h1>Edit Pattern</h1>
 <%= simple_form_for(@pattern) do |f| %>
   <%= f.input :title,
               label_html: { class: "label-title"},
@@ -16,12 +16,14 @@
               collection_wrapper_class: "fabric-type-wrapper"
               %>
   <%= f.input :garment_category,
-              collection: Pattern::GARMENT_CATEGORIES,
+              collection: PatternHelper.garment_categories,
+              value_method: :name,
               as: :radio_buttons,
               collection_wrapper_tag: "div",
               collection_wrapper_class: "category-wrapper",
               item_wrapper_class: "category-item",
               input_html: { class: "category-selector" },
+              label_method: :image,
               label_html: { class: "label-title"}
               %>
   <%= f.input :pattern_url,

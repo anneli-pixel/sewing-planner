@@ -37,8 +37,11 @@ class PatternsController < ApplicationController
 
   def update
     @pattern = Pattern.find(params[:id])
-    @pattern.update(pattern_params)
-    redirect_to pattern_path(@pattern), notice: "Pattern succesfully edited."
+    if @pattern.update(pattern_params)
+      redirect_to patterns_path(anchor: @pattern.id), notice: "Pattern succesfully edited."
+    else
+      redirect_to patterns_path(anchor: @pattern.id), notice: "Something went wrong. Please try again."
+    end
     authorize @pattern
   end
 
