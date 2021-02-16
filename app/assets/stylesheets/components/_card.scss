@@ -105,6 +105,13 @@
   }
 }
 
+.no-hover {
+  &:hover {
+    background-color: $light-yellow;
+    cursor: default;
+  }
+}
+
 // Shopping Item Index
 
 .shopping-item-card {

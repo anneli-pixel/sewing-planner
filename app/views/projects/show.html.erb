@@ -17,7 +17,7 @@
 </div>
 
 <div id="flex-pattern-size-fabric"> <!-- A Flexbox for Pattern + Size + Fabrics -->
-  <div class="wrapper-pattern-show-page">
+  <div class="wrapper-pattern-show-page no-hover">
       <div class="pattern-card show-pattern-card">
         <div>
           <h3><%= @project.pattern.title %></h3>
@@ -43,22 +43,34 @@
 
     <div>
       <h3>Fabrics</h3>
-        <% unless @project.fabrics.empty? %>
-          <div>
-            <% @project.fabrics.each do |fabric| %>
-              <div class="light-yellow-text-field">
-                <%= fabric.title %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+      <% if @project.fabrics.empty? %>
+        <div class="light-yellow-text-field">
+          <%= link_to "#" do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+        </div>
+      <% else %>
+        <div>
+          <% @project.fabrics.each do |fabric| %>
+            <div class="light-yellow-text-field">
+              <%= fabric.title %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
 
 <div> <!-- A Flexbox for the Description -->
   <h3>Description</h3>
-  <% unless @project.description.empty? %>
+  <% if @project.description.empty? %>
+    <div class="light-yellow-text-field">
+      <%= link_to "#" do %>
+        <i class="far fa-edit"></i>
+      <% end %>
+    </div>
+  <% else %>
     <div class="light-yellow-text-field">
       <%= @project.description %>
     </div>
