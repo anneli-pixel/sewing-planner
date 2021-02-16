@@ -5,7 +5,15 @@
     <%= image_tag "project_placeholder.jpg", class: "project_photo" %>
   </div>
 
-  <%= image_tag "#{@project.status_icon_image_path}", class: "project-status-icon-project-show-page" %>
+  <%= link_to image_tag("#{@project.status_icon_image_path}",
+    class: "project-status-icon-project-show-page",
+    id: "status-icon",
+    :data => { :project_status => @project.status }),
+    change_status_project_path(@project),
+    method: :patch,
+    id: @project.id
+    #remote: true
+  %>
 </div>
 
 <div id="flex-pattern-size-fabric"> <!-- A Flexbox for Pattern + Size + Fabrics -->
