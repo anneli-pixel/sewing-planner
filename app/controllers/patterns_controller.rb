@@ -14,7 +14,7 @@ class PatternsController < ApplicationController
     authorize @pattern
     @pattern.user = current_user
     if @pattern.save
-      redirect_to pattern_path(@pattern), notice: "Pattern successfully created."
+      redirect_to patterns_path+"##{@pattern.id.to_s}", notice: "Pattern successfully created."
     else
       render :new
     end

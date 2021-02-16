@@ -3,9 +3,11 @@ include ActionView::Helpers::AssetTagHelper
 module PatternHelper
 
   class GarmentCategory
+    attr_reader :name
 
     def initialize(name)
       @path = PatternHelper.path_for(name)
+      @name = name
     end
 
     def image

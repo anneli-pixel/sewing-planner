@@ -17,6 +17,7 @@
               %>
   <%= f.input :garment_category,
               collection: PatternHelper.garment_categories,
+              value_method: :name,
               as: :radio_buttons,
               collection_wrapper_tag: "div",
               collection_wrapper_class: "category-wrapper",
