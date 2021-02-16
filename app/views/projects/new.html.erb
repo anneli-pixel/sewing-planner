@@ -25,10 +25,10 @@
                          label_html: { class: "label-title"},
                          input_html: { class: "label-input-text"} %>
   <div class="flex-box-two-btns">
-    <% if request.referrer.include?("projects") %>
+    <% if request.referrer.nil? || request.referrer.include?("projects") %>
       <%= link_to "Cancel", projects_path, class:"btn-basic btn-light-blue-ghost" %>
     <% else %>
-      <%= link_to "Cancel", patterns_path+"##{params[:pattern_id]}", class:"btn-basic btn-light-blue-ghost" %>
+      <%= link_to "Cancel", patterns_path(anchor: params[:pattern_id]), class:"btn-basic btn-light-blue-ghost" %>
     <% end %>
     <%= project_form.submit "Save Project", class:"btn-basic btn-light-blue-solid" %>
   </div>

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "New project page" do
+
   before(:example) do
     user = User.create!(:email => 'test@example.com', :password => 'f4k3p455w0rd')
     login_as(user, :scope => :user)

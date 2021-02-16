@@ -13,5 +13,8 @@ class ProjectPolicy < ApplicationPolicy
     record.user = user
   end
 
+  def change_status?
+    record.user = user
+  end
 
 end

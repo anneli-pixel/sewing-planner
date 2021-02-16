@@ -32,6 +32,16 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def change_status
+    @project = Project.find(params[:id])
+    authorize @project
+    index = Project::STATUSES.index(@project.status)
+    @project.status = Project::STATUSES[(index+1)%Project::STATUSES.size]
+    if @project.save
+      render :show
+    end
+  end
+
   private
 
   def project_params

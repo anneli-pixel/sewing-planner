@@ -70,6 +70,11 @@
 .project-card {
   background-color: $light-yellow;
   padding: 1.2rem;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: $dark-yellow;
+  }
 }
 
 // Pattern Show Page:
