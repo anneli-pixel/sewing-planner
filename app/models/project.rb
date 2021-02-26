@@ -9,7 +9,7 @@ class Project < ApplicationRecord
   has_many :fabrics
 
   delegate :garment_category, to: :pattern
-  accepts_nested_attributes_for :fabrics, reject_if: :all_blank
+  accepts_nested_attributes_for :fabrics, reject_if: :all_blank, allow_destroy: true
 
   def start_date
     # self.start_date = self.created_at
