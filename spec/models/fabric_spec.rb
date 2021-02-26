@@ -14,12 +14,10 @@ RSpec.describe Fabric, type: :model do
                              pattern_id: pattern.id,
                              user_id: user.id)
     Fabric.new(title: "Blue Cotton with Black Dots",
-               user_id: user.id,
                project_id: project.id)
   end
 
   describe "Associations" do
-    it { should belong_to(:user) }
     it { should belong_to(:project) }
   end
 
