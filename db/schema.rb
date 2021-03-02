@@ -10,19 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_151542) do
+ActiveRecord::Schema.define(version: 2021_02_26_135432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "fabrics", force: :cascade do |t|
     t.string "title"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "project_id", null: false
     t.index ["project_id"], name: "index_fabrics_on_project_id"
-    t.index ["user_id"], name: "index_fabrics_on_user_id"
   end
 
   create_table "measurements", force: :cascade do |t|
@@ -96,7 +94,6 @@ ActiveRecord::Schema.define(version: 2021_01_15_151542) do
   end
 
   add_foreign_key "fabrics", "projects"
-  add_foreign_key "fabrics", "users"
   add_foreign_key "measurements", "users"
   add_foreign_key "patterns", "users"
   add_foreign_key "project_fabrics", "fabrics"

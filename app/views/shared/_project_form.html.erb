@@ -1,0 +1,36 @@
+<%= simple_form_for(setup_project(@project)) do |project_form| %>
+  <%= project_form.input :title,
+                         label_html: { class: "label-title"},
+                         input_html: { class: "label-input-text"}%>
+  <%= project_form.association :pattern,
+                               collection: current_user.patterns,
+                               label_html: { class: "label-title"},
+                               input_html: { class: "label-input-text"} %>
+  <%= project_form.simple_fields_for :fabrics do |fabric_form| %>
+    <%= fabric_form.label :title,
+                          label: "Fabric ##{fabric_form.index + 1}",
+                          class: "label-title" %>
+    <div class="flex-box-input-and-delete">
+      <%= fabric_form.input :title,
+                            label: false,
+                            placeholder: "Add up to 3 different fabrics.",
+                            input_html: { class: "label-input-text"} %>
+      <%= fabric_form.check_box :_destroy %>
+      <%= fabric_form.label :_destroy, "<i class='far fa-trash-alt delete-icon'></i>".html_safe %>
+    </div>
+  <% end %>
+  <%= project_form.input :description,
+                         label_html: { class: "label-title"},
+                         input_html: { class: "label-input-text"} %>
+  <%= project_form.input :size,
+                         label_html: { class: "label-title"},
+                         input_html: { class: "label-input-text"}%>
+  <%= project_form.input :status,
+                         collection: Project::STATUSES,
+                         label_html: { class: "label-title"},
+                         input_html: { class: "label-input-text"} %>
+  <div class="flex-box-two-btns">
+    <%= link_to "Cancel", dynamic_cancel_path(session), class:"btn-basic btn-light-blue-ghost" %>
+    <%= project_form.submit "Save Project", class:"btn-basic btn-light-blue-solid" %>
+  </div>
+<% end %>

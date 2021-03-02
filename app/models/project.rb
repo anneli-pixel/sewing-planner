@@ -9,16 +9,7 @@ class Project < ApplicationRecord
   has_many :fabrics
 
   delegate :garment_category, to: :pattern
-  accepts_nested_attributes_for :fabrics, reject_if: :all_blank
-
-  def start_date
-    # self.start_date = self.created_at
-    # start_date = date when status is changed from 'Draft' to 'In progress'
-  end
-
-  def end_date
-    # end_date = date when status is changed to Completed
-  end
+  accepts_nested_attributes_for :fabrics, reject_if: :all_blank, allow_destroy: true
 
   def status_icon_image_path
     if self.status == "Draft"

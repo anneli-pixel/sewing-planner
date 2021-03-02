@@ -9,11 +9,7 @@
               label_html: { class: "label-title"},
               input_html: { class: "label-input-text"}  %>
   <div class="flex-box-two-btns">
-    <% if session[:referrer] %>
-      <%= link_to "Cancel", session[:referrer] + "#add-item-btn", class:"btn-basic btn-light-blue-ghost" %>
-    <% else %>
-      <%= link_to "Cancel", shopping_items_path, class:"btn-basic btn-light-blue-ghost" %>
-    <% end %>
+    <%= link_to "Cancel", dynamic_cancel_path(session)+"#add-item-btn", class:"btn-basic btn-light-blue-ghost" %>
     <%= f.submit "Save", class:"btn-basic btn-light-blue-solid" %>
   </div>
 <% end %>
