@@ -1,8 +1,9 @@
 class ShoppingItemsController < ApplicationController
+  before_action :save_referrer, except: [:create]
+
   def new
     @shopping_item = ShoppingItem.new
     @shopping_item.project_id = params[:project_id]
-    session[:referrer] = request.referrer
     authorize @shopping_item
   end
 
@@ -26,7 +27,6 @@ class ShoppingItemsController < ApplicationController
       else
         redirect_to session[:referrer] + @shopping_item.anchor
       end
-      session.delete(:referrer)
     else
       render :new
     end

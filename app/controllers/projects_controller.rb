@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :save_referrer, except: [:create]
 
   def index
     @projects = policy_scope(Project)
