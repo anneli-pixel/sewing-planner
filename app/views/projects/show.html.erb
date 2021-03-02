@@ -94,6 +94,6 @@
 <hr class="blue-line-3px">
 
 <div class="flex-box-two-btns"> <!-- A Flexbox for the Buttons -->
-  <%= link_to "Back", projects_path+"##{@project.id}", class:"btn-basic btn-light-blue-ghost" %>
+  <%= link_to "Back", dynamic_cancel_path(session), class:"btn-basic btn-light-blue-ghost" %>
   <%= link_to "Edit", edit_project_path, class:"btn-basic btn-light-blue-solid" %>
 </div>
