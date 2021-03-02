@@ -3,27 +3,29 @@
   padding: 8px 24px;
   font-family: Maven Pro;
   font-size: 0.8rem;
-  //font-weight: bold;
   margin: 4px;
   text-align: center;
   box-sizing: border-box;
   flex: 0 50%;
   height: 100%;
   line-height: inherit;
-}
-
-.btn-light-blue-solid {
-  color: $white;
-  background-color: $light-blue;
-  border: 2px solid $light-blue;
 
   &:hover {
     background-color: $dark-blue;
-    border-color: $dark-blue;
-    //color: $dark-blue;
-    font-weight: bold;
     color: $white;
     text-decoration: none;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  }
+}
+
+.btn-light-blue-solid {
+  background-color: $light-blue;
+  border: 2px solid $light-blue;
+  color: $white;
+
+
+  &:hover {
+    border-color: $dark-blue;
   }
 }
 
@@ -35,16 +37,8 @@
   border-color: $light-blue;
 
   &:hover {
-    background-color: $dark-blue;
-    color: $white;
     border-color: $dark-blue;
-    text-decoration: none;
-    font-weight: bold;
   }
-}
-
-.yellow-background {
-  background-color: $light-yellow;
 }
 
 @media(min-width: 768px) { // Everything larger than Phone
