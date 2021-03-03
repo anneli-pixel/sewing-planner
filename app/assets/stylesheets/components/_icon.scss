@@ -122,12 +122,13 @@ input[type="checkbox"] {
   cursor: pointer;
   text-align: center;
   padding: 0.2rem;
-  border: 2px solid transparent;
 }
 
 .category-selector:checked + label {
-  border: 2px solid $light-blue;
   border-radius: 8px;
+  border-color: #93c4fd;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(22, 127, 251, 0.25);
 }
 
 // Generic:

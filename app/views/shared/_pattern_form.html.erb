@@ -1,10 +1,10 @@
 <%= simple_form_for(@pattern) do |f| %>
   <%= f.input :title,
               label_html: { class: "label-title"},
-              input_html: { class: "label-input-text"} %>
+              input_html: { class: "label-input-text grey-background "} %>
   <%= f.input :designer,
               label_html: { class: "label-title"},
-              input_html: { class: "label-input-text"}  %>
+              input_html: { class: "label-input-text grey-background "}  %>
   <%= f.input :fabric_type,
               collection: Pattern::FABRIC_TYPES,
               as: :radio_buttons,
@@ -28,10 +28,10 @@
               %>
   <%= f.input :pattern_url,
               label_html: { class: "label-title"},
-              input_html: { class: "label-input-text"} %>
+              input_html: { class: "label-input-text grey-background "} %>
   <%= f.input :notes,
               label_html: { class: "label-title"},
-              input_html: { class: "label-input-text"} %>
+              input_html: { class: "label-input-text grey-background "} %>
   <div class="flex-box-two-btns">
     <%= link_to "Cancel", dynamic_cancel_path(session), class:"btn-basic btn-light-blue-ghost" %>
     <%= f.submit "Save Pattern", class:"btn-basic btn-light-blue-solid" %>
