@@ -73,7 +73,9 @@
   border-radius: 8px;
 
   &:hover {
-    background-color: $dark-yellow;
+    //background-color: $dark-yellow;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
   }
 }
 
@@ -107,8 +109,9 @@
 
 .no-hover {
   &:hover {
-    background-color: $light-yellow;
+    background-color: $light-gray;
     cursor: default;
+    box-shadow: none;
   }
 }
 
