@@ -13,3 +13,21 @@
   display: flex;
 
 }
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: 4px;
+}
+
+.search-button {
+  border: none;
+  flex: 0 0 auto;
+}
+
+

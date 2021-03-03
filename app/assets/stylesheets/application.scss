@@ -22,4 +22,8 @@ h1 {
 
 .grey-background {
   background-color: $light-gray;
+
+  &:focus {
+    background-color: $light-gray;
+  }
 }
