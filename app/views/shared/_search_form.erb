@@ -1,7 +1,7 @@
 <%= form_tag patterns_path, method: :get, class: "search-form" do %>
   <%= text_field_tag :query,
       params[:query],
-      placeholder: "Search for pattern title",
+      placeholder: "Search for pattern title or designer",
       class: "form-control label-input-text grey-background search-bar" %>
   <%= submit_tag "Search",
       class: "btn-basic btn-light-blue-solid search-button" %>

@@ -3,7 +3,7 @@ class PatternsController < ApplicationController
 
   def index
     if params[:query].present?
-      @patterns = policy_scope(Pattern).search_by_title("#{params[:query]}")
+      @patterns = policy_scope(Pattern).search_by_title_and_designer("#{params[:query]}")
     else
       @patterns = policy_scope(Pattern).order(garment_category: :asc, title: :asc)
     end
