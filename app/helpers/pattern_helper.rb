@@ -14,6 +14,10 @@ module PatternHelper
       ActionController::Base.helpers.image_tag @path, class: "garment-category-icon"
     end
 
+    def normalised_name
+      @name.downcase.gsub("/","_")
+    end
+
   end
 
   def self.path_for(garment_category)

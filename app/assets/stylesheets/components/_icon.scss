@@ -64,11 +64,18 @@ input[type="checkbox"] {
   }
 }
 
-// Styling for Fabric Type Selector in Search Bar:
+// Styling for Fabric Type Filter in Search Bar:
 
 .hidden {
   position: absolute;
   transform: scale(0);
+}
+
+// Styling for Garment Category Filter in Search Bar:
+
+.garment-category-filter-label img {
+  cursor: pointer;
+  height: 3.2rem;
 }
 
 @media(min-width: 768px) { // Everything larger than Phone

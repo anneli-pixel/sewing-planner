@@ -12,6 +12,7 @@ class Pattern < ApplicationRecord
 
   pg_search_scope :search_by_title_and_designer, against: [:title, :designer]
   pg_search_scope :filter_by_fabric_type, against: :fabric_type
+  pg_search_scope :filter_by_garment_category, against: :garment_category
 
   def garment_category_image_path
     GARMENT_CATEGORIES.each do |category|

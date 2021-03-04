@@ -4,6 +4,8 @@ class PatternsController < ApplicationController
   def index
     if params[:fabric_type_filter].present?
       @patterns = policy_scope(Pattern).filter_by_fabric_type("#{params[:fabric_type_filter]}")
+    elsif params[:garment_category_filter].present?
+      @patterns = policy_scope(Pattern).filter_by_garment_category("#{params[:garment_category_filter]}")
     elsif params[:query].present?
       @patterns = policy_scope(Pattern).search_by_title_and_designer("#{params[:query]}")
     else

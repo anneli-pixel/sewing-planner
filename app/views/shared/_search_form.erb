@@ -17,4 +17,13 @@
   <%= label_tag "All" %>
 <% end %>
 
-
+<%= form_tag patterns_path, method: :get do %>
+  <% PatternHelper.garment_categories.each do |category| %>
+    <%= submit_tag category.normalised_name, name: :garment_category_filter, :data => { disable_with: false }, id: category.normalised_name, class: "hidden" %>
+    <%= label_tag category.normalised_name, class: "garment-category-filter-label" do %>
+      <%= category.image %>
+    <% end %>
+  <% end %>
+  <%= submit_tag "All", name: :garment_category_filter, id: "all", value: "", class: "hidden fabric-type-selector" %>
+  <%= label_tag "All" %>
+<% end %>
