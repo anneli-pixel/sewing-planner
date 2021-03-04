@@ -2,7 +2,9 @@ class PatternsController < ApplicationController
   before_action :save_referrer, except: [:create]
 
   def index
-    if params[:query].present?
+    if params[:fabric_type_filter].present?
+      @patterns = policy_scope(Pattern).filter_by_fabric_type("#{params[:fabric_type_filter]}")
+    elsif params[:query].present?
       @patterns = policy_scope(Pattern).search_by_title_and_designer("#{params[:query]}")
     else
       @patterns = policy_scope(Pattern).order(garment_category: :asc, title: :asc)

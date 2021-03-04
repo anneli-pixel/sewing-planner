@@ -64,6 +64,13 @@ input[type="checkbox"] {
   }
 }
 
+// Styling for Fabric Type Selector in Search Bar:
+
+.hidden {
+  position: absolute;
+  transform: scale(0);
+}
+
 @media(min-width: 768px) { // Everything larger than Phone
 
 }
