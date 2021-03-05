@@ -26,6 +26,7 @@ require("channels")
 import "bootstrap";
 import { makeNavbarItemActiveOnClick } from '../components/navbar';
 import { makePatternCardClickable } from '../components/make_pattern_card_clickable';
+import { selectActiveFilter } from '../components/search_bar';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -35,4 +36,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   makeNavbarItemActiveOnClick();
   makePatternCardClickable();
+  selectActiveFilter();
 });

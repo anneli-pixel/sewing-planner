@@ -75,7 +75,13 @@ input[type="checkbox"] {
 
 .garment-category-filter-label img {
   cursor: pointer;
-  height: 3.2rem;
+  height: 4rem;
+  margin: 0.4rem;
+  padding: 0.4rem;
+}
+
+.garment-category-filter-label img.selected {
+  border: solid;
 }
 
 @media(min-width: 768px) { // Everything larger than Phone
