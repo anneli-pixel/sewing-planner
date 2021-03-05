@@ -15,10 +15,6 @@ class Pattern < ApplicationRecord
   pg_search_scope :filter_by_garment_category, against: :garment_category
 
   def garment_category_image_path
-    GARMENT_CATEGORIES.each do |category|
-      if self.garment_category == category
-        return "icons/#{category.downcase.gsub("/","_")}.png"
-      end
-    end
+    "icons/#{self.garment_category.downcase.gsub("/","_")}.png"
   end
 end
