@@ -14,9 +14,9 @@
               collection_wrapper_tag: "div",
               collection_wrapper_class: "fabric-type-wrapper"
               %>
-  <%= f.input :garment_category,
-              collection: PatternHelper.garment_categories,
-              value_method: :name,
+  <%= f.input :garment_category_id,
+              collection: GarmentCategory.all,
+              value_method: :id,
               as: :radio_buttons,
               collection_wrapper_tag: "div",
               collection_wrapper_class: "category-wrapper",
