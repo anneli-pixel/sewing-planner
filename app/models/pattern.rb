@@ -4,6 +4,7 @@ class Pattern < ApplicationRecord
   FABRIC_TYPES = %w(Knit Woven)
   GARMENT_CATEGORIES = %w(Pants Pullover/Cardigans Tops Dresses Skirts Underwear Outerwear)
   has_many :projects
+  belongs_to :garment_category
   belongs_to :user
   validates :title, presence: true, uniqueness: { scope: :user_id }
   validates :designer, presence: true

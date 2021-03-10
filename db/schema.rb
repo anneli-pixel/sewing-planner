@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_135432) do
+ActiveRecord::Schema.define(version: 2021_03_10_150826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 2021_02_26_135432) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "project_id", null: false
     t.index ["project_id"], name: "index_fabrics_on_project_id"
+  end
+
+  create_table "garment_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "measurements", force: :cascade do |t|
@@ -45,6 +51,8 @@ ActiveRecord::Schema.define(version: 2021_02_26_135432) do
     t.string "garment_category"
     t.text "notes"
     t.bigint "user_id"
+    t.bigint "garment_category_id", null: false
+    t.index ["garment_category_id"], name: "index_patterns_on_garment_category_id"
     t.index ["user_id"], name: "index_patterns_on_user_id"
   end
 
@@ -95,6 +103,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_135432) do
 
   add_foreign_key "fabrics", "projects"
   add_foreign_key "measurements", "users"
+  add_foreign_key "patterns", "garment_categories"
   add_foreign_key "patterns", "users"
   add_foreign_key "project_fabrics", "fabrics"
   add_foreign_key "project_fabrics", "projects"
