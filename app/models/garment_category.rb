@@ -4,7 +4,7 @@ class GarmentCategory < ApplicationRecord
   validates :name, presence: true
 
   def image
-    ActionController::Base.helpers.image_tag self.image_path, class: "garment-category-icon"
+    ActionController::Base.helpers.image_tag self.image_path, class: "garment-category-icon", id: self.name
   end
 
   def image_path
