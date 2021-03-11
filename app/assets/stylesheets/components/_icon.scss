@@ -102,6 +102,13 @@ input[type="checkbox"] {
   color: $white;
 }
 
+.fabric-type-selector + label.selected {
+  background-color: $dark-blue;
+  border-color: $dark-blue;
+  font-weight: bold;
+  color: $white;
+}
+
 // Radio Button Styling For Garment Category Collection:
 
 @media(min-width: 768px) { // Everything larger than Phone
