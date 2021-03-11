@@ -8,7 +8,6 @@ class Pattern < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :user_id }
   validates :designer, presence: true
   validates :fabric_type, presence: true, inclusion: { in: FABRIC_TYPES, message: "must be #{FABRIC_TYPES[0..-2].join(", ")} or #{FABRIC_TYPES.last}."  }
-  validates :garment_category, presence: true
 
   pg_search_scope :search_by_title_and_designer, against: [:title, :designer]
   pg_search_scope :filter_by_fabric_type, against: :fabric_type
