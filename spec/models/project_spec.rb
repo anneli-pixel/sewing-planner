@@ -1,18 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  subject do
-    user = User.create(email: "test@example.com", password: "Fd392&sKx?")
-    pattern = Pattern.create(title: "Inari Tee",
-                             designer: "Named Patterns",
-                             fabric_type: "Knit",
-                             garment_category: "Tops",
-                             user_id: user.id)
-    project = Project.new(title: "Crop Top",
-                          status: "Draft",
-                          size: "M",
-                          pattern_id: pattern.id,
-                          user_id: user.id)
+  let(:pattern) { create(:pattern) }
+  subject { described_class.new(valid_attributes_hash) }
+
+  let(:valid_attributes_hash) do
+    {
+      title: "Blue Winter Cardigan",
+      size: "M",
+      status: "Draft",
+      pattern_id: pattern.id,
+      user_id: pattern.user.id
+    }
   end
 
   describe "Associations" do
