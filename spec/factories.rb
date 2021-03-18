@@ -30,4 +30,10 @@ FactoryBot.define do
     association :project
     title { "Blue Wool Cotton Interlock Knit" }
   end
+
+  factory :shopping_item do
+    association :user
+    association :project
+    name { "10 Buttons" }
+  end
 end
