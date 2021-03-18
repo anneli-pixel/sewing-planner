@@ -9,7 +9,7 @@ class PatternsController < ApplicationController
     elsif params[:query].present?
       @patterns = policy_scope(Pattern).search_by_title_and_designer("#{params[:query]}")
     else
-      @patterns = policy_scope(Pattern).order(garment_category: :asc, title: :asc)
+      @patterns = policy_scope(Pattern).order(garment_category_id: :asc, title: :asc)
     end
   end
 
