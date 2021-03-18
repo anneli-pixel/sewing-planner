@@ -1,15 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature "New project page" do
+  let(:user) { User.find(pattern.user_id) }
+  let(:garment_category) { create(:garment_category) }
+  let(:pattern) { create(:pattern) }
 
   before(:example) do
-    user = User.create!(:email => 'test@example.com', :password => 'f4k3p455w0rd')
     login_as(user, :scope => :user)
-    pattern = Pattern.create(title: "Inari Tee",
-                designer: "Named Patterns",
-                fabric_type: "Knit",
-                garment_category: "Tops",
-                user_id: user.id)
     visit new_project_path
   end
 
@@ -22,7 +19,7 @@ RSpec.feature "New project page" do
       before_count = Project.count
       within("#new_project") do
         fill_in "project_title", with: "Blue Summer Crop Top"
-        select("Inari Tee", from: "project_pattern_id")
+        select("Driftless Cardigan", from: "project_pattern_id")
         fill_in "project_size", with: "S"
         select("Draft", from: "project_status")
       end
@@ -35,7 +32,7 @@ RSpec.feature "New project page" do
       before_count_fabric = Fabric.count
       within("#new_project") do
         fill_in "project_title", with: "Blue Summer Crop Top"
-        select("Inari Tee", from: "project_pattern_id")
+        select("Driftless Cardigan", from: "project_pattern_id")
         fill_in "project_fabrics_attributes_0_title", with: "Light Blue Cotton with Dots"
         fill_in "project_fabrics_attributes_1_title", with: "Dark Blue Cotton"
         fill_in "project_size", with: "S"
@@ -50,7 +47,7 @@ RSpec.feature "New project page" do
       before_count_fabric = Fabric.count
       within("#new_project") do
         fill_in "project_title", with: "Blue Summer Crop Top"
-        select("Inari Tee", from: "project_pattern_id")
+        select("Driftless Cardigan", from: "project_pattern_id")
         fill_in "project_fabrics_attributes_0_title", with: "Light Blue Cotton with Dots"
         fill_in "project_fabrics_attributes_1_title", with: "Dark Blue Cotton"
         fill_in "project_size", with: "S"
