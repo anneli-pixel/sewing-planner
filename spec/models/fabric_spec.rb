@@ -1,16 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Fabric, type: :model do
-  let(:project) { create(:project) }
-
-  subject { described_class.new(valid_attributes_hash) }
-
-  let(:valid_attributes_hash) do
-    {
-      title: "Blue Wool Cotton Interlock Knit",
-      project_id: project.id
-    }
-  end
+  subject { create(:fabric) }
 
   it "is valid with valid attributes" do
     expect(subject).to be_valid
