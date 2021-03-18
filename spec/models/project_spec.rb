@@ -1,18 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  let(:pattern) { create(:pattern) }
-  subject { described_class.new(valid_attributes_hash) }
-
-  let(:valid_attributes_hash) do
-    {
-      title: "Blue Winter Cardigan",
-      size: "M",
-      status: "Draft",
-      pattern_id: pattern.id,
-      user_id: pattern.user.id
-    }
-  end
+  subject { create(:project) }
 
   describe "Associations" do
     it { should belong_to(:user) }
