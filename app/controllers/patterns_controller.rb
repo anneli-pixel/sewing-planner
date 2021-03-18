@@ -2,7 +2,15 @@ class PatternsController < ApplicationController
   before_action :save_referrer, except: [:create]
 
   def index
-    @patterns = policy_scope(Pattern).order(garment_category: :asc, title: :asc)
+    if params[:fabric_type_filter].present?
+      @patterns = policy_scope(Pattern).filter_by_fabric_type("#{params[:fabric_type_filter]}")
+    elsif params[:garment_category_filter].present?
+      @patterns = policy_scope(Pattern).filter_by_garment_category("#{params[:garment_category_filter]}")
+    elsif params[:query].present?
+      @patterns = policy_scope(Pattern).search_by_title_and_designer("#{params[:query]}")
+    else
+      @patterns = policy_scope(Pattern).order(garment_category: :asc, title: :asc)
+    end
   end
 
   def new
@@ -49,7 +57,7 @@ class PatternsController < ApplicationController
   private
 
   def pattern_params
-    params.require(:pattern).permit(:title, :designer, :fabric_type, :pattern_url, :garment_category, :notes)
+    params.require(:pattern).permit(:title, :designer, :fabric_type, :pattern_url, :garment_category_id, :notes)
   end
 
 end

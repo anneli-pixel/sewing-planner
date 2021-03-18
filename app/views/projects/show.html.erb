@@ -24,7 +24,7 @@
           <p><%= @project.pattern.designer %></p>
           <div class="fabric-type-label"><%= @project.pattern.fabric_type %></div>
         </div>
-        <%= image_tag "#{@project.pattern.garment_category_image_path}", class: "garment-category-icon" %>
+        <%= image_tag "#{@project.pattern.garment_category.image_path}", class: "garment-category-icon" %>
       </div>
 
       <p> <%= @project.pattern.pattern_url %></p>

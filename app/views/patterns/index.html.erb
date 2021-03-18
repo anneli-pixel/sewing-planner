@@ -1,5 +1,6 @@
 <h1>Your Patterns</h1>
-<p><%= link_to "Add pattern", new_pattern_path, class: "btn-basic btn-light-blue-solid" %></p>
+<%= render 'shared/search_form' %>
+
 
 <div class="pattern-cards">
   <% @patterns.each do |pattern| %>
@@ -13,7 +14,7 @@
           <p><%= pattern.designer %></p>
           <div class="fabric-type-label"><%= pattern.fabric_type %></div>
         </div>
-        <%= image_tag "#{pattern.garment_category_image_path}", class: "garment-category-icon" %>
+        <%= image_tag "#{pattern.garment_category.image_path}", class: "garment-category-icon" %>
       </div>
 
     </div>

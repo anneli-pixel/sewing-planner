@@ -64,6 +64,29 @@ input[type="checkbox"] {
   }
 }
 
+// Styling for Fabric Type Filter in Search Bar:
+
+.hidden {
+  position: absolute;
+  transform: scale(0);
+}
+
+// Styling for Garment Category Filter in Search Bar:
+
+.garment-category-filter-label img {
+  cursor: pointer;
+  height: 4rem;
+  margin: 0.4rem;
+  padding: 0.4rem;
+}
+
+.garment-category-filter-label img.selected {
+  border-radius: 8px;
+  border-color: #93c4fd;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(22, 127, 251, 0.25)
+}
+
 @media(min-width: 768px) { // Everything larger than Phone
 
 }
@@ -73,6 +96,13 @@ input[type="checkbox"] {
 
 
 .fabric-type-selector:checked + label {
+  background-color: $dark-blue;
+  border-color: $dark-blue;
+  font-weight: bold;
+  color: $white;
+}
+
+.fabric-type-selector + label.selected {
   background-color: $dark-blue;
   border-color: $dark-blue;
   font-weight: bold;
