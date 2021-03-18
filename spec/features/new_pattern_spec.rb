@@ -18,7 +18,7 @@ RSpec.feature "New pattern page" do
       before_count = Pattern.count
       within("#new_pattern") do
         fill_in "pattern_title", with: "Driftless Cardigan"
-        fill_in("pattern_designer", with: "Megan Nielsen")
+        fill_in("pattern_designer", with: "Grainline Studio")
         choose ("pattern_fabric_type_knit")
         choose("pattern_garment_category_id_#{garment_category.id}")
       end
@@ -30,10 +30,10 @@ RSpec.feature "New pattern page" do
       before_count = Pattern.count
       within("#new_pattern") do
         fill_in "pattern_title", with: "Driftless Cardigan"
-        fill_in("pattern_designer", with: "Megan Nielsen")
+        fill_in("pattern_designer", with: "Grainline Studio")
         choose ("pattern_fabric_type_knit")
         choose("pattern_garment_category_id_#{garment_category.id}")
-        fill_in "pattern_pattern_url", with: "www.megan-nielsen-patterns.com/driftless-cardigan"
+        fill_in "pattern_pattern_url", with: "www.grainline-studio.com/driftless-cardigan"
         fill_in "pattern_notes", with: "Some notes about this pattern."
       end
       click_on("Save Pattern")
