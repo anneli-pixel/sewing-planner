@@ -27,3 +27,19 @@ h1 {
     background-color: $light-gray;
   }
 }
+
+.top-margin {
+  margin-top: 0.8rem;
+}
+
+.margin-left {
+  margin-left: 0.8rem;
+}
+
+.flex-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+

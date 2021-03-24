@@ -1,5 +1,12 @@
 <h1>Your Projects</h1>
-<p> <%= link_to "Add new project", new_project_path, class: "btn-basic btn-light-blue-solid" %> </p>
+<%= render 'shared/search_form_projects' %>
+
+<div class="flex-box top-margin">
+  <h2><%= filter_name %></h2>
+  <div class="margin-left">
+    <%= "#{@projects.count} #{'result'.pluralize(@projects.count)}" %>
+  </div>
+</div>
 
 <div class="pattern-cards">
   <% @projects.each do |project| %>
@@ -20,3 +27,4 @@
     <% end %>
   <% end %>
 </div>
+
