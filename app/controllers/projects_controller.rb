@@ -6,10 +6,10 @@ class ProjectsController < ApplicationController
       pattern_search = policy_scope(Project).search_by_pattern_title_and_designer("#{params[:query]}")
       project_title_search = policy_scope(Project).search_by_title("#{params[:query]}")
       @projects = Set.new(pattern_search.to_a)+project_title_search.to_a
-    elsif params[:pattern_fabric_type_filter].present?
-      @projects = policy_scope(Project).filter_by_pattern_fabric_type("#{params[:pattern_fabric_type_filter]}")
-    elsif params[:pattern_garment_category_filter].present?
-      @projects = policy_scope(Project).filter_by_pattern_garment_category("#{params[:pattern_garment_category_filter]}")
+    elsif params[:fabric_type_filter].present?
+      @projects = policy_scope(Project).filter_by_pattern_fabric_type("#{params[:fabric_type_filter]}")
+    elsif params[:garment_category_filter].present?
+      @projects = policy_scope(Project).filter_by_pattern_garment_category("#{params[:garment_category_filter]}")
     else
       @projects = policy_scope(Project)
     end
