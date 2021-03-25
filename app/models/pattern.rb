@@ -2,7 +2,7 @@ class Pattern < ApplicationRecord
   include PgSearch::Model
 
   FABRIC_TYPES = %w(Knit Woven)
-  has_many :projects
+  has_many :projects, dependent: :destroy
   belongs_to :garment_category
   belongs_to :user
   validates :title, presence: true, uniqueness: { scope: :user_id }
