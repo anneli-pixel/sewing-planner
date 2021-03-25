@@ -6,4 +6,8 @@ class AddGarmentCategoryInstancesToDatabase < ActiveRecord::Migration[6.0]
       GarmentCategory.create(name: category)
     end
   end
+
+  def self.down
+    GarmentCategory.delete_all
+  end
 end
