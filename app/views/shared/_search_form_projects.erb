@@ -17,10 +17,10 @@
   <%= form_tag projects_path, method: :get, class: "fabric-types-form" do %>
     <% Pattern::FABRIC_TYPES.each do |type| %>
       <%= submit_tag type, name: :fabric_type_filter, :data => { disable_with: false }, id: type, class: "hidden fabric-type-selector" %>
-      <%= label_tag type, type, id: "label-"+type %>
+      <%= label_tag type, type, id: "label-"+type, class: "btn-basic" %>
     <% end %>
     <%= submit_tag "All", name: :fabric_type_filter, id: "All", value: "", class: "hidden fabric-type-selector" %>
-    <%= label_tag "All", "All", id: "label-fabric-type-all", class: "selected" %>
+    <%= label_tag "All", "All", id: "label-fabric-type-all", class: "selected btn-basic" %>
   <% end %>
 
   <%= form_tag projects_path, method: :get, class: "garment-category-form" do %>
