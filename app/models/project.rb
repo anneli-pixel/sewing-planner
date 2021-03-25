@@ -7,8 +7,8 @@ class Project < ApplicationRecord
   validates :status, inclusion: { in: STATUSES, message: "must be #{Project::STATUSES[0..-2].join(", ")} or #{Project::STATUSES.last}." }
   belongs_to :user
   belongs_to :pattern
-  has_many :shopping_items
-  has_many :fabrics
+  has_many :shopping_items, dependent: :destroy
+  has_many :fabrics, dependent: :destroy
   has_one :garment_category, through: :pattern
 
   delegate :garment_category, to: :pattern

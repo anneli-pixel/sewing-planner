@@ -3,11 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :measurements
-  has_many :fabrics
-  has_many :project_fabrics, through: :fabrics
-  has_many :projects
-  has_many :patterns
-  has_many :shopping_items
-  has_many :project_fabrics, through: :projects
+  has_many :measurements, dependent: :destroy
+  has_many :fabrics, dependent: :destroy
+  has_many :projects, dependent: :destroy
+  has_many :patterns, dependent: :destroy
+  has_many :shopping_items, dependent: :destroy
 end
