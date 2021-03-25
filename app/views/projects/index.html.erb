@@ -1,12 +1,16 @@
 <h1>Your Projects</h1>
 <%= render 'shared/search_form_projects' %>
 
-<div class="flex-box top-margin">
-  <h2><%= filter_name %></h2>
-  <div class="margin-left">
-    <%= "#{@projects.count} #{'result'.pluralize(@projects.count)}" %>
+  <div class="flex-box top-margin">
+    <% if filter_name.nil? %>
+      <h2>Projects</h2>
+    <% else %>
+      <h2><%= filter_name.capitalize %></h2>
+    <% end %>
+    <div class="margin-left">
+      <%= "#{@projects.count} #{'result'.pluralize(@projects.count)}" %>
+    </div>
   </div>
-</div>
 
 <div class="pattern-cards">
   <% @projects.each do |project| %>
