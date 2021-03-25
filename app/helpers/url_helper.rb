@@ -11,4 +11,12 @@ module UrlHelper
       session[:referrer]
     end
   end
+
+
+  def filter_name
+    unless request.query_parameters.empty?
+      filter_key = request.query_parameters.keys.first
+      request.query_parameters[filter_key]
+    end
+  end
 end

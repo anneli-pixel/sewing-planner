@@ -2,7 +2,19 @@ class ProjectsController < ApplicationController
   before_action :save_referrer, except: [:create]
 
   def index
-    @projects = policy_scope(Project)
+    if params[:query].present?
+      pattern_search = policy_scope(Project).search_by_pattern_title_and_designer("#{params[:query]}")
+      project_title_search = policy_scope(Project).search_by_title("#{params[:query]}")
+      @projects = Set.new(pattern_search.to_a)+project_title_search.to_a
+    elsif params[:fabric_type_filter].present?
+      @projects = policy_scope(Project).filter_by_pattern_fabric_type("#{params[:fabric_type_filter]}")
+    elsif params[:garment_category_filter].present?
+      @projects = policy_scope(Project).filter_by_pattern_garment_category("#{params[:garment_category_filter]}")
+    else
+      @projects = policy_scope(Project)
+    end
+
+
   end
 
   def new
@@ -59,4 +71,5 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:title, :description, :status, :size, :pattern_id, fabrics_attributes: [:title, :id, :_destroy])
   end
+
 end

@@ -1,6 +1,16 @@
 <h1>Your Patterns</h1>
 <%= render 'shared/search_form' %>
 
+<div class="flex-box top-margin">
+  <% if filter_name.nil? || filter_name == "" %>
+    <h2>Patterns</h2>
+  <% else %>
+    <h2><%= filter_name.capitalize %></h2>
+  <% end %>
+  <div class="margin-left">
+    <%= "#{@patterns.count} #{'result'.pluralize(@patterns.count)}" %>
+  </div>
+</div>
 
 <div class="pattern-cards">
   <% @patterns.each do |pattern| %>

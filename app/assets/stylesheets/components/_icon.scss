@@ -52,15 +52,14 @@ input[type="checkbox"] {
   color: $light-blue;
   border: solid;
   border-color: $light-blue;
-  border-width: 2px;
+  border-width: 1px;
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
 
   &:hover {
-    background-color: $light-blue;
-    border-color: $light-blue;
-    font-weight: bold;
-    color: $white;
+  //   background-color: $light-blue;
+     border-color: $dark-blue;
+  //   color: $white;
   }
 }
 
@@ -105,8 +104,13 @@ input[type="checkbox"] {
 .fabric-type-selector + label.selected {
   background-color: $dark-blue;
   border-color: $dark-blue;
-  font-weight: bold;
+  //font-weight: bold;
   color: $white;
+
+  &:hover {
+    background-color: $dark-blue;
+    border-color: $dark-blue;
+  }
 }
 
 // Radio Button Styling For Garment Category Collection:
