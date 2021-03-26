@@ -1,5 +1,5 @@
 <h1>Your Patterns</h1>
-<%= render 'shared/search_form_patterns' %>
+<%= render partial: 'shared/search_form', locals: { url: "/patterns", placeholder: "Search for title or designer", background_color: "grey-background" } %>
 
 <div class="flex-box top-margin">
   <% if filter_name.nil? || filter_name == "" %>

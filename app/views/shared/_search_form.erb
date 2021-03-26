@@ -1,20 +1,20 @@
-<%= form_tag projects_path, method: :get, class: "search-form" do %>
-  <%= link_to new_project_path,
+<%= form_tag url, method: :get, class: "search-form" do %>
+  <%= link_to "#{url}/new",
       class: "btn-basic btn-light-blue-solid btn-plus" do %>
       <i class="fas fa-plus"></i>
   <% end %>
 
   <%= text_field_tag :query,
       params[:query],
-      placeholder: "Search for project or pattern",
-      class: "form-control label-input-text search-bar" %>
+      placeholder: placeholder,
+      class: "form-control label-input-text #{background_color} search-bar" %>
 
   <%= submit_tag "Search",
       class: "btn-basic btn-light-blue-solid search-button" %>
 <% end %>
 
 <div class="filter-wrapper">
-  <%= form_tag projects_path, method: :get, class: "fabric-types-form" do %>
+  <%= form_tag url, method: :get, class: "fabric-types-form" do %>
     <% Pattern::FABRIC_TYPES.each do |type| %>
       <%= submit_tag type, name: :fabric_type_filter, :data => { disable_with: false }, id: type, class: "hidden fabric-type-selector" %>
       <%= label_tag type, type, id: "label-"+type, class: "btn-basic" %>
@@ -23,7 +23,7 @@
     <%= label_tag "All", "All", id: "label-fabric-type-all", class: "selected btn-basic" %>
   <% end %>
 
-  <%= form_tag projects_path, method: :get, class: "garment-category-form" do %>
+  <%= form_tag url, method: :get, class: "garment-category-form" do %>
     <% GarmentCategory.all.each do |category| %>
       <%= submit_tag category.name, name: :garment_category_filter, :data => { disable_with: false }, id: category.normalised_name, class: "hidden" %>
       <%= label_tag category.normalised_name, class: "garment-category-filter-label" do %>

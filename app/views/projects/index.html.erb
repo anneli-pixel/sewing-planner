@@ -1,5 +1,5 @@
 <h1>Your Projects</h1>
-<%= render 'shared/search_form_projects' %>
+<%= render partial: 'shared/search_form', locals: { url: "/projects", placeholder: "Search for project or pattern", background_color: "" } %>
 
 <div class="flex-box top-margin">
   <% if filter_name.nil? || filter_name == "" %>
