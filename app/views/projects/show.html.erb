@@ -17,19 +17,23 @@
 </div>
 
 <div id="flex-pattern-size-fabric"> <!-- A Flexbox for Pattern + Size + Fabrics -->
-  <div class="wrapper-pattern-show-page no-hover">
-      <div class="pattern-card show-pattern-card">
-        <div>
-          <h3><%= @project.pattern.title %></h3>
-          <p><%= @project.pattern.designer %></p>
-          <div class="fabric-type-label"><%= @project.pattern.fabric_type %></div>
+  <div class="wrapper-pattern-and-header">
+    <h3>Pattern</h3>
+    <div class="wrapper-pattern-show-page no-hover">
+        <div class="pattern-card show-pattern-card">
+          <div>
+            <h3><%= @project.pattern.title %></h3>
+            <p><%= @project.pattern.designer %></p>
+            <div class="fabric-type-label"><%= @project.pattern.fabric_type %></div>
+          </div>
+          <%= image_tag "#{@project.pattern.garment_category.image_path}", class: "garment-category-icon" %>
         </div>
-        <%= image_tag "#{@project.pattern.garment_category.image_path}", class: "garment-category-icon" %>
-      </div>
 
-      <p> <%= @project.pattern.pattern_url %></p>
-      <p> <%= @project.pattern.notes %> </p>
+        <p> <%= @project.pattern.pattern_url %></p>
+        <p> <%= @project.pattern.notes %> </p>
+    </div>
   </div>
+
 
   <div id="flex-size-fabrics"> <!-- A Flexbox for Size + Fabrics -->
     <div>
