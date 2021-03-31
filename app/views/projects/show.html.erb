@@ -5,14 +5,25 @@
     <%= image_tag "project_placeholder.jpg", class: "project_photo" %>
   </div>
 
-  <%= link_to image_tag("#{@project.status_icon_image_path}",
+  <div class="status-bar-border">
+    <%= link_to change_status_project_path(@project),
+        method: :patch,
+        class: "status-progress",
+        id: "#{@project.normalised_status}" do %>
+      <!-- <div class="status-progress" id="<%= @project.normalised_status %>"> -->
+        <span><%= @project.status %></span>
+      <!-- </div> -->
+    <% end %>
+  </div>
+
+  <%#= link_to image_tag("#{@project.status_icon_image_path}",
     class: "project-status-icon-project-show-page",
+      style: "display:none",
     id: "status-icon",
     :data => { :project_status => @project.status }),
     change_status_project_path(@project),
     method: :patch,
     id: @project.id
-    #remote: true
   %>
 </div>
 

@@ -29,4 +29,8 @@ class Project < ApplicationRecord
       "icons/completed.png"
     end
   end
+
+  def normalised_status
+    self.status.downcase.gsub(" ", "-")
+  end
 end
