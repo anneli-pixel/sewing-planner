@@ -7,24 +7,12 @@
 
   <div class="status-bar-border">
     <%= link_to change_status_project_path(@project),
-        method: :patch,
-        class: "status-progress",
-        id: "#{@project.normalised_status}" do %>
-      <!-- <div class="status-progress" id="<%= @project.normalised_status %>"> -->
+      method: :patch,
+      class: "status-progress",
+      id: "#{@project.normalised_status}" do %>
         <span><%= @project.status %></span>
-      <!-- </div> -->
     <% end %>
   </div>
-
-  <%#= link_to image_tag("#{@project.status_icon_image_path}",
-    class: "project-status-icon-project-show-page",
-      style: "display:none",
-    id: "status-icon",
-    :data => { :project_status => @project.status }),
-    change_status_project_path(@project),
-    method: :patch,
-    id: @project.id
-  %>
 </div>
 
 <div id="flex-pattern-size-fabric"> <!-- A Flexbox for Pattern + Size + Fabrics -->
