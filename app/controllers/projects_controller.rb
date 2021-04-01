@@ -62,7 +62,8 @@ class ProjectsController < ApplicationController
     index = Project::STATUSES.index(@project.status)
     @project.status = Project::STATUSES[(index+1)%Project::STATUSES.size]
     if @project.save
-      render :show
+      #render :show
+      redirect_to project_path(@project)+"##{@project.normalised_status}"
     end
   end
 
