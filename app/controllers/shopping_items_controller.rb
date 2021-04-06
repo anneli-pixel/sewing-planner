@@ -34,6 +34,8 @@ class ShoppingItemsController < ApplicationController
 
   def index
     @shopping_items = policy_scope(ShoppingItem).order(bought: :asc, name: :asc)
+    @bought_items = policy_scope(ShoppingItem).where(bought: true).order(bought: :asc, name: :asc)
+    @to_buy_items = policy_scope(ShoppingItem).where(bought: false).order(bought: :asc, name: :asc)
   end
 
   def toggle_bought
