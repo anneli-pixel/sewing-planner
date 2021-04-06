@@ -3,13 +3,13 @@ class PatternsController < ApplicationController
 
   def index
     if params[:fabric_type_filter].present?
-      @patterns = policy_scope(Pattern).filter_by_fabric_type("#{params[:fabric_type_filter]}")
+      @patterns = policy_scope(Pattern).order(garment_category_id: :asc, title: :asc).filter_by_fabric_type("#{params[:fabric_type_filter]}")
     elsif params[:garment_category_filter].present?
-      @patterns = policy_scope(Pattern).filter_by_garment_category("#{params[:garment_category_filter]}")
+      @patterns = policy_scope(Pattern).order(fabric_type: :asc, title: :asc).filter_by_garment_category("#{params[:garment_category_filter]}")
     elsif params[:query].present?
-      @patterns = policy_scope(Pattern).search_by_title_and_designer("#{params[:query]}")
+      @patterns = policy_scope(Pattern).order(garment_category_id: :asc, fabric_type: :asc, title: :asc).search_by_title_and_designer("#{params[:query]}")
     else
-      @patterns = policy_scope(Pattern).order(garment_category_id: :asc, title: :asc)
+      @patterns = policy_scope(Pattern).order(garment_category_id: :asc, fabric_type: :asc, title: :asc)
     end
   end
 

@@ -1,10 +1,30 @@
 <h1>Shopping List</h1>
-<p>
+
+<div class="flex-box top-margin">
+  <h2>To buy</h2>
+  <div class="margin-left">
+    <%= "#{@to_buy_items.count} #{'item'.pluralize(@to_buy_items.count)}" %>
+  </div>
+</div>
+
+<p class="top-margin">
   <%= link_to "Add Item", new_shopping_item_path, class: "btn-basic btn-light-blue-solid", id: "#add-item-btn" %>
 </p>
 
 <div class="shopping-list-items">
-  <% @shopping_items.each do |item| %>
+  <% @to_buy_items.each do |item| %>
+    <%= render 'shared/shopping_item', item: item %>
+  <% end %>
+</div>
+
+<div class="flex-box top-margin">
+  <h2>Bought</h2>
+  <div class="margin-left">
+    <%= "#{@bought_items.count} #{'item'.pluralize(@bought_items.count)}" %>
+  </div>
+</div>
+<div class="shopping-list-items">
+  <% @bought_items.each do |item| %>
     <%= render 'shared/shopping_item', item: item %>
   <% end %>
 </div>

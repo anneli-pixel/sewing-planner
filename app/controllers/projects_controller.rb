@@ -3,15 +3,15 @@ class ProjectsController < ApplicationController
 
   def index
     if params[:query].present?
-      pattern_search = policy_scope(Project).search_by_pattern_title_and_designer("#{params[:query]}")
-      project_title_search = policy_scope(Project).search_by_title("#{params[:query]}")
+      pattern_search = policy_scope(Project).order("projects.status DESC").search_by_pattern_title_and_designer("#{params[:query]}")
+      project_title_search = policy_scope(Project).order("projects.status DESC").search_by_title("#{params[:query]}")
       @projects = Set.new(pattern_search.to_a)+project_title_search.to_a
     elsif params[:fabric_type_filter].present?
-      @projects = policy_scope(Project).filter_by_pattern_fabric_type("#{params[:fabric_type_filter]}")
+      @projects = policy_scope(Project).order("projects.status DESC").filter_by_pattern_fabric_type("#{params[:fabric_type_filter]}")
     elsif params[:garment_category_filter].present?
-      @projects = policy_scope(Project).filter_by_pattern_garment_category("#{params[:garment_category_filter]}")
+      @projects = policy_scope(Project).order("projects.status DESC").filter_by_pattern_garment_category("#{params[:garment_category_filter]}")
     else
-      @projects = policy_scope(Project)
+      @projects = policy_scope(Project).joins(:garment_category).order("projects.status DESC").order("garment_categories.name ASC")
     end
 
 
