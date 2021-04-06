@@ -2,7 +2,11 @@
 
 <div class="relative-parent-to-status-icon"> <!-- A div for image and status icon -->
   <div>
-    <%= image_tag "project_placeholder.jpg", class: "project_photo" %>
+    <% if @project.photo.attached? %>
+      <%= cl_image_tag @project.photo.key, class: "project_photo" %>
+    <% else %>
+      <%= image_tag "project_placeholder.jpg", class: "project_photo" %>
+    <% end %>
   </div>
 
   <div class="status-bar-border">
