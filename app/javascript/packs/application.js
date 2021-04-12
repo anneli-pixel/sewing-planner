@@ -27,6 +27,7 @@ import "bootstrap";
 import { makeNavbarItemActiveOnClick } from '../components/navbar';
 import { makePatternCardClickable } from '../components/make_pattern_card_clickable';
 import { selectActiveFilter } from '../components/search_bar';
+import { fitProjectPhotoDependingOnImageRatio } from '../components/fit_project_photo_depending_on_image_ratio';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -37,4 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   makeNavbarItemActiveOnClick();
   makePatternCardClickable();
   selectActiveFilter();
+  fitProjectPhotoDependingOnImageRatio();
 });

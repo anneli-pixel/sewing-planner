@@ -1,4 +1,58 @@
 .project_photo {
   border-radius: 8px;
-  width: 100%;
+  //width: 100%;
+}
+
+@media(max-width: 991px) { // Tablet
+  .project_photo.landscape {
+    width: 72vw;
+    display: block;
+    margin: auto;
+  }
+
+  .project_photo.portrait {
+    width: 64vw;
+    display: block;
+    margin: auto;
+  }
+
+  .project_photo.square {
+    width: 64vw;
+    display: block;
+    margin: auto;
+  }
+}
+
+@media(max-width: 767px) { // Portrait + Landscape Phone
+  .project_photo.landscape {
+    width: 100%;
+  }
+
+  .project_photo.portrait {
+    width: 100%;
+  }
+
+  .project_photo.square {
+    width: 100%;
+  }
+}
+
+@media(min-width: 992px) { // Everything larger than Tablet
+  .project_photo.landscape {
+    height: 56vh;
+    margin: auto;
+    display: block;
+  }
+
+  .project_photo.portrait {
+    height: 64vh;
+    display: block;
+    margin: auto;
+  }
+
+  .project_photo.square {
+    width: 56vh;
+    display: block;
+    margin: auto;
+  }
 }
