@@ -9,6 +9,11 @@ local:
 cloudinary:
   service: Cloudinary
   folder: sewing_planner
+  transformation:
+    dpr: auto
+    responsive: true
+    width: auto
+
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
