@@ -14,6 +14,14 @@ cloudinary:
     responsive: true
     width: auto
 
+cloudinary_production:
+  service: Cloudinary
+  folder: sewing_planner_production
+  transformation:
+    dpr: auto
+    responsive: true
+    width: auto
+
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
