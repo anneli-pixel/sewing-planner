@@ -1,6 +1,42 @@
+// ----- SHARED ----
+
+.label-tag {
+  text-align: center;
+  font-family: Open Sans;
+  font-size: 0.8rem;
+  border-radius: 50rem;
+  padding: 0.2rem 0.8rem;
+  color: $white;
+  margin-right: 8px;
+}
+
+.label-tag.status-draft {
+  background-color: $dark-red;
+}
+
+.label-tag.status-in-progress {
+  background-color: $dark-yellow;
+}
+
+.label-tag.status-completed {
+  background-color: $dark-green;
+}
+
+.label-tag.fabric-type {
+  background-color: $dark-blue;
+}
+
+.label-tag.fixed-width {
+  width: 80px;
+}
+
+// ---- OTHER ----
+
 .label-title {
   font-family: Maven Pro;
   font-weight: bold;
   font-size: 12px;
   display: flex;
 }
+
+

@@ -70,7 +70,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :description, :status, :size, :pattern_id, fabrics_attributes: [:title, :id, :_destroy])
+    params.require(:project).permit(:title, :description, :status, :size, :pattern_id, :photo, fabrics_attributes: [:title, :id, :_destroy])
   end
 
 end

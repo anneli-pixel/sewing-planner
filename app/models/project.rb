@@ -10,6 +10,7 @@ class Project < ApplicationRecord
   has_many :shopping_items, dependent: :destroy
   has_many :fabrics, dependent: :destroy
   has_one :garment_category, through: :pattern
+  has_one_attached :photo, dependent: :destroy
 
   delegate :garment_category, to: :pattern
   accepts_nested_attributes_for :fabrics, reject_if: :all_blank, allow_destroy: true

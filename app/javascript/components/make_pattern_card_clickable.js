@@ -1,5 +1,5 @@
 const makePatternCardClickable = () => {
-  const patternCardContainer = document.querySelectorAll(".wrapper-pattern-show-page");
+  const patternCardContainer = document.querySelectorAll(".wrapper-pattern-card");
   patternCardContainer.forEach((patternCard) => {
     const titleLink = patternCard.firstElementChild.firstElementChild.firstElementChild;
     patternCard.addEventListener("click", () => {
