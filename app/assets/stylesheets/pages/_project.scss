@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: stretch;
 
-  .wrapper-pattern-show-page {
+  .wrapper-pattern-card {
     flex-grow: 1;
     margin-right: 1.6rem;
     margin-bottom: 0.8rem;
@@ -20,7 +20,7 @@
   #flex-pattern-size-fabric {
     flex-direction: column;
 
-    .wrapper-pattern-show-page {
+    .wrapper-pattern-card {
       margin-right: 0rem;
     }
   }

@@ -12,9 +12,9 @@
   </div>
 </div>
 
-<div class="pattern-cards">
+<div class="cards-container-shared">
   <% @patterns.each do |pattern| %>
-    <div class="wrapper-pattern-show-page">
+    <div class="wrapper-pattern-card card-shared">
 
       <div class="pattern-card" id="<%= pattern.id %>">
         <div>
@@ -22,7 +22,7 @@
           <h3><%= pattern.title %></h3>
         <% end %>
           <p><%= pattern.designer %></p>
-          <div class="fabric-type-label"><%= pattern.fabric_type %></div>
+          <div class="label-tag fabric-type fixed-width"><%= pattern.fabric_type %></div>
         </div>
         <%= image_tag "#{pattern.garment_category.image_path}", class: "garment-category-icon" %>
       </div>
