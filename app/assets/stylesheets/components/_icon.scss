@@ -165,19 +165,6 @@ input[type="checkbox"] {
   box-shadow: 0 0 0 0.2rem rgba(22, 127, 251, 0.25);
 }
 
-// Generic:
-#draft {
-  background-image: url(icons/circle-red.png);
-}
-
-#inprogress {
-  background-image: url(icons/circle-yellow.png);
-}
-
-#completed {
-  background-image: url(icons/circle-green.png);
-}
-
 // Project Index:
 .project-status-icon {
   height: 3.2rem;

@@ -21,16 +21,6 @@ class Project < ApplicationRecord
   pg_search_scope :filter_by_pattern_garment_category, associated_against: {
     garment_category: :name }
 
-  def status_icon_image_path
-    if self.status == "Draft"
-      "icons/draft.png"
-    elsif self.status == "In progress"
-      "icons/in_progress.png"
-    elsif self.status == "Completed"
-      "icons/completed.png"
-    end
-  end
-
   def normalised_status
     self.status.downcase.gsub(" ", "-")
   end
