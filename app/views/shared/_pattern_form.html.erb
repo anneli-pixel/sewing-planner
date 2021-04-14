@@ -32,6 +32,12 @@
   <%= f.input :notes,
               label_html: { class: "label-title"},
               input_html: { class: "label-input-text grey-background "} %>
+  <%= f.input :photo, as: :file,
+              label_html: { class: "label-title"},
+              input_html: { hidden: true } %>
+  <% if @pattern.photo.attached? %>
+    <span class="small-text" id="photo-file-name"><%= @pattern.photo.blob.filename %></span>
+  <% end %>
   <div class="flex-box-two-btns">
     <%= link_to "Cancel", dynamic_cancel_path(session), class:"btn-basic btn-light-blue-ghost" %>
     <%= f.submit "Save Pattern", class:"btn-basic btn-light-blue-solid" %>
