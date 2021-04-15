@@ -16,4 +16,13 @@ class Pattern < ApplicationRecord
   pg_search_scope :filter_by_garment_category, associated_against: {
     garment_category: :name }
 
+  def custom_image_tag
+    if self.photo.attached?
+      image_tag = ActionController::Base.helpers.cl_image_tag self.photo.key
+      image_tag.gsub!("<img src=", "").gsub(" />", "")
+    else
+      "no_image"
+    end
+  end
+
 end
