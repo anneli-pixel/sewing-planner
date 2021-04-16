@@ -46,6 +46,10 @@ class PatternsController < ApplicationController
 
   def update
     @pattern = Pattern.find(params[:id])
+
+    if @pattern.photo.attachment && pattern_params[:photo] # if pattern already has a photo and photo gets updated
+      @pattern.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
+    end
     if @pattern.update(pattern_params)
       redirect_to patterns_path(anchor: @pattern.id), notice: "Pattern succesfully edited."
     else
