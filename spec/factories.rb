@@ -16,6 +16,8 @@ FactoryBot.define do
     title { "Driftless Cardigan" }
     designer { "Grainline Studio" }
     fabric_type { "Knit" }
+    pattern_url { "" }
+    notes { "" }
   end
 
   factory :project do
