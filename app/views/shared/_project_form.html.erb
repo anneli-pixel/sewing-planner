@@ -33,7 +33,7 @@
                          label_html: { class: "label-title"},
                          input_html: { hidden: true } %>
   <% if @project.photo.attached? %>
-    <span class="small-text" id="project-photo-file-name"><%= @project.photo.blob.filename %></span>
+    <span class="small-text" id="photo-file-name"><%= @project.photo.blob.filename %></span>
   <% end %>
   <div class="flex-box-two-btns">
     <%= link_to "Cancel", dynamic_cancel_path(session), class:"btn-basic btn-light-blue-ghost" %>

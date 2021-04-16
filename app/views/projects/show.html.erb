@@ -4,6 +4,8 @@
   <div class="project-image-wrapper project-show-image">
     <% if @project.photo.attached? %>
       <%= cl_image_tag @project.photo.key, class: "project_photo" %>
+    <% elsif @project.pattern.photo.attached? %>
+      <%= cl_image_tag @project.pattern.photo.key, class: "project_photo" %>
     <% else %>
       <img class="placeholder-image project_photo" src="data:image/svg+xml;base64,PHN2ZyBpZD0iX3gzMV8iIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnPjxwYXRoIGQ9Im0xNy40NTMgMjRjLS4xNjggMC0uMzQtLjAyMS0uNTEtLjA2NmwtMTUuNDYzLTQuMTQxYy0xLjA2LS4yOTItMS42OTItMS4zOS0xLjQxNC0yLjQ1bDEuOTUxLTcuMjcyYy4wNzItLjI2Ny4zNDYtLjQyMi42MTItLjM1NC4yNjcuMDcxLjQyNS4zNDYuMzU0LjYxMmwtMS45NSA3LjI3Yy0uMTM5LjUzLjE3OSAxLjA4Mi43MSAxLjIyOWwxNS40NTcgNC4xMzljLjUzMS4xNCAxLjA3OS0uMTc2IDEuMjE3LS43MDRsLjc4MS0yLjg5NGMuMDcyLS4yNjcuMzQ2LS40MjYuNjEzLS4zNTMuMjY3LjA3Mi40MjQuMzQ3LjM1My42MTNsLS43OCAyLjg5Yy0uMjM1Ljg5LTEuMDQ1IDEuNDgxLTEuOTMxIDEuNDgxeiIvPjwvZz48Zz48cGF0aCBkPSJtMjIgMThoLTE2Yy0xLjEwMyAwLTItLjg5Ny0yLTJ2LTEyYzAtMS4xMDMuODk3LTIgMi0yaDE2YzEuMTAzIDAgMiAuODk3IDIgMnYxMmMwIDEuMTAzLS44OTcgMi0yIDJ6bS0xNi0xNWMtLjU1MSAwLTEgLjQ0OS0xIDF2MTJjMCAuNTUxLjQ0OSAxIDEgMWgxNmMuNTUxIDAgMS0uNDQ5IDEtMXYtMTJjMC0uNTUxLS40NDktMS0xLTF6Ii8+PC9nPjxnPjxwYXRoIGQ9Im05IDljLTEuMTAzIDAtMi0uODk3LTItMnMuODk3LTIgMi0yIDIgLjg5NyAyIDItLjg5NyAyLTIgMnptMC0zYy0uNTUxIDAtMSAuNDQ5LTEgMXMuNDQ5IDEgMSAxIDEtLjQ0OSAxLTEtLjQ0OS0xLTEtMXoiLz48L2c+PGc+PHBhdGggZD0ibTQuNTcgMTYuOTNjLS4xMjggMC0uMjU2LS4wNDktLjM1NC0uMTQ2LS4xOTUtLjE5NS0uMTk1LS41MTIgMC0uNzA3bDQuNzIzLTQuNzIzYy41NjYtLjU2NiAxLjU1NS0uNTY2IDIuMTIxIDBsMS40MDYgMS40MDYgMy44OTItNC42N2MuMjgzLS4zMzkuNjk5LS41MzYgMS4xNDItLjU0aC4wMTFjLjQzOCAwIC44NTMuMTkgMS4xMzkuNTIzbDUuMjMgNi4xMDJjLjE4LjIwOS4xNTYuNTI1LS4wNTQuNzA1LS4yMDkuMTgtLjUyNC4xNTctLjcwNS0uMDU0bC01LjIzLTYuMTAyYy0uMDk3LS4xMTItLjIzMS0uMTc0LS4zOC0uMTc0LS4xMDQtLjAwOS0uMjg3LjA2My0uMzg0LjE4bC00LjI0MyA1LjA5MWMtLjA5LjEwOC0uMjIxLjE3My0uMzYyLjE3OS0uMTQyLjAxLS4yNzctLjA0Ni0uMzc2LS4xNDZsLTEuNzkzLTEuNzkzYy0uMTg5LS4xODgtLjUxOC0uMTg4LS43MDcgMGwtNC43MjMgNC43MjNjLS4wOTcuMDk3LS4yMjUuMTQ2LS4zNTMuMTQ2eiIvPjwvZz48L3N2Zz4=" />
       <div class="placeholder-overlay"></div>
@@ -33,8 +35,12 @@
           <%= image_tag "#{@project.pattern.garment_category.image_path}", class: "garment-category-icon" %>
         </div>
 
-        <p> <%= @project.pattern.pattern_url %></p>
-        <p> <%= @project.pattern.notes %> </p>
+        <% unless @project.pattern.pattern_url.empty? %>
+          <p> <%= @project.pattern.pattern_url %></p>
+        <% end %>
+        <% unless @project.pattern.notes.empty? %>
+          <p> <%= @project.pattern.notes %> </p>
+        <% end %>
     </div>
   </div>
 

@@ -29,6 +29,7 @@ import { makePatternCardClickable } from '../components/make_pattern_card_clicka
 import { selectActiveFilter } from '../components/search_bar';
 import { fitProjectPhotoDependingOnImageRatio } from '../components/fit_project_photo_depending_on_image_ratio';
 import { styleUploadPhotoInputField } from '../components/style_upload_photo_input_field';
+import { getPhotoUrlforPattern } from '../components/get_photo_url_for_pattern';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -41,4 +42,5 @@ document.addEventListener('turbolinks:load', () => {
   selectActiveFilter();
   fitProjectPhotoDependingOnImageRatio();
   styleUploadPhotoInputField();
+  getPhotoUrlforPattern();
 });

@@ -1,14 +1,16 @@
 const styleUploadPhotoInputField = () => {
 
   const pageId = document.querySelector('body').children[1].id;
+  const pageIdsWithUploadButtons = ['projects-edit', 'projects-new', 'patterns-edit', 'patterns-new'];
 
-  if (pageId === 'projects-edit' || pageId === 'projects-new') {
-    const photoInputWrapper = document.querySelector('.project_photo');
+  if (pageIdsWithUploadButtons.includes(pageId)) {
+    const modelName = findModel(pageId);
+    const photoInputWrapper = document.querySelector(`.${modelName}_photo`);
+    const photoInput = document.getElementById(`${modelName}_photo`);
     const styledButton = document.createElement('label');
-    const photoInput = document.getElementById('project_photo');
-    const currentFileName = document.getElementById('project-photo-file-name');
+    const currentFileName = document.getElementById('photo-file-name');
 
-    addStyledUploadButton(photoInputWrapper, styledButton);
+    addStyledUploadButton(modelName, photoInputWrapper, styledButton);
 
     if (currentFileName) {
       displayCurrentFileName(photoInputWrapper, currentFileName);
@@ -18,9 +20,9 @@ const styleUploadPhotoInputField = () => {
   }
 }
 
-function addStyledUploadButton(wrapperElement, buttonElement) {
+function addStyledUploadButton(modelName, wrapperElement, buttonElement) {
   buttonElement.classList.add('file', 'optional', 'btn-basic', 'btn-light-blue-solid');
-  buttonElement.setAttribute('for', 'project_photo');
+  buttonElement.setAttribute('for', `${modelName}_photo`);
   buttonElement.innerHTML = 'Upload Photo';
   wrapperElement.appendChild(buttonElement);
 }
@@ -38,6 +40,14 @@ function displayUpdatedFileName(wrapperElement, photoInput) {
   fileName.classList.add('small-text');
   fileName.innerHTML = `${photoInput.files[0].name}`;
   wrapperElement.appendChild(fileName);
+}
+
+function findModel(pageIdentifier) {
+  if (pageIdentifier.includes('projects')) {
+    return 'project';
+  } else if (pageIdentifier.includes('patterns')) {
+    return 'pattern';
+  }
 }
 
 export { styleUploadPhotoInputField };

@@ -14,7 +14,7 @@
 
 <div class="cards-container-shared">
   <% @patterns.each do |pattern| %>
-    <div class="wrapper-pattern-card card-shared">
+    <div class="wrapper-pattern-card card-shared" data-image=<%= pattern.custom_image_tag %> >
 
       <div class="pattern-card" id="<%= pattern.id %>">
         <div>
@@ -26,7 +26,7 @@
         </div>
         <%= image_tag "#{pattern.garment_category.image_path}", class: "garment-category-icon" %>
       </div>
-
+      <span class="pattern-image-overlay"></span>
     </div>
   <% end %>
 </div>
