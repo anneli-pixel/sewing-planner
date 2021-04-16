@@ -35,8 +35,12 @@
           <%= image_tag "#{@project.pattern.garment_category.image_path}", class: "garment-category-icon" %>
         </div>
 
-        <p> <%= @project.pattern.pattern_url %></p>
-        <p> <%= @project.pattern.notes %> </p>
+        <% unless @project.pattern.pattern_url.empty? %>
+          <p> <%= @project.pattern.pattern_url %></p>
+        <% end %>
+        <% unless @project.pattern.notes.empty? %>
+          <p> <%= @project.pattern.notes %> </p>
+        <% end %>
     </div>
   </div>
 

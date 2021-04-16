@@ -144,6 +144,15 @@
   border-radius: 8px;
 }
 
+.pattern-details {
+  display: flex;
+  flex-direction: column;
+
+  * {
+    z-index: 10;
+  }
+}
+
 // Pattern Show Page:
 
 .show-pattern-card {
@@ -157,6 +166,9 @@
   border-radius: 8px;
   padding: 1.2rem;
   position: relative;
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
 
   a {
