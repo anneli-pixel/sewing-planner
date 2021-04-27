@@ -1,3 +1,13 @@
 .new_pattern {
   margin: 4px;
 }
+
+.delete-and-upload-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pattern_delete_photo > .form-check {
+  padding-left: 0;
+}

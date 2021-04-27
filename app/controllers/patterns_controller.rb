@@ -46,11 +46,10 @@ class PatternsController < ApplicationController
 
   def update
     @pattern = Pattern.find(params[:id])
-
-    if @pattern.photo.attachment && pattern_params[:photo] # if pattern already has a photo and photo gets updated
+    if (@pattern.photo.attachment && pattern_params[:photo]) || pattern_params[:delete_photo]# if pattern already has a photo and photo gets updated
       @pattern.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
     end
-    if @pattern.update(pattern_params)
+    if @pattern.update(pattern_params.except(:delete_photo))
       redirect_to patterns_path(anchor: @pattern.id), notice: "Pattern succesfully edited."
     else
       redirect_to patterns_path(anchor: @pattern.id), notice: "Something went wrong. Please try again."
@@ -61,7 +60,7 @@ class PatternsController < ApplicationController
   private
 
   def pattern_params
-    params.require(:pattern).permit(:title, :designer, :fabric_type, :pattern_url, :garment_category_id, :notes, :photo)
+    params.require(:pattern).permit(:title, :designer, :fabric_type, :pattern_url, :garment_category_id, :notes, :photo, :delete_photo)
   end
 
 end

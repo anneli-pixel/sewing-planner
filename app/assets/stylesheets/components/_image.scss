@@ -73,3 +73,16 @@
   background: $light-gray;
   opacity: 0.4
 }
+
+.flex-box.photo-wrapper {
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.image-thumbnail {
+  border-radius: 8px;
+  height: 120px;
+  width: 120px;
+  object-fit: cover;
+  margin-right: 0.8rem;
+}

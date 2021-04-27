@@ -71,3 +71,10 @@
 #label-garment-category-all {
   margin: 0;
 }
+
+input[type="checkbox"]:checked + label.delete-button {
+  border-radius: 50px;
+  box-shadow: none;
+  background-color: $dark-blue;
+  color: white;
+}
