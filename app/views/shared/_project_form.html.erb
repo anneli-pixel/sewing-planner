@@ -31,6 +31,7 @@
                          input_html: { class: "label-input-text"} %>
   <%= project_form.input :photo, as: :file,
                          label_html: { class: "label-title"},
+                         label: "Photo<span class='small-text margin-left'>(If you don't upload any image we'll use the pattern image instead.)</span>".html_safe,
                          input_html: { hidden: true } %>
 
                          <div class="flex-box photo-wrapper">
@@ -49,10 +50,6 @@
                                      label_html: { class: "btn-basic btn-light-blue-ghost delete-button" } %>
                            </div>
                        </div>
-
-  # <% if @project.photo.attached? %>
-  #   <span class="small-text" id="photo-file-name"><%= @project.photo.blob.filename %></span>
-  # <% end %>
   <div class="flex-box-two-btns">
     <%= link_to "Cancel", dynamic_cancel_path(session), class:"btn-basic btn-light-blue-ghost" %>
     <%= project_form.submit "Save Project", class:"btn-basic btn-light-blue-solid" %>
