@@ -9,7 +9,6 @@ const styleUploadPhotoInputField = () => {
     const photoInput = document.getElementById(`${modelName}_photo`);
     const styledUploadButton = document.createElement('label');
     const deleteButton = document.querySelector(`.${modelName}_delete_photo`);
-    const currentFileName = document.getElementById('photo-file-name'); // TODO: should be a different selector == the actual file
     const buttonWrapper = document.querySelector('.delete-and-upload-btns');
     const imageThumbnail = document.querySelector('.image-thumbnail');
 
@@ -24,7 +23,6 @@ const styleUploadPhotoInputField = () => {
       addStyledUploadButton(modelName, buttonWrapper, styledUploadButton, imageThumbnail);
       showOrHideDeleteButton(deleteButton, imageThumbnail);
     })
-
   }
 }
 
