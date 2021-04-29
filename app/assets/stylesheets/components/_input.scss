@@ -72,9 +72,21 @@
   margin: 0;
 }
 
+input[type="checkbox"] + label.delete-button {
+  box-shadow: none;
+  margin-left: 4px;
+  width: 100%;
+
+  &:hover {
+    background-color: white;
+    color: $light-blue;
+  }
+}
+
 input[type="checkbox"]:checked + label.delete-button {
   border-radius: 50px;
   box-shadow: none;
   background-color: $dark-blue;
   color: white;
+  border-color: $dark-blue;
 }
