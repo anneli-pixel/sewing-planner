@@ -39,6 +39,7 @@
                 <div class="flex-box photo-wrapper">
                   <% if @pattern.photo.attached? %>
                     <%= cl_image_tag(@pattern.photo.key, class: "image-thumbnail") %>
+                    <div class="thumbnail-overlay"></div>
                   <% else %>
                     <%= image_tag("", class: "image-thumbnail", style: "display:none") %>
                   <% end %>
