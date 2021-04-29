@@ -32,9 +32,27 @@
   <%= project_form.input :photo, as: :file,
                          label_html: { class: "label-title"},
                          input_html: { hidden: true } %>
-  <% if @project.photo.attached? %>
-    <span class="small-text" id="photo-file-name"><%= @project.photo.blob.filename %></span>
-  <% end %>
+
+                         <div class="flex-box photo-wrapper">
+                         <% if @project.photo.attached? %>
+                           <%= cl_image_tag(@project.photo.key, class: "image-thumbnail") %>
+                           <div class="thumbnail-overlay"></div>
+                         <% else %>
+                           <%= image_tag("", class: "image-thumbnail", style: "display:none") %>
+                           <div class="thumbnail-overlay"></div>
+                         <% end %>
+                           <div class="delete-and-upload-btns">
+                             <%= project_form.input :delete_photo,
+                                     as: :boolean,
+                                     checked_value: true,
+                                     unchecked_value: false,
+                                     label_html: { class: "btn-basic btn-light-blue-ghost delete-button" } %>
+                           </div>
+                       </div>
+
+  # <% if @project.photo.attached? %>
+  #   <span class="small-text" id="photo-file-name"><%= @project.photo.blob.filename %></span>
+  # <% end %>
   <div class="flex-box-two-btns">
     <%= link_to "Cancel", dynamic_cancel_path(session), class:"btn-basic btn-light-blue-ghost" %>
     <%= project_form.submit "Save Project", class:"btn-basic btn-light-blue-solid" %>

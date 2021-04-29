@@ -47,8 +47,19 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    if project_params[:photo] && project_params[:delete_photo]
+      cleaned_params = project_params.dup
+      cleaned_params.delete :photo
+      cleaned_params.delete :delete_photo
+    else
+      cleaned_params = project_params
+    end
 
-    if @project.update(project_params)
+    if @project.photo.attachment && cleaned_params[:photo]  || @project.photo.attachment && cleaned_params[:delete_photo]
+      @project.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
+    end
+
+    if @project.update(cleaned_params.except(:delete_photo))
       redirect_to project_path(@project), notice: "Project succesfully edited."
     else
       redirect_to project_path(@project), notice: "Something went wrong. Please try again."
@@ -70,7 +81,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :description, :status, :size, :pattern_id, :photo, fabrics_attributes: [:title, :id, :_destroy])
+    params.require(:project).permit(:title, :description, :status, :size, :pattern_id, :photo, :delete_photo, fabrics_attributes: [:title, :id, :_destroy])
   end
 
 end

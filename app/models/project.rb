@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   include PgSearch::Model
+  attr_accessor :delete_photo
 
   STATUSES = [ "Draft", "In progress", "Completed"]
   validates :title, presence: true, uniqueness: { scope: :user_id }
