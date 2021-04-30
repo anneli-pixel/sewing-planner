@@ -36,7 +36,9 @@
         </div>
 
         <% unless @project.pattern.pattern_url.empty? %>
-          <p> <%= @project.pattern.pattern_url %></p>
+          <p>
+            <%= link_to "Pattern <i class='fas fa-external-link-alt'></i>".html_safe, @project.pattern.full_pattern_url, target: "_blank" %>
+          </p>
         <% end %>
         <% unless @project.pattern.notes.empty? %>
           <p> <%= @project.pattern.notes %> </p>
