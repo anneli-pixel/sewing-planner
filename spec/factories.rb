@@ -7,7 +7,7 @@ FactoryBot.define do
   end
 
   factory :garment_category do
-    name { "Pullover/Cardigans" }
+    name { "Cardigans" }
   end
 
   factory :pattern do
