@@ -15,5 +15,10 @@ class GarmentCategory < ApplicationRecord
     self.name.downcase.gsub("/","_").gsub(" ", "_")
   end
 
+  def self.sorted_all
+    GarmentCategory.all.sort_by do |category|
+      category.name
+    end
+  end
 
 end

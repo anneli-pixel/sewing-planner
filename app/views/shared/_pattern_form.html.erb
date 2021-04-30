@@ -15,7 +15,7 @@
               collection_wrapper_class: "fabric-type-wrapper"
               %>
   <%= f.input :garment_category_id,
-              collection: GarmentCategory.all,
+              collection: GarmentCategory.sorted_all,
               value_method: :id,
               as: :radio_buttons,
               collection_wrapper_tag: "div",
