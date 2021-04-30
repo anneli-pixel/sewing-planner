@@ -8,11 +8,11 @@ class GarmentCategory < ApplicationRecord
   end
 
   def image_path
-    "icons/#{self.name.downcase.gsub("/","_")}.png"
+    "icons/#{self.name.downcase.gsub("/","_").gsub(" ", "_")}.png"
   end
 
   def normalised_name
-    self.name.downcase.gsub("/","_")
+    self.name.downcase.gsub("/","_").gsub(" ", "_")
   end
 
 
