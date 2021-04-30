@@ -26,6 +26,14 @@ class Pattern < ApplicationRecord
     end
   end
 
-
+  def full_pattern_url
+    url = self.pattern_url
+    if url.start_with?("https", "http")
+      url
+    else
+      url = "http://" + url
+    end
+    url
+  end
 
 end

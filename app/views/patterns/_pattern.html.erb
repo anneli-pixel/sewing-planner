@@ -1,6 +1,8 @@
 <div class="pattern-details">
   <% unless @pattern.pattern_url.empty? %>
-    <p><%= @pattern.pattern_url %></p>
+    <p>
+      <%= link_to "Pattern <i class='fas fa-external-link-alt'></i>".html_safe, @pattern.full_pattern_url, target: "_blank" %>
+    </p>
   <% end %>
 
   <% unless @pattern.notes.empty?  %>
