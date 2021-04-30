@@ -7,39 +7,67 @@ const styleUploadPhotoInputField = () => {
     const modelName = findModel(pageId);
     const photoInputWrapper = document.querySelector(`.${modelName}_photo`);
     const photoInput = document.getElementById(`${modelName}_photo`);
-    const styledButton = document.createElement('label');
-    const currentFileName = document.getElementById('photo-file-name');
+    const styledUploadButton = document.createElement('label');
+    const deleteButton = document.querySelector(`.${modelName}_delete_photo`);
+    const buttonWrapper = document.querySelector('.delete-and-upload-btns');
+    const imageThumbnail = document.querySelector('.image-thumbnail');
 
-    addStyledUploadButton(modelName, photoInputWrapper, styledButton);
+    addStyledUploadButton(modelName, buttonWrapper, styledUploadButton, imageThumbnail);
+    showOrHideDeleteButton(deleteButton, imageThumbnail);
 
-    if (currentFileName) {
-      displayCurrentFileName(photoInputWrapper, currentFileName);
-    }
+    photoInput.addEventListener(('change'), () => {
+      displayUpdatedThumbnail(photoInputWrapper, photoInput, imageThumbnail, event);
+    });
 
-    photoInput.addEventListener(('change'), () => displayUpdatedFileName(photoInputWrapper, photoInput));
+    imageThumbnail.addEventListener(('load'), () => {
+      addStyledUploadButton(modelName, buttonWrapper, styledUploadButton, imageThumbnail);
+      showOrHideDeleteButton(deleteButton, imageThumbnail);
+    })
   }
 }
 
-function addStyledUploadButton(modelName, wrapperElement, buttonElement) {
+function addStyledUploadButton(modelName, wrapperElement, buttonElement, thumbnail) {
   buttonElement.classList.add('file', 'optional', 'btn-basic', 'btn-light-blue-solid');
   buttonElement.setAttribute('for', `${modelName}_photo`);
-  buttonElement.innerHTML = 'Upload Photo';
+  if (imageThumbnailDoesNotExist(thumbnail)) {
+    buttonElement.innerHTML = 'Upload Photo';
+  } else {
+    buttonElement.innerHTML = 'Replace Photo';
+  };
   wrapperElement.appendChild(buttonElement);
 }
 
-function displayCurrentFileName(wrapperElement, currentFileName) {
-  wrapperElement.appendChild(currentFileName);
+function showOrHideDeleteButton(button, thumbnail) {
+  if (imageThumbnailDoesNotExist(thumbnail)) {
+    button.style.display = "none";
+  } else {
+    button.style.display = 'initial';
+  }
+
+  function imageThumbnailDoesNotExist(thumbnail) {
+    if (window.getComputedStyle(thumbnail).display === 'none') {
+      return true
+    }
+  }
 }
 
-function displayUpdatedFileName(wrapperElement, photoInput) {
-  if (wrapperElement.lastElementChild.tagName === 'SPAN') {
-    wrapperElement.removeChild(wrapperElement.lastElementChild);
-  };
+function displayUpdatedThumbnail(wrapperElement, photoInput, thumbnail, event) {
+  const files = event.target.files;
+  const image = files[0];
+  const reader = new FileReader();
+  reader.onload = function(file) {
+    const img = new Image();
+    img.src = file.target.result;
+    thumbnail.setAttribute('src', img.src);
+    thumbnail.style.display = "initial";
+  }
+  reader.readAsDataURL(image);
+}
 
-  const fileName = document.createElement('span');
-  fileName.classList.add('small-text');
-  fileName.innerHTML = `${photoInput.files[0].name}`;
-  wrapperElement.appendChild(fileName);
+function imageThumbnailDoesNotExist(thumbnail) {
+  if (window.getComputedStyle(thumbnail).display === 'none') {
+    return true
+  }
 }
 
 function findModel(pageIdentifier) {

@@ -1,5 +1,6 @@
 class Pattern < ApplicationRecord
   include PgSearch::Model
+  attr_accessor :delete_photo
 
   FABRIC_TYPES = %w(Knit Woven)
   has_many :projects, dependent: :destroy
@@ -24,5 +25,7 @@ class Pattern < ApplicationRecord
       "no_image"
     end
   end
+
+
 
 end

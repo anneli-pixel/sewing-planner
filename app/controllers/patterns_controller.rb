@@ -19,9 +19,11 @@ class PatternsController < ApplicationController
   end
 
   def create
-    @pattern = Pattern.new(pattern_params)
+    cleaned_params = clean(pattern_params)
+    @pattern = Pattern.new(cleaned_params)
     authorize @pattern
     @pattern.user = current_user
+
     if @pattern.save
       redirect_to patterns_path+"##{@pattern.id.to_s}", notice: "Pattern successfully created."
     else
@@ -36,7 +38,6 @@ class PatternsController < ApplicationController
     respond_to do |format|
        format.js
      end
-
   end
 
   def edit
@@ -46,7 +47,13 @@ class PatternsController < ApplicationController
 
   def update
     @pattern = Pattern.find(params[:id])
-    if @pattern.update(pattern_params)
+    cleaned_params = clean(pattern_params)
+
+    if @pattern.photo.attachment && cleaned_params[:photo] || @pattern.photo.attachment && cleaned_params[:delete_photo]
+      @pattern.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
+    end
+
+    if @pattern.update(cleaned_params.except(:delete_photo))
       redirect_to patterns_path(anchor: @pattern.id), notice: "Pattern succesfully edited."
     else
       redirect_to patterns_path(anchor: @pattern.id), notice: "Something went wrong. Please try again."
@@ -57,7 +64,17 @@ class PatternsController < ApplicationController
   private
 
   def pattern_params
-    params.require(:pattern).permit(:title, :designer, :fabric_type, :pattern_url, :garment_category_id, :notes, :photo)
+    params.require(:pattern).permit(:title, :designer, :fabric_type, :pattern_url, :garment_category_id, :notes, :photo, :delete_photo)
   end
 
+  def clean(params)
+    if params[:photo] && params[:delete_photo]
+      cleaned_params = params.dup
+      cleaned_params.delete :photo
+      cleaned_params.delete :delete_photo
+    else
+      cleaned_params = params
+    end
+    cleaned_params
+  end
 end
