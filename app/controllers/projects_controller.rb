@@ -13,8 +13,6 @@ class ProjectsController < ApplicationController
     else
       @projects = policy_scope(Project).joins(:garment_category).order("projects.status DESC").order("garment_categories.name ASC")
     end
-
-
   end
 
   def new
@@ -49,13 +47,6 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     cleaned_params = clean(pattern_params)
-    # if project_params[:photo] && project_params[:delete_photo]
-    #   cleaned_params = project_params.dup
-    #   cleaned_params.delete :photo
-    #   cleaned_params.delete :delete_photo
-    # else
-    #   cleaned_params = project_params
-    # end
 
     if @project.photo.attachment && cleaned_params[:photo]  || @project.photo.attachment && cleaned_params[:delete_photo]
       @project.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
@@ -96,5 +87,4 @@ class ProjectsController < ApplicationController
     end
     cleaned_params
   end
-
 end
