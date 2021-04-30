@@ -24,7 +24,8 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    cleaned_params = clean(project_params)
+    @project = Project.new(cleaned_params)
     @project.user = current_user
     authorize @project
 
@@ -47,13 +48,14 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    if project_params[:photo] && project_params[:delete_photo]
-      cleaned_params = project_params.dup
-      cleaned_params.delete :photo
-      cleaned_params.delete :delete_photo
-    else
-      cleaned_params = project_params
-    end
+    cleaned_params = clean(pattern_params)
+    # if project_params[:photo] && project_params[:delete_photo]
+    #   cleaned_params = project_params.dup
+    #   cleaned_params.delete :photo
+    #   cleaned_params.delete :delete_photo
+    # else
+    #   cleaned_params = project_params
+    # end
 
     if @project.photo.attachment && cleaned_params[:photo]  || @project.photo.attachment && cleaned_params[:delete_photo]
       @project.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
@@ -82,6 +84,17 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title, :description, :status, :size, :pattern_id, :photo, :delete_photo, fabrics_attributes: [:title, :id, :_destroy])
+  end
+
+  def clean(params)
+    if project_params[:photo] && project_params[:delete_photo]
+      cleaned_params = project_params.dup
+      cleaned_params.delete :photo
+      cleaned_params.delete :delete_photo
+    else
+      cleaned_params = project_params
+    end
+    cleaned_params
   end
 
 end
