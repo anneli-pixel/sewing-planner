@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    cleaned_params = clean(pattern_params)
+    cleaned_params = clean(project_params)
 
     if @project.photo.attachment && cleaned_params[:photo]  || @project.photo.attachment && cleaned_params[:delete_photo]
       @project.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
