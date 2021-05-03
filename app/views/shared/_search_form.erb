@@ -29,8 +29,11 @@
     <%= form_tag url, method: :get, class: "garment-category-form" do %>
       <% GarmentCategory.sorted_all.each do |category| %>
         <%= submit_tag category.name, name: :garment_category_filter, :data => { disable_with: false }, id: category.normalised_name, class: "hidden" %>
-        <%= label_tag category.normalised_name, class: "garment-category-filter-label" do %>
-          <%= category.image %>
+        <%= label_tag category.normalised_name, class: "garment-category-filter-label flip-card" do %>
+          <div class="flip-card-inner">
+            <%= category.image("flip-card-front") %>
+            <div class="garment-category-name flip-card-back small-text"><%= category.name %></div>
+          </div>
         <% end %>
       <% end %>
       <%= submit_tag "All", name: :garment_category_filter, id: "all", value: "", class: "hidden fabric-type-selector" %>
