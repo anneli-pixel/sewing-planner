@@ -31,7 +31,7 @@ import { fitProjectPhotoDependingOnImageRatio } from '../components/fit_project_
 import { styleUploadPhotoInputField } from '../components/style_upload_photo_input_field';
 import { getPhotoUrlforPattern } from '../components/get_photo_url_for_pattern';
 import { thumbnailOverlayForDelete } from '../components/thumbnail-overlay-for-delete';
-
+import { addFlipCardClassesForGarmentCategoryIcon } from '../components/flip_card_garment_category_icon';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -45,4 +45,5 @@ document.addEventListener('turbolinks:load', () => {
   styleUploadPhotoInputField();
   getPhotoUrlforPattern();
   thumbnailOverlayForDelete();
+  addFlipCardClassesForGarmentCategoryIcon();
 });
