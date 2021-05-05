@@ -24,7 +24,7 @@
           <p><%= pattern.designer %></p>
           <div class="label-tag fabric-type fixed-width"><%= pattern.fabric_type %></div>
         </div>
-        <%= image_tag "#{pattern.garment_category.image_path}", class: "garment-category-icon" %>
+        <%= image_tag "#{pattern.garment_category.image_path}", class: "garment-category-icon", id: "#{pattern.garment_category.normalised_name}" %>
       </div>
       <span class="pattern-image-overlay"></span>
     </div>
