@@ -119,12 +119,13 @@ input[type="checkbox"] {
   .category-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 8px;
+    gap: 0.8rem;
+    justify-items: center;
   }
 
   .category-selector + label {
     height: 100%;
-    width: 100%;
+    width: 4.8rem;
   }
 }
 
@@ -132,12 +133,13 @@ input[type="checkbox"] {
   .category-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 8px;
+    gap: 0.8rem;
+    justify-items: center;
   }
 
   .category-selector + label {
     height: 100%;
-    width: 100%;
+    width: 4.8rem;
   }
 
 }
@@ -199,8 +201,37 @@ input[type="checkbox"] {
   }
 }
 
+// Flip Card for Garment Category on Pattern Form
 
+.flip-card {
+  height: 4.8rem;
+  perspective: 1000px;
+}
 
+.flip-card-inner {
+  position: relative;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
 
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
 
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  top: 0;
+  left: 0;
+  padding: 0.4rem;
+}
 
+.flip-card-back {
+   color: black;
+   transform: rotateY(180deg);
+   width: 100%;
+}
