@@ -35,4 +35,8 @@ class Pattern < ApplicationRecord
     end
     url
   end
+
+  def photo_in_database?
+    ActiveStorage::Attachment.find_by(record_id: self.id)
+  end
 end
