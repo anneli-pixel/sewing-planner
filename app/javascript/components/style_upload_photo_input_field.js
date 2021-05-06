@@ -1,7 +1,7 @@
 const styleUploadPhotoInputField = () => {
 
   const pageId = document.querySelector('body').children[1].id;
-  const pageIdsWithUploadButtons = ['projects-edit', 'projects-new', 'patterns-edit', 'patterns-new'];
+  const pageIdsWithUploadButtons = ['projects-edit', 'projects-new', 'projects-create', 'projects-update', 'patterns-edit', 'patterns-new', 'patterns-create', 'patterns-update' ];
 
   if (pageIdsWithUploadButtons.includes(pageId)) {
     const modelName = findModel(pageId);

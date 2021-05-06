@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :save_referrer, except: [:create, :update]
+  before_action :save_referrer, except: [:create, :update, :edit]
 
   def index
     if params[:query].present?
