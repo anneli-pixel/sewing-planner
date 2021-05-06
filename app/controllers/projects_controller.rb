@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :save_referrer, except: [:create]
+  before_action :save_referrer, except: [:create, :update]
 
   def index
     if params[:query].present?
@@ -55,7 +55,8 @@ class ProjectsController < ApplicationController
     if @project.update(cleaned_params.except(:delete_photo))
       redirect_to project_path(@project), notice: "Project succesfully edited."
     else
-      redirect_to project_path(@project), notice: "Something went wrong. Please try again."
+      render :edit
+      #redirect_to project_path(@project), notice: "Something went wrong. Please try again."
     end
     authorize @project
   end
