@@ -25,4 +25,8 @@ class Project < ApplicationRecord
   def normalised_status
     self.status.downcase.gsub(" ", "-")
   end
+
+  def photo_in_database?
+    ActiveStorage::Attachment.find_by(record_id: self.id)
+  end
 end

@@ -37,7 +37,7 @@
               label_html: { class: "label-title"},
               input_html: { hidden: true } %>
                 <div class="flex-box photo-wrapper">
-                  <% if @pattern.photo.attached? %>
+                  <% if @pattern.photo_in_database? %>
                     <%= cl_image_tag(photo_key_from_database(@pattern), class: 'image-thumbnail') %>
                     <div class="thumbnail-overlay"></div>
                   <% else %>
