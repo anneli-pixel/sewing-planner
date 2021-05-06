@@ -22,7 +22,15 @@
   .error-page {
     padding: 8rem;
     margin: auto;
-    width: 50%;
+    width: 50vw;
+  }
+
+  @media(max-width: 767px) { /* Portrait + Landscape Phone */
+    .error-page {
+      margin: auto;
+      width: 88vw;
+      padding: 4rem 1rem;
+    }
   }
 
   h1 {
