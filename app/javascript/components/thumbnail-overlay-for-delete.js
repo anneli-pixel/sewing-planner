@@ -1,7 +1,7 @@
 const thumbnailOverlayForDelete = () => {
 
   const pageId = document.querySelector('body').children[1].id;
-  const pageIdsWithThumbnails = ['projects-edit', 'projects-new', 'patterns-edit', 'patterns-new'];
+  const pageIdsWithThumbnails = ['projects-edit', 'projects-new', 'projects-create', 'patterns-edit', 'patterns-new', 'patterns-create'];
 
   if (pageIdsWithThumbnails.includes(pageId)) {
     const thumbnailOverlay = document.querySelector('.thumbnail-overlay');

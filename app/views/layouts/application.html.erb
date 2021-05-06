@@ -12,12 +12,10 @@
   </head>
 
   <body>
-
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <div class="container page-container" id="<%= controller_name %>-<%= action_name %>">
       <%= yield %>
     </div>
-
   </body>
 </html>

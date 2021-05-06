@@ -1,6 +1,6 @@
 const addFlipCardClassesForGarmentCategoryIcon = () => {
   const pageId = document.querySelector('body').children[1].id;
-  const pageIdsWithFlipCards = ['patterns-edit', 'patterns-new'];
+  const pageIdsWithFlipCards = ['patterns-edit', 'patterns-new', 'patterns-create', 'patterns-update'];
 
   if (pageIdsWithFlipCards.includes(pageId)) {
     const flipCards = document.querySelectorAll(".category-item");

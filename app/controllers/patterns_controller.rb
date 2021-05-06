@@ -1,5 +1,5 @@
 class PatternsController < ApplicationController
-  before_action :save_referrer, except: [:create]
+  before_action :save_referrer, except: [:create, :update]
 
   def index
     if params[:fabric_type_filter].present?
@@ -48,15 +48,21 @@ class PatternsController < ApplicationController
   def update
     @pattern = Pattern.find(params[:id])
     cleaned_params = clean(pattern_params)
+    @pattern.assign_attributes(cleaned_params) # need to validate the changes first (before saving to the database) otherwise the photo gets deleted/updated even if the form validation fails.
 
-    if @pattern.photo.attachment && cleaned_params[:photo] || @pattern.photo.attachment && cleaned_params[:delete_photo]
-      @pattern.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
+    if @pattern.valid?
+      @pattern.restore_attributes
+
+      if @pattern.photo.attachment && cleaned_params[:photo] || @pattern.photo.attachment && cleaned_params[:delete_photo]
+        @pattern.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
+      end
     end
 
     if @pattern.update(cleaned_params.except(:delete_photo))
       redirect_to patterns_path(anchor: @pattern.id), notice: "Pattern succesfully edited."
     else
-      redirect_to patterns_path(anchor: @pattern.id), notice: "Something went wrong. Please try again."
+      render :edit
+      #redirect_to patterns_path(anchor: @pattern.id), notice: "Something went wrong. Please try again."
     end
     authorize @pattern
   end
