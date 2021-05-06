@@ -47,9 +47,14 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     cleaned_params = clean(project_params)
+    @project.assign_attributes(cleaned_params) # see pattern controller for why this is needed.
 
-    if @project.photo.attachment && cleaned_params[:photo]  || @project.photo.attachment && cleaned_params[:delete_photo]
-      @project.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
+    if @project.valid?
+      @project.restore_attributes
+
+      if @project.photo.attachment && cleaned_params[:photo]  || @project.photo.attachment && cleaned_params[:delete_photo]
+        @project.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
+      end
     end
 
     if @project.update(cleaned_params.except(:delete_photo))

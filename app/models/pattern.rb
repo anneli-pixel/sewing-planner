@@ -35,5 +35,4 @@ class Pattern < ApplicationRecord
     end
     url
   end
-
 end
