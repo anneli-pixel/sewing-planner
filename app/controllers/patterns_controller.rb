@@ -74,7 +74,7 @@ class PatternsController < ApplicationController
   private
 
   def pattern_params
-    params.require(:pattern).permit(:title, :designer, :fabric_type, :pattern_url, :garment_category_id, :notes, :photo, :delete_photo)
+    params.require(:pattern).permit(:title, :designer, :fabric_type, :pattern_url, :garment_category_id, :notes, :photo, :delete_photo, :purchased)
   end
 
   def clean(params)

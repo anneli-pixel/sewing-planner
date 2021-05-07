@@ -28,18 +28,35 @@
     <div class="wrapper-pattern-card no-hover">
         <div class="pattern-card show-pattern-card">
           <div>
-            <h3><%= @project.pattern.title %></h3>
+            <%= link_to patterns_path+"##{@project.pattern.id}" do %>
+              <h3><%= @project.pattern.title %></h3>
+            <% end %>
             <p><%= @project.pattern.designer %></p>
             <div class="label-tag fabric-type fixed-width"><%= @project.pattern.fabric_type %></div>
           </div>
           <%= image_tag "#{@project.pattern.garment_category.image_path}", class: "garment-category-icon" %>
         </div>
 
-        <% unless @project.pattern.pattern_url.empty? %>
-          <p>
-            <%= link_to "Pattern <i class='fas fa-external-link-alt'></i>".html_safe, @project.pattern.full_pattern_url, target: "_blank" %>
-          </p>
-        <% end %>
+        <p>
+          <% if @project.pattern.purchased %>
+            <% if @project.pattern.pattern_url.empty? %>
+              <i class="fas fa-check-circle yellow-font bigger"></i>
+              You own this pattern. Add a pattern url to remember where you bought it.
+            <% else %>
+              <i class="fas fa-check-circle green-font bigger"></i>
+              You own this pattern and bought it <%= link_to "here", @project.pattern.full_pattern_url, target: "_blank" %>.
+            <% end %>
+          <% else %>
+            <% if @project.pattern.pattern_url.empty? %>
+              <i class="fa fa-frown red-font bigger"></i>
+              You don't own this pattern yet. Add a pattern url to remember where you can buy it.
+            <% else %>
+              <i class="fas fa-shopping-basket yellow-font bigger"></i>
+              You don't own this pattern yet. Buy it <%= link_to "here", @project.pattern.full_pattern_url, target: "_blank" %>.
+            <% end %>
+          <% end %>
+        </p>
+
         <% unless @project.pattern.notes.empty? %>
           <p> <%= @project.pattern.notes %> </p>
         <% end %>

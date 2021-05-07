@@ -29,6 +29,13 @@
   <%= f.input :pattern_url,
               label_html: { class: "label-title"},
               input_html: { class: "label-input-text grey-background "} %>
+  <%= f.input :purchased,
+              as: :radio_buttons,
+              label: "Purchased?",
+              label_html: { class: "label-title"},
+              wrapper: :vertical_collection_inline,
+              wrapper_html: { class: "label-input-text white-background "}
+  %>
   <%= f.input :notes,
               label_html: { class: "label-title"},
               input_html: { class: "label-input-text grey-background "} %>

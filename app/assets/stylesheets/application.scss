@@ -28,6 +28,10 @@ h1 {
   }
 }
 
+.white-background {
+  background-color: white;
+}
+
 .top-margin {
   margin-top: 0.8rem;
 }
@@ -46,4 +50,18 @@ h1 {
   color: white !important;
 }
 
+.green-font {
+  color: $dark-green;
+}
 
+.yellow-font {
+  color: $yellow;
+}
+
+.red-font {
+  color: $dark-red;
+}
+
+.bigger {
+  font-size: 1.2rem;
+}
