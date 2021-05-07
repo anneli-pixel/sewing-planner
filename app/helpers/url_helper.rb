@@ -22,6 +22,6 @@ module UrlHelper
 
   def photo_key_from_database(model)
     # if the user wanted to update the image but the form validation failed the pattern/project will still get a new attachment/blob that's not yet saved to the database. As there is no image allocated to that blob/attachment on Cloudinary the image thumbnail breaks. That's why the actual key from the database (not from memory) needs to be pulled here:
-    ActiveStorage::Attachment.find_by(record_id: model.id).blob.key
+    ActiveStorage::Attachment.find_by(record_id: model.id, record_type: model.class.name).blob.key
   end
 end

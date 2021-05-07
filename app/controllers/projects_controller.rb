@@ -52,14 +52,17 @@ class ProjectsController < ApplicationController
     if @project.valid?
       @project.restore_attributes
 
-      if @project.photo.attachment && cleaned_params[:photo]  || @project.photo.attachment && cleaned_params[:delete_photo]
-        @project.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
+      attached_photo_in_database = ActiveStorage::Attachment.find_by(record_id: @project.id, record_type: @project.class.name)
+
+      if attached_photo_in_database && cleaned_params[:photo]  || attached_photo_in_database && cleaned_params[:delete_photo]
+        attached_photo_in_database.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
       end
     end
 
     if @project.update(cleaned_params.except(:delete_photo))
       redirect_to project_path(@project), notice: "Project succesfully edited."
     else
+      # TODO reload the photo from the database so it's up-to-date (how?) which would replace the photo_key_from_database and photo_in_database? methods I use in the project form view
       render :edit
       #redirect_to project_path(@project), notice: "Something went wrong. Please try again."
     end
