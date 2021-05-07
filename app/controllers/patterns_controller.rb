@@ -53,14 +53,18 @@ class PatternsController < ApplicationController
     if @pattern.valid?
       @pattern.restore_attributes
 
-      if @pattern.photo.attachment && cleaned_params[:photo] || @pattern.photo.attachment && cleaned_params[:delete_photo]
-        @pattern.photo.attachment.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
+      attached_photo_in_database = ActiveStorage::Attachment.find_by(record_id: @pattern.id, record_type: @pattern.class.name)
+
+      if attached_photo_in_database && cleaned_params[:photo] || attached_photo_in_database && cleaned_params[:delete_photo]
+        attached_photo_in_database.purge # purge the old attachment (will also delete the blob and the image on cloudinary)
       end
     end
 
     if @pattern.update(cleaned_params.except(:delete_photo))
       redirect_to patterns_path(anchor: @pattern.id), notice: "Pattern succesfully edited."
     else
+      # TODO reload the photo from the database so it's up-to-date (how?) which would replace the photo_key_from_database and photo_in_database? methods I use in the pattern form view
+
       render :edit
       #redirect_to patterns_path(anchor: @pattern.id), notice: "Something went wrong. Please try again."
     end
