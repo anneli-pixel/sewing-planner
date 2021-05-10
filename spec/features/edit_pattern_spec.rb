@@ -76,4 +76,11 @@ RSpec.feature "Edit pattern page" do
     # TODO How can I test this? Notes do not appear on the index page. 
   end
 
+  it "can be purchased" do
+    within("#edit_pattern_#{pattern.id}") do
+      page.choose("pattern_purchased_true")
+    end
+    click_on("Save Pattern")
+    expect(Pattern.last.purchased).to eq(true)
+  end
 end
