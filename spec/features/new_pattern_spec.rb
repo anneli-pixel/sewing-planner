@@ -34,6 +34,7 @@ RSpec.feature "New pattern page" do
         choose ("pattern_fabric_type_knit")
         choose("pattern_garment_category_id_#{garment_category.id}")
         fill_in "pattern_pattern_url", with: "www.grainline-studio.com/driftless-cardigan"
+        page.choose("pattern_purchased_true")
         fill_in "pattern_notes", with: "Some notes about this pattern."
       end
       click_on("Save Pattern")
