@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :patterns, only: [:new, :create, :show, :index, :edit, :update]
 
-  resources :shopping_items, only: [:new, :create, :index] do
+  resources :shopping_items, only: [:new, :create, :index, :destroy ] do
     patch "toggle_bought", on: :member
   end
 end

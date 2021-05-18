@@ -22,6 +22,12 @@ input[type="checkbox"] {
   line-height: 1.5;
 }
 
+// Additional Styling Delete Shopping Item
+
+.delete-icon.black-font:hover {
+  color: $dark-red;
+}
+
 // Radio Button Styling for Fabric Types Collection:
 
 .fabric-type-wrapper {

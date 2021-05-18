@@ -12,4 +12,8 @@ class ShoppingItemPolicy < ApplicationPolicy
   def toggle_bought?
     record.user = user
   end
+
+  def destroy?
+    record.user = user
+  end
 end
