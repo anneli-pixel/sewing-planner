@@ -80,6 +80,19 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def destroy
+    @project = Project.find(params[:id])
+    authorize @project
+    if @project.destroy
+      unless !@project.photo.attached?
+        @project.photo.purge
+      end
+      redirect_to projects_path, notice: "Project deleted."
+    else
+      redirect_to projects_path, notice: "Something went wrong. Please try again."
+    end
+  end
+
   private
 
   def project_params

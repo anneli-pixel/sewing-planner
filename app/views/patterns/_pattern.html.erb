@@ -6,7 +6,7 @@
         You own this pattern. Add a pattern url to remember where you bought it.
       <% else %>
         <i class="fas fa-check-circle green-font bigger"></i>
-        You own this pattern and bought it <%= link_to "here", @pattern.full_pattern_url, target: "_blank" %>.
+        You own this pattern and bought it <%= link_to "here", @pattern.full_pattern_url, target: "_blank", class: "pattern-url-link" %>.
       <% end %>
     <% else %>
       <% if @pattern.pattern_url.empty? %>
@@ -14,7 +14,7 @@
         You don't own this pattern yet. Add a pattern url to remember where you can buy it.
       <% else %>
         <i class="fas fa-shopping-basket yellow-font bigger"></i>
-        You don't own this pattern yet. Buy it <%= link_to "here", @pattern.full_pattern_url, target: "_blank" %>.
+        You don't own this pattern yet. Buy it <%= link_to "here", @pattern.full_pattern_url, target: "_blank", class: "pattern-url-link" %>.
       <% end %>
     <% end %>
   </p>
@@ -24,8 +24,12 @@
   <% end %>
 
   <div class="flex-box-three-btns">
-    <%#= link_to "Close", patterns_path+"##{@pattern.id}", class:"btn-basic btn-light-blue-ghost grey-background" %>
-    <%= link_to "Edit", edit_pattern_path(@pattern), class: "btn-basic btn-light-blue-ghost" %>
     <%= link_to "Start Project", new_project_path(pattern_id: @pattern.id), class: "btn-basic btn-light-blue-ghost" %>
-  </div>
+    <%= link_to "Edit", edit_pattern_path(@pattern), class: "btn-basic btn-light-blue-ghost" %>
+    <%= link_to "<i class='far fa-trash-alt'></i>".html_safe,
+      pattern_path(@pattern),
+      method: :delete,
+      data: { confirm: pattern_delete_confirm_message(@pattern) },
+      class: "delete-icon black-font" %>
+      </div>
 </div>

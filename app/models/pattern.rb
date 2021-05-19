@@ -1,4 +1,5 @@
 class Pattern < ApplicationRecord
+  before_destroy :purge_project_images
   include PgSearch::Model
   attr_accessor :delete_photo
 
@@ -34,5 +35,24 @@ class Pattern < ApplicationRecord
       url = "http://" + url
     end
     url
+  end
+
+  def shopping_items
+    projects = self.projects
+    shopping_items = []
+    projects.each do |project|
+      shopping_items << project.shopping_items
+    end
+    shopping_items.flatten
+  end
+
+  private
+
+  def purge_project_images
+    self.projects.each do |project|
+      unless !project.photo.attached?
+        project.photo.purge
+      end
+    end
   end
 end

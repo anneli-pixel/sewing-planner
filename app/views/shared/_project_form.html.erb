@@ -3,7 +3,7 @@
                          label_html: { class: "label-title"},
                          input_html: { class: "label-input-text"}%>
   <%= project_form.association :pattern,
-                               collection: current_user.patterns,
+                               collection: current_user.patterns.order(title: :asc),
                                label_html: { class: "label-title"},
                                input_html: { class: "label-input-text"} %>
   <%= project_form.simple_fields_for :fabrics do |fabric_form| %>

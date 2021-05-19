@@ -45,6 +45,13 @@ class ShoppingItemsController < ApplicationController
     redirect_to request.referer + @shopping_item.anchor
   end
 
+  def destroy
+    @shopping_item = ShoppingItem.find(params[:id])
+    authorize @shopping_item
+    @shopping_item.destroy
+    redirect_to shopping_items_path
+  end
+
   private
 
   def shopping_item_params

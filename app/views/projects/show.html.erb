@@ -12,6 +12,7 @@
     <% end %>
   </div>
 
+  <div class="bar-and-delete-icon-wrapper">
   <div class="status-bar-border">
     <%= link_to change_status_project_path(@project),
       method: :patch,
@@ -19,6 +20,12 @@
       id: "#{@project.normalised_status}" do %>
         <span><%= @project.status %></span>
     <% end %>
+  </div>
+  <%= link_to "<i class='far fa-trash-alt'></i>".html_safe,
+    project_path(@project),
+    method: :delete,
+    data: { confirm: "Are you sure you want to delete this project?"},
+    class: "delete-icon black-font" %>
   </div>
 </div>
 
@@ -44,7 +51,7 @@
               You own this pattern. Add a pattern url to remember where you bought it.
             <% else %>
               <i class="fas fa-check-circle green-font bigger"></i>
-              You own this pattern and bought it <%= link_to "here", @project.pattern.full_pattern_url, target: "_blank" %>.
+              You own this pattern and bought it <%= link_to "here", @project.pattern.full_pattern_url, target: "_blank", class: "pattern-url-link" %>.
             <% end %>
           <% else %>
             <% if @project.pattern.pattern_url.empty? %>
@@ -52,7 +59,7 @@
               You don't own this pattern yet. Add a pattern url to remember where you can buy it.
             <% else %>
               <i class="fas fa-shopping-basket yellow-font bigger"></i>
-              You don't own this pattern yet. Buy it <%= link_to "here", @project.pattern.full_pattern_url, target: "_blank" %>.
+              You don't own this pattern yet. Buy it <%= link_to "here", @project.pattern.full_pattern_url, target: "_blank", class: "pattern-url-link" %>.
             <% end %>
           <% end %>
         </p>

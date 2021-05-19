@@ -71,6 +71,21 @@ class PatternsController < ApplicationController
     authorize @pattern
   end
 
+  def destroy
+    @pattern = Pattern.find(params[:id])
+    project_count = @pattern.projects.count
+    shopping_item_count = @pattern.shopping_items.count
+    authorize @pattern
+    if @pattern.destroy
+      unless !@pattern.photo.attached?
+        @pattern.photo.purge
+      end
+      redirect_to patterns_path, notice: pattern_delete_success_message(project_count, shopping_item_count)
+    else
+      redirect_to patterns_path, notice: "Something went wrong. Please try again."
+    end
+  end
+
   private
 
   def pattern_params
@@ -86,5 +101,13 @@ class PatternsController < ApplicationController
       cleaned_params = params
     end
     cleaned_params
+  end
+
+  def pattern_delete_success_message(project_count, shopping_item_count)
+    if project_count == 0
+        "Pattern deleted."
+    else
+      "Pattern, #{project_count} #{'project'.pluralize(project_count)} and #{shopping_item_count} #{'shopping item'.pluralize(shopping_item_count)} deleted."
+    end
   end
 end
