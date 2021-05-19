@@ -6,6 +6,7 @@
   margin: 0.8rem 0 1.6rem 0;
   box-sizing: border-box;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  flex-grow: 1;
 }
 
 .status-progress {
@@ -98,5 +99,16 @@
     span {
       display: none;
     }
+  }
+}
+
+// Styling for progress bar including delete icon
+
+.bar-and-delete-icon-wrapper {
+  display: flex;
+  align-items: baseline;
+
+  .delete-icon.black-font {
+    flex-shrink: 0;
   }
 }
