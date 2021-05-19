@@ -1,2 +1,32 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Welcome!</h1>
+
+<div class="home-flex-container" >
+
+  <div class="home-category-card-wrapper">
+    <div class="home-category-card-left" >
+      <h2>Projects</h2>
+      <%= link_to "Add new", new_project_path, class: "btn-basic btn-light-blue-ghost" %>
+      <%= link_to "See all", projects_path, class: "btn-basic btn-light-blue-ghost" %>
+    </div>
+    <%= image_tag "icons/010-sewing-machine.png", class: "home-category-card-right" %>
+  </div>
+
+  <div class="home-category-card-wrapper">
+    <div class="home-category-card-left" >
+      <h2>Patterns</h2>
+      <%= link_to "Add new", new_pattern_path, class: "btn-basic btn-light-blue-ghost" %>
+      <%= link_to "See all", patterns_path, class: "btn-basic btn-light-blue-ghost" %>
+    </div>
+    <%= image_tag "icons/008-pattern.png", class: "home-category-card-right" %>
+  </div>
+
+  <div class="home-category-card-wrapper">
+    <div class="home-category-card-left" >
+      <h2>Shopping List</h2>
+      <%= link_to "Add new", new_shopping_item_path, class: "btn-basic btn-light-blue-ghost" %>
+      <%= link_to "See all", shopping_items_path, class: "btn-basic btn-light-blue-ghost" %>
+    </div>
+    <%= image_tag "icons/list.png", class: "home-category-card-right" %>
+  </div>
+
+</div>

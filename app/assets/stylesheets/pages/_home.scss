@@ -1,1 +1,59 @@
 // Specific CSS for your home-page
+
+.home-flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-category-card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $light-yellow;
+  padding: 1.2rem;
+  border-radius: 8px;
+  flex: 1;
+  margin: 1.2rem;
+}
+
+.home-category-card-left {
+  display: flex;
+  flex-direction: column;
+  padding-right: 1.2rem;
+}
+
+.home-category-card-left > * {
+  margin: 0.4rem;
+}
+
+.home-category-card-right {
+  height: 6.4rem;
+}
+
+@media(max-width: 991px) { // Tablet
+  .home-flex-container {
+    flex-direction: column;
+  }
+
+  .home-category-card-wrapper {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media(max-width: 767px) { // Portrait + Landscape Phone
+  .home-flex-container {
+    flex-direction: column;
+  }
+
+  .home-category-card-wrapper {
+    width: 100%;
+  }
+}
+
+@media(min-width: 992px) { // Everything larger than Tablet
+  .home-flex-container {
+    width: 100%;
+  }
+}
