@@ -153,6 +153,18 @@
   }
 }
 
+.pattern-url-link {
+  //font-weight: bold;
+  //font-style: italic;
+  text-decoration: underline !important;
+}
+.pattern-url-link:hover {
+  //color: $dark-blue;
+  //font-weight: bold;
+  //font-style: normal;
+  color: $dark-blue;
+}
+
 // Pattern Show Page:
 
 .show-pattern-card {
