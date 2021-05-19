@@ -63,9 +63,7 @@ input[type="checkbox"] {
   margin-bottom: 0.4rem;
 
   &:hover {
-  //   background-color: $light-blue;
-     border-color: $dark-blue;
-  //   color: $white;
+    border-color: $dark-blue;
   }
 }
 
@@ -92,14 +90,6 @@ input[type="checkbox"] {
   box-shadow: 0 0 0 0.2rem rgba(22, 127, 251, 0.25)
 }
 
-@media(min-width: 768px) { // Everything larger than Phone
-
-}
-
-@media(max-width: 767px) { // Portrait + Landscape Phone
-}
-
-
 .fabric-type-selector:checked + label {
   background-color: $dark-blue;
   border-color: $dark-blue;
@@ -110,7 +100,6 @@ input[type="checkbox"] {
 .fabric-type-selector + label.selected {
   background-color: $dark-blue;
   border-color: $dark-blue;
-  //font-weight: bold;
   color: $white;
 
   &:hover {
@@ -147,9 +136,7 @@ input[type="checkbox"] {
     height: 100%;
     width: 4.8rem;
   }
-
 }
-
 
 .category-item {
   height: 88px;

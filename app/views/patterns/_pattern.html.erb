@@ -24,8 +24,12 @@
   <% end %>
 
   <div class="flex-box-three-btns">
-    <%#= link_to "Close", patterns_path+"##{@pattern.id}", class:"btn-basic btn-light-blue-ghost grey-background" %>
-    <%= link_to "Edit", edit_pattern_path(@pattern), class: "btn-basic btn-light-blue-ghost" %>
     <%= link_to "Start Project", new_project_path(pattern_id: @pattern.id), class: "btn-basic btn-light-blue-ghost" %>
-  </div>
+    <%= link_to "Edit", edit_pattern_path(@pattern), class: "btn-basic btn-light-blue-ghost" %>
+    <%= link_to "<i class='far fa-trash-alt'></i>".html_safe,
+      pattern_path(@pattern),
+      method: :delete,
+      data: { confirm: pattern_delete_confirm_message(@pattern) },
+      class: "delete-icon black-font" %>
+      </div>
 </div>

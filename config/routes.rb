@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     patch "change_status", on: :member
   end
 
-  resources :patterns, only: [:new, :create, :show, :index, :edit, :update]
+  resources :patterns, only: [:new, :create, :show, :index, :edit, :update, :destroy]
 
   resources :shopping_items, only: [:new, :create, :index, :destroy ] do
     patch "toggle_bought", on: :member
