@@ -32,6 +32,7 @@ import { styleUploadPhotoInputField } from '../components/style_upload_photo_inp
 import { getPhotoUrlforPattern } from '../components/get_photo_url_for_pattern';
 import { thumbnailOverlayForDelete } from '../components/thumbnail-overlay-for-delete';
 import { addFlipCardClassesForGarmentCategoryIcon } from '../components/flip_card_garment_category_icon';
+import { deleteFabricInputOnDelete } from '../components/delete_fabric_input_on_delete';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -46,4 +47,5 @@ document.addEventListener('turbolinks:load', () => {
   getPhotoUrlforPattern();
   thumbnailOverlayForDelete();
   addFlipCardClassesForGarmentCategoryIcon();
+  deleteFabricInputOnDelete();
 });
