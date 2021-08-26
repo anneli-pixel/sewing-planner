@@ -1,17 +1,24 @@
-<nav class="custom-navbar container">
-  <%= link_to "/home", class: "nav-item", id: "home" do %>
-    <%= image_tag('icons/house.png', class: "nav-item-img") %>
-  <% end %>
-  <%= link_to projects_path, class: "nav-item", id: "projects" do %>
-    <%= image_tag('icons/010-sewing-machine.png', class: "nav-item-img") %>
-  <% end %>
-  <%= link_to patterns_path, class: "nav-item", id: "patterns" do %>
-    <%= image_tag('icons/008-pattern.png', class: "nav-item-img") %>
-  <% end %>
-  <%= link_to shopping_items_path, class: "nav-item", id: "shopping_items" do %>
-    <%= image_tag('icons/list.png', class: "nav-item-img") %>
-  <% end %>
-  <%= link_to destroy_user_session_path, method: :delete, class: "nav-item", id: "log-out" do %>
-    <%= image_tag('icons/exit.png', class: "nav-item-img") %>
-  <% end %>
+<nav class="container navbar-container">
+  <% if logged_in? %>
+    <div id="sewing-planner">Sewing&nbspPlanner</div>
+    <div class="custom-navbar-icons">  
+      <%= link_to "/home", class: "nav-item", id: "home" do %>
+        <%= image_tag('icons/house.png', class: "nav-item-img") %>
+      <% end %>
+      <%= link_to projects_path, class: "nav-item", id: "projects" do %>
+        <%= image_tag('icons/010-sewing-machine.png', class: "nav-item-img") %>
+      <% end %>
+      <%= link_to patterns_path, class: "nav-item", id: "patterns" do %>
+        <%= image_tag('icons/008-pattern.png', class: "nav-item-img") %>
+      <% end %>
+      <%= link_to shopping_items_path, class: "nav-item", id: "shopping_items" do %>
+        <%= image_tag('icons/list.png', class: "nav-item-img") %>
+      <% end %>
+      <%= link_to destroy_user_session_path, method: :delete, class: "nav-item", id: "log-out" do %>
+        <%= image_tag('icons/exit.png', class: "nav-item-img") %>
+      <% end %>
+    </div>  
+  <% else %>
+    <div id="sewing-planner">Sewing Planner</div>
+  <% end %>  
 </nav>
