@@ -24,7 +24,6 @@
   border: 1px solid $light-blue;
   color: $white;
 
-
   &:hover {
     border-color: $dark-blue;
   }
@@ -42,7 +41,8 @@
   }
 }
 
-@media(min-width: 768px) { // Everything larger than Phone
+@media (min-width: 768px) {
+  // Everything larger than Phone
   .flex-box-two-btns {
     margin-top: 8px;
     display: flex;
@@ -51,7 +51,8 @@
   }
 }
 
-@media(max-width: 767px) { // Portrait + Landscape Phone
+@media (max-width: 767px) {
+  // Portrait + Landscape Phone
   .flex-box-two-btns {
     margin-top: 8px;
     display: flex;
@@ -61,9 +62,8 @@
   }
 }
 
-
-
-@media(min-width: 768px) { // Everything larger than Phone
+@media (min-width: 768px) {
+  // Everything larger than Phone
   .flex-box-three-btns {
     margin-top: 8px;
     display: flex;
@@ -77,7 +77,8 @@
   }
 }
 
-@media(max-width: 767px) { // Portrait + Landscape Phone
+@media (max-width: 767px) {
+  // Portrait + Landscape Phone
   .flex-box-three-btns {
     margin-top: 8px;
     display: flex;
@@ -97,4 +98,8 @@
   padding: 8px;
 }
 
-
+#btn-login-signup {
+  line-height: normal;
+  display: block;
+  width: 8em;
+}

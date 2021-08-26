@@ -3,8 +3,20 @@
   margin-bottom: 1rem;
 }
 
-@media(min-width: 992px) {
-  .projects-show, .projects-change_status {
+@media (min-width: 992px) {
+  #projects-show,
+  #projects-change_status {
     width: 64vw;
   }
+
+  #sessions-new,
+  #registrations-new,
+  #registrations-create {
+    width: 32rem;
+    margin-top: 1.6rem;
+  }
+}
+
+#new_user {
+  margin-bottom: 0.8rem;
 }
