@@ -1,0 +1,20 @@
+<div class="wrapper-pattern-card wrapper-welcome-card">
+  <%= image_tag('icons/welcome.png', id: "welcome-icon") %>  
+  <div class="align-center small-text">
+    <p>
+      Thanks for your interest in the Sewing Planner!
+    </p>
+
+    <p>
+      If you want to check out a sample account which has a couple of sewing patterns and projects already set up, please <%= link_to 'log in', new_user_session_path, target: "_blank", class: "pattern-url-link" %> with the following credentials:
+    </p>
+
+    <p>Email: sewingplanner.sample@gmail.com</p>
+    <p>Password: 3xampl3$</p>
+
+    <p>
+      Or you can start from scratch and create an account <%= link_to 'here', new_user_registration_path, class: "pattern-url-link" %>.
+    </p>
+  </div>
+
+</div>

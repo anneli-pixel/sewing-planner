@@ -2,7 +2,8 @@
 
 // Cards Container
 
-@media(max-width: 991px) { // Tablet
+@media (max-width: 991px) {
+  // Tablet
   .cards-container-shared {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -10,7 +11,8 @@
   }
 }
 
-@media(max-width: 767px) { // Portrait + Landscape Phone
+@media (max-width: 767px) {
+  // Portrait + Landscape Phone
   .cards-container-shared {
     display: grid;
     grid-template-columns: 1fr;
@@ -18,7 +20,8 @@
   }
 }
 
-@media(min-width: 992px) { // Everything larger than Tablet
+@media (min-width: 992px) {
+  // Everything larger than Tablet
   .cards-container-shared {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -45,7 +48,6 @@
   }
 }
 
-
 // ---- UNIQUE ----
 
 // Project Index
@@ -63,7 +65,8 @@
 }
 
 .project-card-info > div:last-child {
-  h3, p {
+  h3,
+  p {
     margin-bottom: 0.5rem;
   }
 }
@@ -108,7 +111,6 @@
   border-radius: 8px;
 }
 
-
 // Pattern Index:
 
 .pattern-card {
@@ -120,13 +122,13 @@
     font-family: Maven Pro;
     font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 0.8rem
+    margin-bottom: 0.8rem;
   }
 
   p {
     font-family: Open Sans;
     font-size: 0.8rem;
-    margin-bottom: 0.8rem
+    margin-bottom: 0.8rem;
   }
 }
 
@@ -178,10 +180,9 @@
   border-radius: 8px;
   padding: 1.2rem;
   position: relative;
-    display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 
   a {
     text-decoration: none;
@@ -230,4 +231,9 @@
   font-family: Maven Pro;
 }
 
-
+// Welcome Card
+.wrapper-welcome-card {
+  background-color: white;
+  border-style: solid;
+  border-color: $light-gray;
+}
