@@ -11,10 +11,11 @@
 }
 
 #sewing-planner {
-  font-family: Major Mono Display;
+  font-family: Jua;
   font-size: xx-large;
   flex-grow: 1;
   color: $gray;
+  text-transform: uppercase;
 }
 
 @media (max-width: 767px) {
