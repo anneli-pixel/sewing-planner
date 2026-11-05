@@ -19,7 +19,7 @@ RSpec.feature "Edit pattern page" do
 
   it "can add a pattern image" do
    # TODO
-    @photo = fixture_file_upload('files/placeholder.png')
+    @photo = fixture_file_upload('placeholder.png')
   end
 
   it "can change the pattern image" do

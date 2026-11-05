@@ -1,5 +1,6 @@
-ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
-ENV['EXECJS_RUNTIME'] = 'Node' # added by me - required to use therubyracer!
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
+# autoprefixer-rails compiles via ExecJS; use the system Node runtime.
+ENV["EXECJS_RUNTIME"] ||= "Node"
 
-require 'bundler/setup' # Set up gems listed in the Gemfile.
-require 'bootsnap/setup' # Speed up boot time by caching expensive operations.
+require "bundler/setup" # Set up gems listed in the Gemfile.
+require "bootsnap/setup" # Speed up boot time by caching expensive operations.
