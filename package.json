@@ -12,6 +12,10 @@
     "esbuild": "^0.25.0"
   },
   "version": "0.1.0",
+  "engines": {
+    "node": "20.x",
+    "yarn": "1.x"
+  },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
   },

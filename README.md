@@ -77,7 +77,7 @@ The repo includes a `Procfile` that runs Puma for the web process and `rails db:
    heroku addons:create heroku-postgresql:essential-0
    ```
 
-2. Add the Node.js buildpack **before** the Ruby buildpack. Node is needed so `assets:precompile` can run `yarn build`:
+2. Add the Node.js buildpack **before** the Ruby buildpack. Node is needed so `assets:precompile` can run `yarn build`. The Node.js buildpack installs the versions set in `engines` in `package.json` (it ignores the `volta` section, which is only for local development):
 
    ```sh
    heroku buildpacks:add --index 1 heroku/nodejs
