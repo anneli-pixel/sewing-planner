@@ -9,7 +9,7 @@ Built with Ruby 4.0, Rails 8.1, PostgreSQL, Devise and Pundit. Images are stored
 ### Prerequisites
 
 - **Ruby 4.0.6** (see `.ruby-version`), e.g. via [rbenv](https://github.com/rbenv/rbenv): `rbenv install 4.0.6`
-- **Node.js 20+ and Yarn 1.x**. If you use [Volta](https://volta.sh), the versions pinned in `package.json` are picked up automatically.
+- **Node.js 26 and Yarn 1.x**. If you use [Volta](https://volta.sh), the versions pinned in `package.json` are picked up automatically.
 - **PostgreSQL** running locally
 - A **Cloudinary** account (the free tier is enough). Development uploads go to Cloudinary, not to disk.
 

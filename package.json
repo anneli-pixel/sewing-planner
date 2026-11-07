@@ -13,14 +13,14 @@
   },
   "version": "0.1.0",
   "engines": {
-    "node": "20.x",
+    "node": "26.x",
     "yarn": "1.x"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
   },
   "volta": {
-    "node": "20.19.6",
+    "node": "26.13.0",
     "yarn": "1.22.22"
   }
 }
