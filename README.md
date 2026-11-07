@@ -68,43 +68,126 @@ The specs are in `spec/` (model specs and Capybara feature specs) and use Factor
 
 ## Deploying to Heroku
 
-The repo includes a `Procfile` that runs Puma for the web process and `rails db:migrate` in the [release phase](https://devcenter.heroku.com/articles/release-phase), so migrations run automatically on each deploy.
+The app runs on Heroku with Heroku Postgres. Images are stored on Cloudinary, not on Heroku. The repo's `Procfile` starts Puma for the web process and runs `rails db:migrate` in the [release phase](https://devcenter.heroku.com/articles/release-phase), so migrations run automatically on every deploy, before the new code goes live. If a migration fails, the release is aborted and the previous version keeps running.
+
+In the commands below, `<app>` is the name of the Heroku app (see `heroku apps`).
+
+### Deploying a change
+
+1. **Start from a clean, up-to-date `master`:**
+
+   ```sh
+   git switch master && git pull
+   git status
+   ```
+
+   `git status` must show no changes and **no untracked files**. The CLI deploy uploads every file in the folder that isn't ignored by `.gitignore`. That would include database dumps, exported config vars or old build output, which can contain secrets or user data. Move such files out of the project folder before deploying.
+
+2. **If the change includes migrations, back up the database first:**
+
+   ```sh
+   heroku pg:backups:capture -a <app>
+   ```
+
+3. **Deploy**, using either method. Both run the same build and release phase.
+
+   - **Heroku CLI (recommended):** uploads the current folder and builds it. It uses the Heroku CLI's login, so it works even when git authentication to Heroku doesn't. It needs the `heroku-builds` plugin, installed once:
+
+     ```sh
+     heroku plugins:install heroku-builds
+     heroku builds:create -a <app>
+     ```
+
+   - **git push:** deploys the branch you push to Heroku's `master` branch:
+
+     ```sh
+     heroku git:remote -a <app>      # once per clone: adds a remote called "heroku"
+     git push heroku master
+     ```
+
+     If the push fails with `fatal: protocol error: bad line length character: fata`, use the CLI method instead.
+
+   The build log streams to your terminal. In order: the Node.js buildpack installs Node and Yarn, the Ruby buildpack installs the gems and runs `assets:precompile` (which runs `yarn build`), then the release phase runs the migrations.
+
+4. **Check that it worked:**
+
+   ```sh
+   heroku releases -a <app>          # the new release should be at the top
+   heroku logs --tail -a <app>       # look for Puma "Listening on ..." and no errors
+   heroku open -a <app>
+   ```
+
+### Rolling back
+
+- **Code or config problem:** go back to the previous release. This restores the code and config vars, but **not** the database:
+
+  ```sh
+  heroku releases:rollback -a <app>
+  ```
+
+- **A migration damaged the data:** put the app into maintenance mode and restore the backup from step 2:
+
+  ```sh
+  heroku maintenance:on -a <app>
+  heroku pg:backups -a <app>                                   # find the backup ID, e.g. b012
+  heroku pg:backups:restore <backup-id> DATABASE_URL -a <app>
+  heroku maintenance:off -a <app>
+  ```
+
+### Testing risky changes on a staging app
+
+For bigger changes (Rails or Ruby upgrades, a new Heroku stack, tricky migrations), test on a separate staging app with a copy of the production data first:
+
+```sh
+heroku create <app>-staging --stack heroku-24     # use the same stack as production (heroku apps:info -a <app>)
+heroku buildpacks:add heroku/nodejs -a <app>-staging
+heroku buildpacks:add heroku/ruby -a <app>-staging
+heroku addons:create heroku-postgresql:essential-0 -a <app>-staging
+heroku pg:backups:restore "$(heroku pg:backups:url -a <app>)" DATABASE_URL -a <app>-staging --confirm <app>-staging
+heroku config:set SECRET_KEY_BASE=<same as production> CLOUDINARY_URL=<same as production> -a <app>-staging
+
+git switch <branch-to-test>
+heroku builds:create -a <app>-staging
+```
+
+- **Photos:** staging uses the same Cloudinary folder as production, so production images show up there. That also means deleting or replacing a photo in staging deletes it in production too. In staging, only view photos, or test uploads on records you created yourself.
+- **Database:** only restore staging from a Heroku production backup, not from a local copy of the database. Locally migrated data can point images at the wrong Cloudinary folder.
+- **Clean up:** delete the staging app when you're done, so it stops costing money. This also deletes its database: `heroku apps:destroy -a <app>-staging`.
+
+### Setting up a new Heroku app
+
+Only needed if you're creating the app from scratch:
 
 1. Create the app and add Postgres:
 
    ```sh
-   heroku create <app-name>
-   heroku addons:create heroku-postgresql:essential-0
+   heroku create <app>
+   heroku addons:create heroku-postgresql:essential-0 -a <app>
    ```
 
 2. Add the Node.js buildpack **before** the Ruby buildpack. Node is needed so `assets:precompile` can run `yarn build`. The Node.js buildpack installs the versions set in `engines` in `package.json` (it ignores the `volta` section, which is only for local development):
 
    ```sh
-   heroku buildpacks:add --index 1 heroku/nodejs
-   heroku buildpacks:add heroku/ruby
+   heroku buildpacks:add heroku/nodejs -a <app>
+   heroku buildpacks:add heroku/ruby -a <app>
    ```
 
-3. Set the config vars. `DATABASE_URL` is set by the Postgres add-on. The app has no committed master key, so set a secret key base directly:
+3. Set the config vars. `DATABASE_URL` is set by the Postgres add-on. The app has no committed master key, so it uses `SECRET_KEY_BASE` instead. Generate a new one only for a brand-new app; changing it on an existing app logs everyone out.
 
    ```sh
-   heroku config:set SECRET_KEY_BASE=$(bin/rails secret)
-   heroku config:set CLOUDINARY_URL=cloudinary://<api_key>:<api_secret>@<cloud_name>
+   heroku config:set SECRET_KEY_BASE=$(bin/rails secret) -a <app>
+   heroku config:set CLOUDINARY_URL=cloudinary://<api_key>:<api_secret>@<cloud_name> -a <app>
    ```
 
    Production images are uploaded to the `sewing_planner_production` folder in Cloudinary.
 
-4. Deploy:
+4. Deploy as described in [Deploying a change](#deploying-a-change), then make sure a web dyno is running: `heroku ps -a <app>` (if none is listed: `heroku ps:scale web=1:basic -a <app>`).
 
-   ```sh
-   git push heroku master
-   ```
-
-   The garment categories are created by migrations, so they exist after the first release. To load the sample data, run `heroku run bin/rails db:seed`. Don't run it on a database with real data, because the seeds delete all existing patterns, projects, fabrics and shopping items.
-
-5. Open the app with `heroku open`, and check the logs with `heroku logs --tail`.
+5. The garment categories are created by migrations, so they exist after the first release. To load the sample data, run `heroku run bin/rails db:seed -a <app>`. Don't run it on a database with real data, because the seeds delete all existing patterns, projects, fabrics and shopping items.
 
 ### Production notes
 
 - **Mailer host:** `config/environments/production.rb` still has a placeholder host (`TODO_PUT_YOUR_DOMAIN_HERE`) in `action_mailer.default_url_options`. Set it to your Heroku domain so Devise emails (such as password resets) contain working links.
 - **HTTPS:** Heroku serves HTTPS, so you can turn on `config.assume_ssl` and `config.force_ssl` in `config/environments/production.rb` to redirect HTTP to HTTPS and mark cookies as secure.
 - **Redis:** Action Cable is configured to use Redis (`REDIS_URL`) in production, but the app doesn't use any channels yet, so you don't need a Redis add-on.
+- **Heroku stack:** Heroku retires stacks every few years, and the app can't be deployed on a retired stack. Check with `heroku stack -a <app>`. To switch, run `heroku stack:set <new-stack> -a <app>`, then deploy; the change takes effect with the next build. Test the new stack on a staging app first.
